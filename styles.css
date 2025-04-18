@@ -1,0 +1,189 @@
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4;
+}
+
+/* Header */
+header {
+    background-color: #1a3c5e;
+    color: #fff;
+    text-align: center;
+    padding: 2rem;
+}
+
+header h1 {
+    font-size: 2.5rem;
+}
+
+header h2 {
+    font-size: 1.5rem;
+    font-weight: normal;
+}
+
+/* Main content */
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Book section */
+.book-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: center;
+}
+
+.book-cover {
+    max-width: 200px;
+    height: auto;
+    border: 1px solid #ddd;
+}
+
+.book-details {
+    flex: 1;
+    min-width: 300px;
+}
+
+.buy-button {
+    display: inline-block;
+    background-color: #e67e22;
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 1rem;
+}
+
+.buy-button:hover {
+    background-color: #d35400;
+}
+
+/* Signup form */
+.signup-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.signup-form label {
+    font-weight: bold;
+}
+
+.signup-form input {
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    flex: 1;
+    min-width: 200px;
+}
+
+.signup-button {
+    background-color: #e67e22;
+    color: #fff;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.signup-button:hover {
+    background-color: #d35400;
+}
+
+/* Section styles */
+section {
+    margin-bottom: 2rem;
+}
+
+section h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #1a3c5e;
+}
+
+/* Excerpt blockquote styling */
+#excerpt blockquote {
+    font-style: italic;
+    background-color: #fff;
+    border-left: 5px solid #e67e22;
+    padding: 1rem 1.5rem;
+    margin: 1rem 0;
+    color: #444;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Testimonials styling */
+#reviews blockquote {
+    font-style: italic;
+    background-color: #fff;
+    border-left: 5px solid #1a3c5e;
+    padding: 1rem 1.5rem;
+    margin: 1rem 0;
+    color: #444;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+#reviews cite {
+    display: block;
+    margin-top: 0.5rem;
+    text-align: right;
+    color: #1a3c5e;
+    font-weight: bold;
+}
+
+/* Blog section */
+#blog {
+    background-color: #eaf0f6;
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+/* Footer */
+footer {
+    background-color: #1a3c5e;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+}
+
+footer a {
+    color: #e67e22;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .book-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .signup-form {
+        flex-direction: column;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    header h2 {
+        font-size: 1.2rem;
+    }
+}
