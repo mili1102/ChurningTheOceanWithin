@@ -3,42 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Millie Jess - Churning the Ocean Within</title>
-    <meta name="description" content="Learn about Millie Jess, the author of 'Churning the Ocean Within,' a storyteller inspired by Hindu mythology and personal growth.">
+    <meta name="description" content="About the author Millie Jess, writer of Churning the Ocean Within, inspired by Samudra Manthan and the wisdom of Sanatan Dharma.">
+    <title>About the Author | Churning the Ocean Within</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- CSS -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <div class="menu-toggle">☰</div>
-        <h1>Churning the Ocean Within</h1>
-        <h2>A Journey to Power, Wisdom, and Secrets of Success</h2>
-        <nav>
-            <ul class="nav-menu">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about-author.html">About the Author</a></li>
-                <li><a href="book-overview.html">Book Overview</a></li>
-                <li><a href="testimonials.html">Testimonials</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
+    <!-- Navigation Bar -->
+    <header class="navbar">
+        <div class="container nav-container">
+            <h1 class="logo">Churning the Ocean Within</h1>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="book-overview.html">Overview</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="testimonials.html">Testimonials</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
-    <main>
-        <section class="author-section">
-            <h3>About Millie Jess</h3>
-            <p>Millie Jess is a storyteller, spiritual thinker, and seeker of wisdom whose journey began with a deep fascination for the myths that shape human understanding. Inspired by the ancient Hindu epic Samudra Manthan, she weaves its lessons of duality—Devas and Asuras—into a modern guide for personal transformation. Her love for introspection, nurtured through years of reflecting on life’s challenges, led her to author "Churning the Ocean Within."</p>
-            <p>Growing up, Millie found solace in the ocean’s rhythm, mirroring the mind’s vastness as described in her book. This connection drove her to explore how ancient wisdom can heal modern minds, culminating in practical reflection exercises that empower readers to unlock their inner nectar of success.</p>
-            <a href="contact.html" class="cta-button">Connect with Millie</a>
-        </section>
-    </main>
-    <footer>
-        <p>© 2025 Millie Jess. All rights reserved. | <a href="https://twitter.com/yAthArthya_">Connect with Millie</a></p>
+
+    <!-- About Author Section -->
+    <section class="container" style="padding: 4rem 0;">
+        <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 2rem; align-items: center;">
+            <div>
+                <img src="book-cover.jpg" alt="Millie Jess - Author" style="border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+            </div>
+            <div>
+                <h2>About the Author</h2>
+                <p>Millie Jess is the author of <em>Churning the Ocean Within: A Journey to Power, Wisdom, and the Secrets of Success</em>. Drawing inspiration from the ancient story of Samudra Manthan, Millie reimagines the timeless metaphor of churning the ocean into a personal journey of self-discovery, clarity, and success.</p>
+                <p>Through her writing, Millie blends storytelling with practical wisdom, helping readers find strength and purpose in the face of life’s challenges. Her works are deeply rooted in timeless Indian philosophy yet presented in a way that resonates with readers across the world.</p>
+                <p>When she is not writing, Millie enjoys exploring literature, philosophy, and creative pursuits that inspire inner growth and reflection.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <p>&copy; 2025 Millie Jess | Churning the Ocean Within</p>
+            <nav>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                </ul>
+            </nav>
+        </div>
     </footer>
-    <script>
-        document.querySelector('.menu-toggle').addEventListener('click', function() {
-            const navMenu = document.querySelector('.nav-menu');
-            navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
-        });
-    </script>
 </body>
 </html>
