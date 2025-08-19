@@ -66,19 +66,17 @@ main {
 
 .buy-button {
     display: inline-flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    padding: 0.75rem 1rem;
+    padding: 0.5rem;
     background-color: #1a3c5e; /* Calming blue */
     color: #fff;
     text-decoration: none;
     border-radius: 5px;
-    font-size: 16px;
+    font-size: 12px;
     font-weight: bold;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     transition: background-color 0.3s ease, transform 0.2s ease;
-    width: 40px; /* Fixed width for icon buttons */
-    height: 40px;
 }
 
 .buy-button:hover {
@@ -86,8 +84,14 @@ main {
     transform: scale(1.05); /* Subtle zoom effect */
 }
 
-.buy-button i {
-    font-size: 20px; /* Adjust icon size */
+.buy-button img {
+    width: 40px;
+    height: auto;
+    margin-bottom: 5px;
+}
+
+.buy-button span {
+    text-align: center;
 }
 
 /* Signup form */
@@ -194,12 +198,6 @@ footer a:hover {
     .book-container {
         flex-direction: column;
         align-items: center;
-    }
-
-    .buy-button {
-        width: 40px; /* Consistent width for icons */
-        height: 40px;
-        margin-bottom: 1rem;
     }
 
     .buy-buttons {
