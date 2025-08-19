@@ -3,88 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Churning the Ocean Within - Official Website</title>
-    <meta name="description" content="Discover 'Churning the Ocean Within' by Millie Jess, a self-help guide inspired by Samudra Manthan for personal growth, power, and wisdom.">
-    <meta name="keywords" content="Churning the Ocean Within, Millie Jess, self-help, Samudra Manthan, personal growth, wisdom">
+    <meta name="description" content="Churning the Ocean Within: A Journey to Power, Wisdom, and the Secrets of Success by Millie Jess. Inspired by the timeless tale of Samudra Manthan.">
+    <title>Churning the Ocean Within</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- CSS -->
     <link rel="stylesheet" href="styles.css">
-    <style>
-        /* Critical CSS for above-the-fold content */
-        header { background: #1a3c5e; color: #fff; text-align: center; padding: 1rem; position: sticky; top: 0; z-index: 100; }
-        header h1 { font-size: 1.5rem; margin-bottom: 0.5rem; }
-        header h2 { font-size: 1rem; }
-        .nav-menu { display: none; }
-        @media (min-width: 768px) { header h1 { font-size: 2.5rem; } header h2 { font-size: 1.5rem; } }
-    </style>
 </head>
 <body>
-    <header>
-        <div class="menu-toggle">☰</div>
-        <h1>Churning the Ocean Within</h1>
-        <h2>A Journey to Power, Wisdom, and Secrets of Success</h2>
-        <nav>
-            <ul class="nav-menu">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about-author.html">About the Author</a></li>
-                <li><a href="book-overview.html">Book Overview</a></li>
-                <li><a href="testimonials.html">Testimonials</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
+    <!-- Navigation Bar -->
+    <header class="navbar">
+        <div class="container nav-container">
+            <h1 class="logo">Churning the Ocean Within</h1>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="about-author.html">About Author</a></li>
+                    <li><a href="book-overview.html">Overview</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="testimonials.html">Testimonials</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-    <main>
-        <section class="book-container">
-            <div class="book-image">
-                <img src="book-cover.jpg" alt="Churning the Ocean Within Book Cover" class="book-cover">
-            </div>
-            <div class="book-details">
-                <h3>About the Book</h3>
-                <p>Every individual carries an ocean of inner wisdom—thoughts, emotions, and dreams waiting to be unlocked for success. Inspired by the Hindu epic Samudra Manthan, "Churning the Ocean Within" by Millie Jess guides you to reflect deeply, confront inner dualities (Devas and Asuras), release toxic emotions like Halahal, and uncover the nectar of wisdom and fulfillment.</p>
-                <p>In a world of stress and distraction, this book offers a compass to navigate your mind’s tumultuous waters, turning challenges into growth opportunities.</p>
-                <p>Learn to:</p>
-                <ul>
-                    <li>Transform with ancient symbols</li>
-                    <li>Apply Samudra Manthan wisdom daily</li>
-                    <li>Unlock power via reflection and journaling</li>
-                    <li>Master emotions for self-growth</li>
-                </ul>
-                <div class="buy-buttons">
-                    <a href="https://www.amazon.com/Churning-Ocean-Within-Journey-Secrets/dp/B0DKXX63WT" target="_blank" class="buy-button">
-                        <img src="amazon-global.png" alt="Buy on Amazon Global" onerror="this.src='amazon-fallback.png';">
-                        <span>Amazon Global</span>
-                    </a>
-                    <a href="https://www.amazon.in/Churning-Ocean-Within-Journey-Secrets/dp/B0DKXX63WT" target="_blank" class="buy-button">
-                        <img src="amazon-india.png" alt="Buy on Amazon India" onerror="this.src='amazon-fallback.png';">
-                        <span>Amazon India</span>
-                    </a>
-                    <a href="https://notionpress.com/in/read/churning-the-ocean-within/paperback" target="_blank" class="buy-button">
-                        <img src="notionpress.png" alt="Buy on Notion Press" onerror="this.src='notionpress-fallback.png';">
-                        <span>Notion Press</span>
-                    </a>
-                    <a href="https://www.flipkart.com/churning-ocean-within-journey-power-wisdom-secrets-success/p/itm210c1dbfd5ff3?pid=9798898797874&affid=editornoti" target="_blank" class="buy-button">
-                        <img src="flipkart.png" alt="Buy on Flipkart" onerror="this.src='flipkart-fallback.png';">
-                        <span>Flipkart</span>
-                    </a>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h2>Your Mind is an Ocean</h2>
+                <p>Inspired by the ancient tale of Samudra Manthan, this book reveals how to churn your mind and awaken success, wisdom, and clarity.</p>
+                <div class="btn-group">
+                    <a href="#buy" class="btn primary">Get the Book</a>
+                    <a href="book-overview.html" class="btn secondary">Learn More</a>
                 </div>
-                <a href="book-overview.html" class="cta-button">Explore More</a>
             </div>
-        </section>
+            <div class="hero-image">
+                <img src="book-cover.jpg" alt="Book Cover: Churning the Ocean Within">
+            </div>
+        </div>
+    </section>
 
-        <section id="excerpt">
-            <h3>Inside the Pages</h3>
-            <blockquote>"Every individual carries an ocean of inner wisdom—filled with thoughts, emotions, experiences, talent, and dreams, all waiting to be explored and unlocked to achieve the desired success."</blockquote>
-        </section>
-    </main>
+    <!-- Buy Section -->
+    <section id="buy" class="buy-section">
+        <h3>Available At</h3>
+        <div class="store-logos">
+            <a href="https://www.amazon.in/dp/BOOK_ID" target="_blank"><img src="amazon-india.png" alt="Amazon India"></a>
+            <a href="https://www.amazon.com/dp/BOOK_ID" target="_blank"><img src="amazon-global.png" alt="Amazon Global"></a>
+            <a href="https://notionpress.com" target="_blank"><img src="notionpress.png" alt="Notion Press"></a>
+            <a href="https://www.flipkart.com" target="_blank"><img src="flipkart.png" alt="Flipkart"></a>
+        </div>
+    </section>
 
-    <footer>
-        <p>© 2025 Millie Jess. All rights reserved. | <a href="https://twitter.com/yAthArthya_">Connect with Millie</a></p>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <p>&copy; 2025 Millie Jess | Churning the Ocean Within</p>
+            <nav>
+                <ul class="footer-links">
+                    <li><a href="about-author.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                </ul>
+            </nav>
+        </div>
     </footer>
-    <script>
-        document.querySelector('.menu-toggle').addEventListener('click', function() {
-            const navMenu = document.querySelector('.nav-menu');
-            navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
-        });
-    </script>
 </body>
 </html>
