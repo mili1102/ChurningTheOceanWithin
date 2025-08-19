@@ -31,11 +31,11 @@ h3 { font-size: 1.8rem; margin-bottom: 1rem; color: #1a3c5e; }
 .book-image { text-align: center; }
 .book-cover { max-width: 100%; height: auto; border: 1px solid #ddd; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); }
 .book-details { flex: 1; }
-.buy-buttons { margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
-.buy-button { display: flex; flex-direction: column; align-items: center; padding: 0.5rem; background-color: #1a3c5e; color: #fff; text-decoration: none; border-radius: 5px; font-size: 12px; font-weight: bold; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); transition: background-color 0.3s ease, transform 0.2s ease; }
+.buy-buttons { margin-top: 20px; display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; align-items: center; }
+.buy-button { display: flex; flex-direction: column; align-items: center; padding: 0.75rem; background-color: #1a3c5e; color: #fff; text-decoration: none; border-radius: 8px; font-size: 14px; font-weight: bold; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); transition: background-color 0.3s ease, transform 0.2s ease; text-align: center; width: 100px; height: 120px; }
 .buy-button:hover { background-color: #14354e; transform: scale(1.05); }
-.buy-button img { width: 40px; height: auto; margin-bottom: 5px; }
-.buy-button span { text-align: center; }
+.buy-button img { width: 60px; height: auto; margin-bottom: 0.5rem; object-fit: contain; }
+.buy-button span { text-align: center; font-size: 12px; line-height: 1.2; max-width: 80px; }
 .cta-button { display: inline-block; padding: 0.75rem 1.5rem; background-color: #e67e22; color: #fff; text-decoration: none; border-radius: 5px; margin-top: 1rem; }
 .cta-button:hover { background-color: #d35400; }
 
@@ -69,8 +69,13 @@ footer a:hover { text-decoration: underline; }
     .book-container { flex-direction: row; align-items: center; }
     .book-image { flex: 0 0 300px; }
     .book-details { flex: 1; }
+    .buy-button { width: 120px; height: 140px; }
+    .buy-button img { width: 70px; }
+    .buy-button span { font-size: 14px; }
 }
 @media (min-width: 1200px) {
     main { padding: 3rem; }
     .book-cover { max-width: 300px; }
+    .buy-button { width: 130px; height: 150px; }
+    .buy-button img { width: 80px; }
 }
