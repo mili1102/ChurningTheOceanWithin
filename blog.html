@@ -44,8 +44,8 @@
     </footer>
     <script>
         document.querySelector('.menu-toggle').addEventListener('click', function() {
-            document.querySelector('.nav-menu').style.display = 
-                document.querySelector('.nav-menu').style.display === 'flex' ? 'none' : 'flex';
+            const navMenu = document.querySelector('.nav-menu');
+            navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
         });
     </script>
 </body>
