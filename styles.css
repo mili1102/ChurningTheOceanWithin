@@ -57,24 +57,37 @@ main {
     min-width: 300px;
 }
 
+.buy-buttons {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
 .buy-button {
-    display: inline-block;
-    padding: 0.75rem 1.5rem;
-    background-color: #1a3c5e; /* Changed to a calming blue */
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    background-color: #1a3c5e; /* Calming blue */
     color: #fff;
     text-decoration: none;
     border-radius: 5px;
     font-size: 16px;
     font-weight: bold;
-    text-align: center;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     transition: background-color 0.3s ease, transform 0.2s ease;
-    margin-right: 1rem; /* Space between buttons */
+    width: 40px; /* Fixed width for icon buttons */
+    height: 40px;
 }
 
 .buy-button:hover {
     background-color: #14354e; /* Slightly darker blue for hover effect */
     transform: scale(1.05); /* Subtle zoom effect */
+}
+
+.buy-button i {
+    font-size: 20px; /* Adjust icon size */
 }
 
 /* Signup form */
@@ -184,11 +197,13 @@ footer a:hover {
     }
 
     .buy-button {
-        width: 100%; /* Make the button span full width */
-        padding: 1rem; /* Larger padding for touch devices */
-        font-size: 18px; /* Slightly larger font for readability */
-        margin-right: 0;
+        width: 40px; /* Consistent width for icons */
+        height: 40px;
         margin-bottom: 1rem;
+    }
+
+    .buy-buttons {
+        justify-content: center;
     }
 
     header h1 {
