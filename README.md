@@ -5,7 +5,7 @@ This is the official website for the book "Churning the Ocean Within" by Millie 
 ## Features
 - Responsive design for mobile and desktop.
 - SEO-optimized with meta tags.
-- Buy links for Amazon (global) and Notion Press (India).
+- Buy links for Amazon (global), Amazon India, Notion Press (India), and Flipkart.
 - Signup form (configure with a form service like Formspree for functionality).
 - Placeholder for reviews and blog.
 
