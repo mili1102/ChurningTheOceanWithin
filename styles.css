@@ -60,7 +60,7 @@ main {
 .buy-button {
     display: inline-block;
     padding: 0.75rem 1.5rem;
-    background-color: #FF9900; /* Amazon's signature orange */
+    background-color: #1a3c5e; /* Changed to a calming blue */
     color: #fff;
     text-decoration: none;
     border-radius: 5px;
@@ -73,7 +73,7 @@ main {
 }
 
 .buy-button:hover {
-    background-color: #CC7A00; /* Slightly darker orange */
+    background-color: #14354e; /* Slightly darker blue for hover effect */
     transform: scale(1.05); /* Subtle zoom effect */
 }
 
