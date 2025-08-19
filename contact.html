@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Churning the Ocean Within</title>
+    <meta name="description" content="Get in touch with Millie Jess for inquiries about 'Churning the Ocean Within' or permissions.">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="menu-toggle">☰</div>
+        <h1>Churning the Ocean Within</h1>
+        <h2>A Journey to Power, Wisdom, and Secrets of Success</h2>
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about-author.html">About the Author</a></li>
+                <li><a href="book-overview.html">Book Overview</a></li>
+                <li><a href="testimonials.html">Testimonials</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="contact-section">
+            <h3>Contact</h3>
+            <p>For inquiries, permissions (per copyright ©2024), or to share your reflections, reach out to Millie Jess.</p>
+            <form action="https://formspree.io/f/your-form-id" method="POST">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required></textarea>
+                <button type="submit" class="cta-button">Send</button>
+            </form>
+            <p>Follow: <a href="https://twitter.com/yAthArthya_">Twitter</a></p>
+        </section>
+    </main>
+    <footer>
+        <p>© 2025 Millie Jess. All rights reserved. | <a href="https://twitter.com/yAthArthya_">Connect with Millie</a></p>
+    </footer>
+    <script>
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('.nav-menu').style.display = 
+                document.querySelector('.nav-menu').style.display === 'flex' ? 'none' : 'flex';
+        });
+    </script>
+</body>
+</html>
