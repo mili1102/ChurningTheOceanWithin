@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="styles.css">
     <style>
         /* Critical CSS for above-the-fold content */
-        header { background: #1a3c5e; color: #fff; text-align: center; padding: 1rem; }
-        header h1 { font-size: 1.5rem; }
+        header { background: #1a3c5e; color: #fff; text-align: center; padding: 1rem; position: sticky; top: 0; z-index: 100; }
+        header h1 { font-size: 1.5rem; margin-bottom: 0.5rem; }
         header h2 { font-size: 1rem; }
         .nav-menu { display: none; }
         @media (min-width: 768px) { header h1 { font-size: 2.5rem; } header h2 { font-size: 1.5rem; } }
@@ -82,8 +82,8 @@
     </footer>
     <script>
         document.querySelector('.menu-toggle').addEventListener('click', function() {
-            document.querySelector('.nav-menu').style.display = 
-                document.querySelector('.nav-menu').style.display === 'flex' ? 'none' : 'flex';
+            const navMenu = document.querySelector('.nav-menu');
+            navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
         });
     </script>
 </body>
