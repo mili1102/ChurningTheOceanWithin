@@ -31,12 +31,20 @@
         <section>
             <h3>Welcome to Your Inner Journey</h3>
             <p>Discover the ocean of wisdom within you. Start your meditation practice today and unlock your potential.</p>
-            <a href="practice.html" class="cta-button">Begin Meditation</a>
+            <a href="practice.html" class="buy-button">Begin Meditation</a>
         </section>
     </main>
 
     <footer>
         <p>&copy; 2025 Millie Jess. All rights reserved. | <a href="contact.html">Connect with Millie</a></p>
     </footer>
+
+    <script>
+        const toggle = document.querySelector('.menu-toggle');
+        const menu = document.querySelector('.nav-menu');
+        toggle.addEventListener('click', () => {
+            menu.classList.toggle('active');
+        });
+    </script>
 </body>
 </html>
