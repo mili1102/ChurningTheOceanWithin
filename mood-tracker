@@ -64,7 +64,10 @@
                     'focused': 'Continue with your current focus practice.',
                     'calm': 'Maintain balance with a short reflection exercise.'
                 };
-                document.getElementById('moodSuggestion').textContent = suggestions[mood] || '';
+                const suggestionElement = document.getElementById('moodSuggestion');
+                if (suggestionElement) {
+                    suggestionElement.textContent = suggestions[mood] || '';
+                }
             }
         });
     </script>
