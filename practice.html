@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Guided meditation with breathing animations and customizable background music inspired by 'Churning the Ocean Within' by Millie Jess.">
+    <meta name="description" content="Guided meditation practice inspired by 'Churning the Ocean Within' by Millie Jess.">
     <meta name="keywords" content="guided meditation, breathing exercise, Om chanting, Solfeggio frequencies, mindfulness">
     <meta name="author" content="Millie Jess">
-    <title>Guided Meditation - Churning the Ocean Within</title>
+    <title>Churning the Ocean Within - Practice</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -29,16 +29,25 @@
 
     <main>
         <section class="meditation-container">
-            <h3>Guided Meditation</h3>
+            <h3>Guided Meditation Practice</h3>
             <div class="breath-animation"></div>
-            <p>Breathe in for 4 seconds, hold, then breathe out for 4 seconds.</p>
+            <p>Breathe In</p>
             <div class="music-controls">
-                <button id="muteButton">Mute Music</button>
                 <select class="frequency-select" id="frequencySelect">
                     <option value="none">Silent</option>
                     <option value="om">Om Chanting</option>
-                    <option value="solfeggio">Solfeggio 432 Hz</option>
+                    <option value="174">174Hz</option>
+                    <option value="285">285Hz</option>
+                    <option value="396">396Hz</option>
+                    <option value="417">417Hz</option>
+                    <option value="528">528Hz</option>
+                    <option value="639">639Hz</option>
+                    <option value="741">741Hz</option>
+                    <option value="852">852Hz</option>
+                    <option value="963">963Hz</option>
                 </select>
+                <button id="playButton">Play</button>
+                <button id="muteButton">Mute</button>
             </div>
         </section>
     </main>
@@ -48,24 +57,43 @@
     </footer>
 
     <script>
-        let audio = new Audio('path/to/om.mp3'); // Replace with actual audio file path
-        let isMuted = false;
-        document.getElementById('muteButton').addEventListener('click', () => {
-            isMuted = !isMuted;
-            audio.muted = isMuted;
-            document.getElementById('muteButton').textContent = isMuted ? 'Unmute Music' : 'Mute Music';
-        });
-        document.getElementById('frequencySelect').addEventListener('change', (e) => {
-            audio.pause();
-            if (e.target.value === 'om') audio.src = 'path/to/om.mp3';
-            else if (e.target.value === 'solfeggio') audio.src = 'path/to/solfeggio.mp3';
-            else audio.src = '';
-            if (e.target.value !== 'none' && !isMuted) audio.play();
-        });
-        const toggle = document.querySelector('.menu-toggle');
-        const menu = document.querySelector('.nav-menu');
-        toggle.addEventListener('click', () => {
-            menu.classList.toggle('active');
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggle = document.querySelector('.menu-toggle');
+            const menu = document.querySelector('.nav-menu');
+            if (toggle && menu) {
+                toggle.addEventListener('click', () => {
+                    menu.classList.toggle('active');
+                });
+            }
+
+            let audio = new Audio('path/to/om.mp3'); // Replace with actual audio file paths
+            let isPlaying = false;
+            let isMuted = false;
+
+            document.getElementById('playButton').addEventListener('click', () => {
+                const freq = document.getElementById('frequencySelect').value;
+                if (freq !== 'none' && !isPlaying) {
+                    audio.src = `path/to/${freq === 'om' ? 'om' : freq}.mp3`;
+                    audio.play();
+                    isPlaying = true;
+                }
+            });
+
+            document.getElementById('muteButton').addEventListener('click', () => {
+                isMuted = !isMuted;
+                audio.muted = isMuted;
+                document.getElementById('muteButton').textContent = isMuted ? 'Unmute' : 'Mute';
+            });
+
+            document.getElementById('frequencySelect').addEventListener('change', (e) => {
+                audio.pause();
+                isPlaying = false;
+                if (e.target.value !== 'none') {
+                    audio.src = `path/to/${e.target.value === 'om' ? 'om' : e.target.value}.mp3`;
+                    if (!isMuted) audio.play();
+                    isPlaying = true;
+                }
+            });
         });
     </script>
 </body>
