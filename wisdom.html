@@ -37,5 +37,13 @@
     <footer>
         <p>&copy; 2025 Millie Jess. All rights reserved. | <a href="contact.html">Connect with Millie</a></p>
     </footer>
+
+    <script>
+        const toggle = document.querySelector('.menu-toggle');
+        const menu = document.querySelector('.nav-menu');
+        toggle.addEventListener('click', () => {
+            menu.classList.toggle('active');
+        });
+    </script>
 </body>
 </html>
