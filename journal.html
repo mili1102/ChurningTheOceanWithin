@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Log your daily reflections with guided questions inspired by 'Churning the Ocean Within' by Millie Jess.">
+    <meta name="description" content="Log your daily reflections with 'Churning the Ocean Within' by Millie Jess.">
     <meta name="keywords" content="daily journal, reflection, mindfulness, Millie Jess">
     <meta name="author" content="Millie Jess">
-    <title>Daily Journal - Churning the Ocean Within</title>
+    <title>Churning the Ocean Within - Journal</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -31,8 +31,14 @@
         <section class="journal-entry">
             <h3>Daily Reflection Journal</h3>
             <textarea placeholder="Write your thoughts here..."></textarea>
+            <button class="buy-button">Save</button>
             <div class="reflective-questions">
-                <p>Questions to guide you: What emotions surfaced today? How can you transform challenges into wisdom?</p>
+                <p>Reflective Questions inspired by churning the mind:</p>
+                <ul>
+                    <li>What 'poison' (negativity) did you encounter today?</li>
+                    <li>What 'treasure' (clarity or wisdom) did you discover?</li>
+                    <li>How did churning your thoughts lead to success or peace?</li>
+                </ul>
             </div>
         </section>
     </main>
@@ -42,10 +48,14 @@
     </footer>
 
     <script>
-        const toggle = document.querySelector('.menu-toggle');
-        const menu = document.querySelector('.nav-menu');
-        toggle.addEventListener('click', () => {
-            menu.classList.toggle('active');
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggle = document.querySelector('.menu-toggle');
+            const menu = document.querySelector('.nav-menu');
+            if (toggle && menu) {
+                toggle.addEventListener('click', () => {
+                    menu.classList.toggle('active');
+                });
+            }
         });
     </script>
 </body>
