@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Learn the Samudra Manthan metaphor and its wisdom for modern life from 'Churning the Ocean Within' by Millie Jess.">
+    <meta name="description" content="Learn the wisdom of Samudra Manthan from 'Churning the Ocean Within' by Millie Jess.">
     <meta name="keywords" content="Samudra Manthan, inner wisdom, mindfulness, Millie Jess">
     <meta name="author" content="Millie Jess">
-    <title>Wisdom - Churning the Ocean Within</title>
+    <title>Churning the Ocean Within - Wisdom</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -29,8 +29,9 @@
 
     <main>
         <section class="wisdom-section">
-            <h3>Wisdom from Samudra Manthan</h3>
-            <p>In the ancient Hindu epic, the gods and demons churned the Ocean of Milk to obtain Amrita, the nectar of immortality. This process revealed both poison and treasures. Similarly, your mind is an ocean—churning it through reflection uncovers negativity and the clarity, wisdom, and success within.</p>
+            <h3>Wisdom Section</h3>
+            <p>In the ancient Hindu epic of Samudra Manthan, gods and demons churned the ocean to extract the nectar of immortality (amrita). They used Mount Mandara as the churning rod and the serpent Vasuki as the rope. During the process, deadly poison (halahala) emerged first, which Lord Shiva swallowed to save the world. Eventually, treasures like the moon, Lakshmi, and the amrita appeared.</p>
+            <p>Relatable message: The mind is an ocean—when churned through meditation and reflection, it reveals both negativity (poison) and treasures (clarity, wisdom, success). Embrace the process to declutter and transform.</p>
         </section>
     </main>
 
@@ -39,10 +40,14 @@
     </footer>
 
     <script>
-        const toggle = document.querySelector('.menu-toggle');
-        const menu = document.querySelector('.nav-menu');
-        toggle.addEventListener('click', () => {
-            menu.classList.toggle('active');
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggle = document.querySelector('.menu-toggle');
+            const menu = document.querySelector('.nav-menu');
+            if (toggle && menu) {
+                toggle.addEventListener('click', () => {
+                    menu.classList.toggle('active');
+                });
+            }
         });
     </script>
 </body>
