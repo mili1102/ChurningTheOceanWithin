@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Discover 'Churning the Ocean Within' by Millie Jess - a guide to inner wisdom and success. Buy now!">
+    <meta name="description" content="Discover 'Churning the Ocean Within' by Millie Jess - a guide to inner wisdom and success.">
     <meta name="keywords" content="Churning the Ocean Within, Millie Jess, self-help book, inner wisdom">
     <meta name="author" content="Millie Jess">
-    <title>Book - Churning the Ocean Within</title>
+    <title>Churning the Ocean Within - Book</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -29,10 +29,11 @@
 
     <main>
         <section class="book-container">
+            <h3>Featured Book</h3>
             <img src="book-cover.jpg" alt="Churning the Ocean Within Book Cover" class="book-cover">
             <div class="book-details">
-                <h3>About the Book</h3>
-                <p>"Churning the Ocean Within" by Millie Jess guides you to reflect deeply, confront inner dualities, and uncover wisdom for success. Inspired by the Samudra Manthan epic, it offers practical exercises to transform challenges into growth.</p>
+                <p>“Churning the Ocean Within: A Journey to Power, Wisdom, and Secrets of Success” by Millie Jess</p>
+                <p>Unlock the Secrets of Success and Inner Transformation with "Churning the Ocean Within: A Journey to Power, Wisdom, and Secrets of Success." Inspired by the ancient Hindu epic of Samudra Manthan, this thought-provoking book offers a modern interpretation of the timeless wisdom found in the churning of the ocean. This powerful metaphor illustrates the challenges we face in life, and how those struggles can be turned into opportunities for growth and success after decluttering the mind.</p>
                 <a href="https://notionpress.com/in/read/churning-the-ocean-within" class="buy-button">Buy Now</a>
             </div>
         </section>
@@ -43,10 +44,14 @@
     </footer>
 
     <script>
-        const toggle = document.querySelector('.menu-toggle');
-        const menu = document.querySelector('.nav-menu');
-        toggle.addEventListener('click', () => {
-            menu.classList.toggle('active');
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggle = document.querySelector('.menu-toggle');
+            const menu = document.querySelector('.nav-menu');
+            if (toggle && menu) {
+                toggle.addEventListener('click', () => {
+                    menu.classList.toggle('active');
+                });
+            }
         });
     </script>
 </body>
