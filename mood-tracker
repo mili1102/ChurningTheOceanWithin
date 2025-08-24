@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Track your mood and get tailored meditation suggestions with 'Churning the Ocean Within' by Millie Jess.">
+    <meta name="description" content="Track your mood with 'Churning the Ocean Within' by Millie Jess.">
     <meta name="keywords" content="mood tracker, meditation suggestions, mindfulness, Millie Jess">
     <meta name="author" content="Millie Jess">
-    <title>Mood Tracker - Churning the Ocean Within</title>
+    <title>Churning the Ocean Within - Mood Tracker</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -30,6 +30,7 @@
     <main>
         <section class="mood-tracker">
             <h3>Mood Tracker</h3>
+            <p>Select your current mood</p>
             <div class="mood-options">
                 <div class="mood-option" onclick="setMood('stressed')">Stressed</div>
                 <div class="mood-option" onclick="setMood('anxious')">Anxious</div>
@@ -46,20 +47,25 @@
     </footer>
 
     <script>
-        function setMood(mood) {
-            const suggestions = {
-                'stressed': 'Try a breathing meditation to relax.',
-                'anxious': 'Visualize a calm ocean with a mantra meditation.',
-                'low-energy': 'Use a gentle Om chanting session to recharge.',
-                'focused': 'Continue with your current focus practice.',
-                'calm': 'Maintain balance with a short reflection exercise.'
-            };
-            document.getElementById('moodSuggestion').textContent = suggestions[mood];
-        }
-        const toggle = document.querySelector('.menu-toggle');
-        const menu = document.querySelector('.nav-menu');
-        toggle.addEventListener('click', () => {
-            menu.classList.toggle('active');
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggle = document.querySelector('.menu-toggle');
+            const menu = document.querySelector('.nav-menu');
+            if (toggle && menu) {
+                toggle.addEventListener('click', () => {
+                    menu.classList.toggle('active');
+                });
+            }
+
+            function setMood(mood) {
+                const suggestions = {
+                    'stressed': 'Try a breathing meditation to relax.',
+                    'anxious': 'Visualize a calm ocean with a mantra meditation.',
+                    'low-energy': 'Use a gentle Om chanting session to recharge.',
+                    'focused': 'Continue with your current focus practice.',
+                    'calm': 'Maintain balance with a short reflection exercise.'
+                };
+                document.getElementById('moodSuggestion').textContent = suggestions[mood] || '';
+            }
         });
     </script>
 </body>
