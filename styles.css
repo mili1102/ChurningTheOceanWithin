@@ -1,19 +1,20 @@
 /* Reset and Base Styles */
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'Georgia', serif; line-height: 1.6; color: #333; background: linear-gradient(135deg, #1a3c5e, #2a4068); }
+body { font-family: 'Georgia', serif; line-height: 1.6; color: #fff; background: linear-gradient(135deg, #1a3c5e, #2a4068); }
 
 /* Header */
 header { background: linear-gradient(90deg, #1a3c5e, #3a5e80); color: #fff; text-align: center; padding: 1rem; position: sticky; top: 0; z-index: 100; }
 header h1 { font-size: 1.5rem; margin-bottom: 0.5rem; }
 header h2 { font-size: 1rem; }
-.menu-toggle { font-size: 1.5rem; cursor: pointer; display: block; padding: 0.5rem; }
-.nav-menu { list-style: none; display: none; flex-direction: column; background: #2a4068; position: absolute; top: 100%; left: 0; right: 0; padding: 1rem 0; }
+.menu-toggle { font-size: 1.5rem; cursor: pointer; display: block; padding: 0.5rem; position: absolute; top: 1rem; left: 1rem; }
+.nav-menu { list-style: none; display: none; flex-direction: column; background: #2a4068; position: absolute; top: 100%; left: 0; right: 0; padding: 1rem 0; transition: max-height 0.3s ease-in-out; max-height: 0; overflow: hidden; }
+.nav-menu.active { display: flex; max-height: 500px; }
 .nav-menu li { margin: 0.5rem 0; }
-.nav-menu a { color: #fff; text-decoration: none; font-weight: bold; display: block; padding: 0.5rem 1rem; }
+.nav-menu a { color: #fff; text-decoration: none; font-weight: bold; display: block; padding: 0.5rem 1rem; transition: background 0.3s; }
 .nav-menu a:hover { color: #d4a017; background-color: #1a3c5e; }
 @media (min-width: 768px) {
     .menu-toggle { display: none; }
-    .nav-menu { display: flex; flex-direction: row; justify-content: center; position: static; background: none; padding: 0; }
+    .nav-menu { display: flex; flex-direction: row; justify-content: center; position: static; background: none; padding: 0; max-height: none; }
     header h1 { font-size: 2.5rem; }
     header h2 { font-size: 1.5rem; }
     .nav-menu li { margin: 0 15px; }
@@ -23,7 +24,7 @@ header h2 { font-size: 1rem; }
 
 /* Main Content */
 main { max-width: 1200px; margin: 0 auto; padding: 2rem; }
-section { margin-bottom: 2rem; }
+section { margin-bottom: 3rem; padding: 2rem; background: rgba(255, 255, 255, 0.05); border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); }
 h3 { font-size: 1.8rem; margin-bottom: 1rem; color: #d4a017; }
 
 /* Meditation Practice */
@@ -34,45 +35,47 @@ h3 { font-size: 1.8rem; margin-bottom: 1rem; color: #d4a017; }
     50% { transform: scale(1.2); }
     100% { transform: scale(1); }
 }
-.music-controls { margin: 1rem 0; }
-.music-controls button { padding: 0.5rem 1rem; background: #1a3c5e; color: #fff; border: none; border-radius: 5px; cursor: pointer; }
-.music-controls button:hover { background: #2a4068; }
-.frequency-select { margin-top: 1rem; padding: 0.5rem; }
+.music-controls { margin: 1rem 0; display: flex; justify-content: center; gap: 1rem; }
+.music-controls button, .music-controls select { padding: 0.75rem 1.5rem; background: #1a3c5e; color: #fff; border: none; border-radius: 5px; cursor: pointer; transition: background 0.3s; }
+.music-controls button:hover, .music-controls select:hover { background: #2a4068; }
 
 /* Mood Tracker */
 .mood-tracker { text-align: center; }
 .mood-options { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin: 1rem 0; }
-.mood-option { padding: 0.5rem 1rem; background: #3a5e80; color: #fff; border-radius: 5px; cursor: pointer; }
+.mood-option { padding: 0.75rem 1.5rem; background: #3a5e80; color: #fff; border-radius: 5px; cursor: pointer; transition: background 0.3s; }
 .mood-option:hover { background: #d4a017; }
-.suggestion { margin-top: 1rem; color: #fff; }
+.suggestion { margin-top: 1rem; color: #d4a017; font-weight: bold; }
 
 /* Journal */
-.journal-entry { background: rgba(255, 255, 255, 0.1); padding: 1rem; border-radius: 5px; }
-.journal-entry textarea { width: 100%; height: 150px; margin-top: 1rem; padding: 0.5rem; border: 1px solid #d4a017; border-radius: 5px; }
+.journal-entry { background: rgba(255, 255, 255, 0.1); padding: 1.5rem; border-radius: 5px; }
+.journal-entry textarea { width: 100%; height: 200px; margin-top: 1rem; padding: 1rem; border: 1px solid #d4a017; border-radius: 5px; background: rgba(0, 0, 0, 0.2); color: #fff; }
 .reflective-questions { margin-top: 1rem; color: #fff; }
 
 /* Wisdom Section */
-.wisdom-section { background: rgba(255, 255, 255, 0.1); padding: 1rem; border-radius: 5px; }
+.wisdom-section { background: rgba(255, 255, 255, 0.1); padding: 1.5rem; border-radius: 5px; }
 .wisdom-section p { color: #fff; }
 
 /* Book Section */
-.book-container { text-align: center; }
-.book-cover { max-width: 100%; height: auto; border: 1px solid #d4a017; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); }
-.book-details { margin-top: 1rem; color: #fff; }
-.buy-button { display: inline-block; padding: 0.75rem 1.5rem; background: #d4a017; color: #1a3c5e; text-decoration: none; border-radius: 5px; margin-top: 1rem; }
+.book-container { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 2rem; }
+.book-cover { max-width: 100%; height: auto; border: 1px solid #d4a017; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); border-radius: 5px; }
+.book-details { margin-top: 1rem; }
+.buy-button { display: inline-block; padding: 1rem 2rem; background: #d4a017; color: #1a3c5e; text-decoration: none; border-radius: 5px; margin-top: 1rem; font-weight: bold; transition: background 0.3s; }
 .buy-button:hover { background: #b08613; }
 
 /* Share Feature */
-.share-buttons { margin-top: 1rem; text-align: center; }
-.share-button { display: inline-block; padding: 0.5rem 1rem; margin: 0 0.5rem; background: #3a5e80; color: #fff; text-decoration: none; border-radius: 5px; }
+.share-buttons { margin-top: 1rem; text-align: center; display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
+.share-button { display: inline-block; padding: 0.75rem 1.5rem; background: #3a5e80; color: #fff; text-decoration: none; border-radius: 5px; transition: background 0.3s; }
 .share-button:hover { background: #d4a017; }
+
+/* Footer */
+footer { background-color: #1a3c5e; color: #fff; text-align: center; padding: 1.5rem; font-size: 0.9rem; }
 
 /* Responsive Design */
 @media (min-width: 768px) {
-    .book-container { display: flex; align-items: center; }
-    .book-cover { flex: 0 0 300px; }
-    .book-details { flex: 1; margin-left: 2rem; }
+    .book-container { flex-direction: row; text-align: left; }
+    .book-details { margin-left: 2rem; }
     .breath-animation { width: 150px; height: 150px; }
+    section { padding: 3rem; }
 }
 @media (min-width: 1200px) {
     main { padding: 3rem; }
