@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Share your meditation progress and reflections from 'Churning the Ocean Within' by Millie Jess.">
+    <meta name="description" content="Share your progress with 'Churning the Ocean Within' by Millie Jess.">
     <meta name="keywords" content="share meditation, mindfulness progress, Millie Jess">
     <meta name="author" content="Millie Jess">
-    <title>Share - Churning the Ocean Within</title>
+    <title>Churning the Ocean Within - Share</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -29,7 +29,8 @@
 
     <main>
         <section class="share-buttons">
-            <h3>Share Your Journey</h3>
+            <h3>Share Your Progress</h3>
+            <p>Share your meditation journey, mood logs, or reflections.</p>
             <a href="whatsapp://send?text=Check%20out%20my%20progress%20with%20Churning%20the%20Ocean%20Within!" class="share-button">WhatsApp</a>
             <a href="https://twitter.com/intent/tweet?text=Exploring%20inner%20wisdom%20with%20Churning%20the%20Ocean%20Within%20by%20Millie%20Jess!" class="share-button">Twitter</a>
             <a href="https://www.instagram.com/?url=Check%20out%20my%20meditation%20journey!" class="share-button">Instagram</a>
@@ -42,10 +43,14 @@
     </footer>
 
     <script>
-        const toggle = document.querySelector('.menu-toggle');
-        const menu = document.querySelector('.nav-menu');
-        toggle.addEventListener('click', () => {
-            menu.classList.toggle('active');
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggle = document.querySelector('.menu-toggle');
+            const menu = document.querySelector('.nav-menu');
+            if (toggle && menu) {
+                toggle.addEventListener('click', () => {
+                    menu.classList.toggle('active');
+                });
+            }
         });
     </script>
 </body>
