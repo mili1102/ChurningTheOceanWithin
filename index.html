@@ -41,6 +41,7 @@
                 <p id="poisonsAcknowledged">Poisons Acknowledged: 0</p>
                 <p id="treasuresDiscovered">Treasures Discovered: 0</p>
                 <p id="wisdomLevel">Wisdom Level (Amrit Score): 0</p>
+                <p id="streak">Current Streak: 0 days</p>
             </div>
         </section>
     </main>
@@ -69,6 +70,28 @@
             document.getElementById('poisonsAcknowledged').textContent = `Poisons Acknowledged: ${poisons}`;
             document.getElementById('treasuresDiscovered').textContent = `Treasures Discovered: ${treasures}`;
             document.getElementById('wisdomLevel').textContent = `Wisdom Level (Amrit Score): ${wisdom}`;
+
+            // Streak tracking
+            const lastSessionDate = localStorage.getItem('lastSessionDate');
+            const today = new Date().toDateString();
+            let streak = parseInt(localStorage.getItem('streak') || '0');
+            if (lastSessionDate === today) {
+                // Already counted today
+            } else if (lastSessionDate === new Date(Date.now() - 86400000).toDateString()) {
+                streak++;
+            } else {
+                streak = 1;
+            }
+            localStorage.setItem('lastSessionDate', today);
+            localStorage.setItem('streak', streak);
+            document.getElementById('streak').textContent = `Current Streak: ${streak} days`;
+
+            // Predictable notifications
+            if (Notification.permission === 'granted') {
+                new Notification('Daily Churn Reminder', { body: 'Time to churn your mind for inner wisdom!' });
+            } else if (Notification.permission !== 'denied') {
+                Notification.requestPermission();
+            }
         });
     </script>
 </body>
