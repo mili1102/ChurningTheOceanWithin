@@ -30,24 +30,13 @@
     </header>
 
     <main>
-        <section class="welcome-section">
-            <div class="welcome-text">
-                <h3>Begin Your Meditation Practice</h3>
-                <p>Engage in the Samudra Manthan technique to churn your inner ocean and unlock wisdom.</p>
-                <a href="#practice-content" class="cta-button">Start Now</a>
-            </div>
-            <div class="book-cover-section">
-                <img src="book-cover.jpg" alt="Churning the Ocean Within Book Cover" class="book-cover">
-                <a href="book.html" class="cta-button">Learn More in My Book</a>
-            </div>
-        </section>
-        <section id="practice-content" class="meditation-container">
+        <section class="meditation-container">
             <div class="technique-description">
                 You are practicing the ancient technique of Churning the Ocean Within (Samudra Manthan).
             </div>
 
             <div class="self-discovery-guide">
-                <h4>Identify Your Samudra Manthan Elements</h4>
+                <h3>Identify Your Samudra Manthan Elements</h3>
                 <p>Before you begin, reflect on the components of your inner journey. Use the prompts below to identify your mind and its qualities:</p>
                 <ul>
                     <li><strong>Inner Ocean (Mind):</strong> What is the state of your mind today? (e.g., calm, turbulent) [Add examples here]</li>
@@ -62,11 +51,11 @@
                     <li><strong>Rahu/Ketu (Shadows):</strong> What doubts or desires linger? (e.g., greed) [Add examples here]</li>
                 </ul>
                 <textarea id="elementReflection" placeholder="Write your reflections here..."></textarea>
-                <button onclick="saveElements()" class="cta-button">Save Your Insights</button>
+                <a href="#" class="cta-button" onclick="saveElements()">Save Your Insights</a>
                 <p id="elementFeedback"></p>
             </div>
 
-            <h3>Guided Meditation</h3>
+            <h3>Guided Meditation Practice</h3>
             <div class="visualization">
                 <div class="ocean-background"></div>
                 <div class="mountain"></div>
@@ -76,7 +65,7 @@
                 <div class="poison"></div>
             </div>
             <input type="text" id="goalInput" placeholder="Set your goal/intention (Mount Mandara)">
-            <button onclick="startMeditation()" class="cta-button">Start Churning</button>
+            <a href="#" class="cta-button" onclick="startMeditation()">Start Churning</a>
             <div class="breath-animation"></div>
             <p id="breathingGuidance">Breathe In</p>
             <div class="music-controls">
@@ -98,7 +87,7 @@
             </div>
             <div id="meditationSteps"></div>
             <div id="eventDescription"></div>
-            <a href="book.html" class="buy-button book-cta" style="display: none;">Excited? Buy the Book for More Wisdom!</a>
+            <a href="book.html" class="cta-button book-cta" style="display: none;">Excited? Buy the Book for More Wisdom!</a>
         </section>
     </main>
 
