@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Guided meditation and self-discovery practice inspired by 'Churning the Ocean Within' by Millie Jess.">
-    <meta name="keywords" content="meditation, self-discovery, Samudra Manthan, mindfulness, Millie Jess">
+    <meta name="description" content="Guided meditation practice inspired by 'Churning the Ocean Within' by Millie Jess.">
+    <meta name="keywords" content="guided meditation, breathing exercise, Om chanting, Solfeggio frequencies, mindfulness">
     <meta name="author" content="Millie Jess">
     <title>Churning the Ocean Within - Practice</title>
     <link rel="stylesheet" href="styles.css">
@@ -31,110 +31,103 @@
 
     <main>
         <section class="meditation-container">
-            <div class="technique-description">
-                Begin your journey with the ancient Samudra Manthan process for inner transformation.
+            <div class="pre-session">
+                <h3>Pre-Session Mood Check</h3>
+                <p>Select your current mood:</p>
+                <div class="mood-options">
+                    <div class="mood-emoji" onclick="selectMood('calm')">
+                        😌 <span>Calm</span>
+                    </div>
+                    <div class="mood-emoji" onclick="selectMood('stressed')">
+                        😩 <span>Stressed</span>
+                    </div>
+                    <div class="mood-emoji" onclick="selectMood('energized')">
+                        💪 <span>Energized</span>
+                    </div>
+                    <div class="mood-emoji" onclick="selectMood('healing')">
+                        🌿 <span>Healing</span>
+                    </div>
+                </div>
+                <p id="preMoodSelected"></p>
             </div>
 
-            <!-- Inner Ocean Map (Chapter 1) -->
-            <div class="inner-ocean-map">
-                <h3>1. Understanding Your Inner Ocean (Mind)</h3>
-                <p>Observe your thoughts and emotions like ocean waves.</p>
-                <textarea id="mindJournal" placeholder="Log your Devas (strengths) and Asuras (challenges) here..."></textarea>
-                <button onclick="saveMindJournal()" class="cta-button">Save Reflection</button>
-                <p id="mindFeedback"></p>
-                <button onclick="startBreathing()" class="cta-button">Deep Breathing Exercise</button>
+            <div class="visualization">
+                <div class="ocean-background"></div>
+                <div class="serpent"></div>
+                <div class="turtle"></div>
+                <div class="treasure"></div>
+                <div class="poison"></div>
+                <div class="flame-animation"></div>
             </div>
-
-            <!-- My Anchor Builder (Chapter 2) -->
-            <div class="my-anchor-builder">
-                <h3>2. Anchoring Yourself in Focus (Mount Mandaar)</h3>
-                <p>Define your core values or goals as your anchor.</p>
-                <input type="text" id="anchorInput" placeholder="Enter your anchor (e.g., family, goal)">
-                <button onclick="saveAnchor()" class="cta-button">Set Anchor</button>
-                <p id="anchorFeedback">Pause and breathe to reconnect with your anchor.</p>
-            </div>
-
-            <!-- Vasuki Energy Balancer (Chapter 3) -->
-            <div class="vasuki-energy-balancer">
-                <h3>3. Harnessing Internal Energy (Vasuki)</h3>
-                <p>Center your energy with breathing exercises.</p>
-                <select id="breathingTechnique">
-                    <option value="mindful">Mindful Breathing</option>
-                    <option value="alternate">Alternate Nostril Breathing</option>
+            <input type="text" id="goalInput" placeholder="Set your goal/intention (Mount Mandara)">
+            <button onclick="startMeditation()" class="cta-button">Start Churning</button>
+            <p id="breathingGuidance">Breathe In</p>
+            <div class="music-controls">
+                <select class="frequency-select" id="frequencySelect">
+                    <option value="none">Silent</option>
+                    <option value="om">Om Chanting</option>
+                    <option value="174">174Hz</option>
+                    <option value="285">285Hz</option>
+                    <option value="396">396Hz</option>
+                    <option value="417">417Hz</option>
+                    <option value="528">528Hz</option>
+                    <option value="639">639Hz</option>
+                    <option value="741">741Hz</option>
+                    <option value="852">852Hz</option>
+                    <option value="963">963Hz</option>
                 </select>
-                <button onclick="startEnergyBreathing()" class="cta-button">Start Breathing</button>
-                <p id="energyFeedback">Visualize releasing negativity with each exhale.</p>
+                <button id="playButton" class="cta-button">Play</button>
+                <button id="muteButton" class="cta-button">Mute</button>
+            </div>
+            <div id="meditationSteps"></div>
+            <div id="eventDescription"></div>
+            <a href="book.html" class="cta-button book-cta" style="display: none;">Excited? Buy the Book for More Wisdom!</a>
+            <p id="streakTracker">Current Streak: 0 days</p>
+            <div class="badges">
+                <h3>Your Unlocked Treasures</h3>
+                <div id="unlockedBadges"></div>
             </div>
 
-            <!-- Halahal Release & Transform (Chapter 4) -->
-            <div class="halahal-release">
-                <h3>4. Confronting Toxic Emotions (Halahal)</h3>
-                <p>Acknowledge and release toxic emotions.</p>
-                <textarea id="toxicJournal" placeholder="Log toxic emotions (e.g., anger, fear)..."></textarea>
-                <button onclick="saveToxicJournal()" class="cta-button">Analyze & Transform</button>
-                <p id="toxicFeedback"></p>
+            <div class="post-session">
+                <h3>Post-Session Mood Check</h3>
+                <p>Select your mood after meditation:</p>
+                <div class="mood-options">
+                    <div class="mood-emoji" onclick="selectPostMood('calm')">
+                        😌 <span>Calm</span>
+                    </div>
+                    <div class="mood-emoji" onclick="selectPostMood('stressed')">
+                        😩 <span>Stressed</span>
+                    </div>
+                    <div class="mood-emoji" onclick="selectPostMood('energized')">
+                        💪 <span>Energized</span>
+                    </div>
+                    <div class="mood-emoji" onclick="selectPostMood('healing')">
+                        🌿 <span>Healing</span>
+                    </div>
+                </div>
+                <p id="postMoodSelected"></p>
+                <p id="moodComparison"></p>
             </div>
 
-            <!-- Gems & Obstacles Dashboard (Chapter 5) -->
-            <div class="gems-obstacles">
-                <h3>5. Embracing Opportunities Amidst Dualities (Treasures & Challenges)</h3>
-                <p>Log your treasures and challenges.</p>
-                <input type="text" id="treasureInput" placeholder="Enter a treasure (e.g., opportunity)">
-                <input type="text" id="challengeInput" placeholder="Enter a challenge">
-                <button onclick="saveDualities()" class="cta-button">Plan Action</button>
-                <p id="dualityFeedback"></p>
+            <div class="compassion-practice">
+                <h3>Compassion Practice</h3>
+                <p>Send kindness to someone today:</p>
+                <input type="text" id="kindnessPrompt" placeholder="Enter a name or 'self'">
+                <button onclick="sendKindness()" class="cta-button">Send Kindness</button>
+                <p id="kindnessFeedback"></p>
             </div>
 
-            <!-- My Amrit Journey (Chapter 6) -->
-            <div class="my-amrit-journey">
-                <h3>6. Discovering Inner Transformation (Amrit)</h3>
-                <p>Define your vision of success and resilience.</p>
-                <input type="text" id="amritGoal" placeholder="Define your Amrit (e.g., peace)">
-                <button onclick="saveAmritGoal()" class="cta-button">Set Goal</button>
-                <textarea id="smallWins" placeholder="Log small wins or insights..."></textarea>
-                <button onclick="saveSmallWins()" class="cta-button">Celebrate</button>
-                <p id="amritFeedback"></p>
-            </div>
-
-            <!-- Mohini's Wisdom Navigator (Chapter 7) -->
-            <div class="mohini-navigator">
-                <h3>7. Embracing Transformation and Wisdom (Mohini)</h3>
-                <p>Reflect on success and share wisdom mindfully.</p>
-                <textarea id="successReflection" placeholder="Reflect on a recent success..."></textarea>
-                <button onclick="saveSuccessReflection()" class="cta-button">Share Wisdom</button>
-                <p id="mohiniFeedback"></p>
-            </div>
-
-            <!-- Rahu-Ketu Balancer (Chapter 8) -->
-            <div class="rahu-ketu-balancer">
-                <h3>8. Facing Shadows and Doubts (Rahu and Ketu)</h3>
-                <p>Balance ambition with detachment.</p>
-                <textarea id="shadowJournal" placeholder="Log desires or doubts..."></textarea>
-                <button onclick="saveShadowJournal()" class="cta-button">Find Balance</button>
-                <p id="rahuKetuFeedback"></p>
-            </div>
-
-            <!-- Continuous Growth Planner (Chapter 9) -->
-            <div class="growth-planner">
-                <h3>9. Cultivating Continuous Growth</h3>
-                <p>Set intentions and reframe challenges.</p>
-                <input type="text" id="growthIntention" placeholder="Set a growth intention">
-                <button onclick="saveGrowthIntention()" class="cta-button">Plan Growth</button>
-                <p id="growthFeedback"></p>
-            </div>
-
-            <!-- Legacy Builder (Chapter 10) -->
-            <div class="legacy-builder">
-                <h3>10. Sharing Your Wisdom (The Legacy)</h3>
-                <p>Share your story and mentor others.</p>
-                <textarea id="legacyStory" placeholder="Write your growth story..."></textarea>
-                <button onclick="saveLegacyStory()" class="cta-button">Save & Share</button>
-                <p id="legacyFeedback"></p>
+            <div class="buddy-practice">
+                <h3>Buddy Practice</h3>
+                <p>Invite a friend to meditate together:</p>
+                <input type="text" id="buddyCode" placeholder="Enter buddy code or generate one">
+                <button onclick="syncBuddy()" class="cta-button">Sync with Buddy</button>
+                <p id="buddyStatus">Sync status: Not connected</p>
             </div>
 
             <div class="book-integration">
                 <h3>Deepen Your Journey</h3>
-                <p>Explore more in *Churning the Ocean Within* by Millie Jess.</p>
+                <p>Explore more in the book *Churning the Ocean Within* by Millie Jess.</p>
                 <a href="https://notionpress.com/in/read/churning-the-ocean-within" class="cta-button">Buy on Notion Press</a>
                 <a href="https://amazon.com/churning-the-ocean-within" class="cta-button">Buy on Amazon</a>
             </div>
@@ -147,6 +140,8 @@
 
     <audio id="oceanSound" src="path/to/ocean-waves.mp3" loop></audio>
     <audio id="bellSound" src="path/to/soft-bell.mp3"></audio>
+    <audio id="wellDoneVoice" src="path/to/well-done-voice.mp3"></audio>
+    <audio id="kindnessVoice" src="path/to/kindness-voice.mp3"></audio>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -158,112 +153,188 @@
                 });
             }
 
-            // Mindful Observation and Breathing
-            window.saveMindJournal = function() {
-                const journal = document.getElementById('mindJournal').value;
-                if (journal) {
-                    localStorage.setItem('mindJournal', journal);
-                    document.getElementById('mindFeedback').textContent = 'Reflection saved. Observe without judgment.';
+            let audio = new Audio('path/to/om.mp3'); // Replace with actual paths
+            let isPlaying = false;
+            let isMuted = false;
+
+            const audioSources = {
+                'none': '',
+                'om': 'path/to/om-chanting.mp3',
+                '174': 'path/to/174hz.mp3',
+                '285': 'path/to/285hz.mp3',
+                '396': 'path/to/396hz.mp3',
+                '417': 'path/to/417hz.mp3',
+                '528': 'path/to/528hz.mp3',
+                '639': 'path/to/639hz.mp3',
+                '741': 'path/to/741hz.mp3',
+                '852': 'path/to/852hz.mp3',
+                '963': 'path/to/963hz.mp3'
+            };
+
+            document.getElementById('playButton').addEventListener('click', () => {
+                const freq = document.getElementById('frequencySelect').value;
+                if (freq !== 'none' && !isPlaying) {
+                    audio.src = audioSources[freq];
+                    audio.play();
+                    isPlaying = true;
+                }
+            });
+
+            document.getElementById('muteButton').addEventListener('click', () => {
+                isMuted = !isMuted;
+                audio.muted = isMuted;
+                document.getElementById('muteButton').textContent = isMuted ? 'Unmute' : 'Mute';
+            });
+
+            document.getElementById('frequencySelect').addEventListener('change', (e) => {
+                audio.pause();
+                isPlaying = false;
+                const freq = e.target.value;
+                if (freq !== 'none') {
+                    audio.src = audioSources[freq];
+                    if (!isMuted) audio.play();
+                    isPlaying = true;
+                }
+            });
+
+            // Pre-session mood selection
+            window.selectMood = function(mood) {
+                document.getElementById('preMoodSelected').textContent = `Pre-session mood: ${mood}`;
+                localStorage.setItem('preMood', mood);
+            };
+
+            // Post-session mood selection
+            window.selectPostMood = function(mood) {
+                document.getElementById('postMoodSelected').textContent = `Post-session mood: ${mood}`;
+                const preMood = localStorage.getItem('preMood');
+                if (preMood) {
+                    document.getElementById('moodComparison').textContent = `Mood change: ${preMood} → ${mood}`;
                 }
             };
 
-            window.startBreathing = function() {
+            // Meditation flow
+            const steps = [
+                "Step 1: Set your determination (Mount Mandara) - Enter your goal.",
+                "Step 2: Engage your inner energy (Vasuki) - Focus on the push-pull of breath.",
+                "Step 3: Stabilize with faith (Kurma) - Remain steady.",
+                "Step 4: Acknowledge positive and negative thoughts (Devas & Asuras).",
+                "Step 5: Release negativity (Halahal).",
+                "Step 6: Discover treasures (Strengths).",
+                "Step 7: Attain wisdom (Amrit).",
+                "Step 8: Avoid distractions (Mohini)."
+            ];
+
+            window.startMeditation = function() {
+                const goal = document.getElementById('goalInput').value;
+                if (!goal) {
+                    alert('Please set a goal.');
+                    return;
+                }
+
                 document.getElementById('oceanSound').play();
+                let stepIndex = 0;
+                const stepsDiv = document.getElementById('meditationSteps');
+                stepsDiv.textContent = steps[stepIndex];
+
+                const interval = setInterval(() => {
+                    stepIndex++;
+                    if (stepIndex < steps.length) {
+                        stepsDiv.textContent = steps[stepIndex];
+                        if (stepIndex === 4) showPoison();
+                        if (stepIndex === 5) showTreasure();
+                    } else {
+                        clearInterval(interval);
+                        completeSession();
+                    }
+                }, 10000); // 10 seconds per step
+
+                // Breathing guidance with flame sync
                 let inhale = true;
                 setInterval(() => {
-                    document.getElementById('mindFeedback').textContent = inhale ? 'Inhale deeply...' : 'Exhale negativity...';
+                    document.getElementById('breathingGuidance').textContent = inhale ? 'Inhale' : 'Exhale';
+                    const flame = document.querySelector('.flame-animation');
+                    flame.classList.add(inhale ? 'inhale-flame' : 'exhale-flame');
+                    setTimeout(() => flame.classList.remove('inhale-flame', 'exhale-flame'), 4000);
                     inhale = !inhale;
-                }, 4000);
-            };
+                }, 4000); // 4 seconds per breath
+            }
 
-            // Anchor Builder
-            window.saveAnchor = function() {
-                const anchor = document.getElementById('anchorInput').value;
-                if (anchor) {
-                    localStorage.setItem('anchor', anchor);
-                    document.getElementById('anchorFeedback').textContent = `Anchor set: ${anchor}. Take a small action.`;
+            function showPoison() {
+                const poison = document.querySelector('.poison');
+                poison.style.display = 'block';
+                document.getElementById('eventDescription').textContent = 'A poison (negativity) has appeared. Acknowledge it.';
+                setTimeout(() => {
+                    poison.style.display = 'none';
+                    increment('poisonsAcknowledged');
+                }, 5000);
+            }
+
+            function showTreasure() {
+                const treasure = document.querySelector('.treasure');
+                treasure.style.display = 'block';
+                treasure.classList.add('sparkle');
+                document.getElementById('eventDescription').textContent = 'A treasure (strength) has emerged. Discover it.';
+                setTimeout(() => {
+                    treasure.style.display = 'none';
+                    treasure.classList.remove('sparkle');
+                    increment('treasuresDiscovered');
+                }, 5000);
+                document.getElementById('bellSound').play();
+            }
+
+            function increment(key) {
+                let value = parseInt(localStorage.getItem(key) || '0') + 1;
+                localStorage.setItem(key, value);
+            }
+
+            function completeSession() {
+                increment('sessionsCompleted');
+                increment('wisdomLevel');
+                updateStreak();
+                updateBadges();
+                alert('Session completed! Treasure earned.');
+                document.getElementById('bellSound').play();
+                document.getElementById('wellDoneVoice').play();
+                document.querySelector('.book-cta').style.display = 'block';
+                document.querySelector('.post-session').style.display = 'block'; // Show post-session mood
+            }
+
+            function updateStreak() {
+                const lastDate = localStorage.getItem('lastPracticeDate');
+                const today = new Date().toDateString();
+                let streak = parseInt(localStorage.getItem('streak') || '0');
+                if (lastDate === today) {
+                    // Already counted today
+                } else if (lastDate === new Date(Date.now() - 86400000).toDateString()) {
+                    streak++;
+                } else {
+                    streak = 1;
                 }
-            };
+                localStorage.setItem('streak', streak);
+                localStorage.setItem('lastPracticeDate', today);
+                document.getElementById('streakTracker').textContent = `Current Streak: ${streak} days`;
+                document.getElementById('streakTracker').classList.add('glowing');
+                setTimeout(() => document.getElementById('streakTracker').classList.remove('glowing'), 2000);
+            }
 
-            // Vasuki Energy Balancer
-            window.startEnergyBreathing = function() {
-                const technique = document.getElementById('breathingTechnique').value;
-                document.getElementById('energyFeedback').textContent = `Starting ${technique}... Visualize energy flow.`;
-                document.getElementById('oceanSound').play();
-            };
-
-            // Halahal Release
-            window.saveToxicJournal = function() {
-                const journal = document.getElementById('toxicJournal').value;
-                if (journal) {
-                    localStorage.setItem('toxicJournal', journal);
-                    document.getElementById('toxicFeedback').textContent = 'Emotions logged. Channel into action.';
+            function updateBadges() {
+                const sessions = parseInt(localStorage.getItem('sessionsCompleted') || '0');
+                const badgesDiv = document.getElementById('unlockedBadges');
+                badgesDiv.innerHTML = '';
+                if (sessions >= 1) {
+                    badgesDiv.innerHTML += '<div class="badge conch">Conch Unlocked</div>';
                 }
-            };
-
-            // Gems & Obstacles
-            window.saveDualities = function() {
-                const treasure = document.getElementById('treasureInput').value;
-                const challenge = document.getElementById('challengeInput').value;
-                if (treasure || challenge) {
-                    localStorage.setItem('treasures', (localStorage.getItem('treasures') || '') + treasure + ',');
-                    localStorage.setItem('challenges', (localStorage.getItem('challenges') || '') + challenge + ',');
-                    document.getElementById('dualityFeedback').textContent = 'Logged. Plan your next action.';
+                if (sessions >= 5) {
+                    badgesDiv.innerHTML += '<div class="badge gem">Gem Unlocked</div>';
                 }
-            };
-
-            // My Amrit Journey
-            window.saveAmritGoal = function() {
-                const goal = document.getElementById('amritGoal').value;
-                if (goal) {
-                    localStorage.setItem('amritGoal', goal);
-                    document.getElementById('amritFeedback').textContent = `Amrit goal set: ${goal}. Build resilience.`;
+                if (sessions >= 10) {
+                    badgesDiv.innerHTML += '<div class="badge nectar">Nectar Drop Unlocked</div>';
                 }
-            };
+            }
 
-            window.saveSmallWins = function() {
-                const wins = document.getElementById('smallWins').value;
-                if (wins) {
-                    localStorage.setItem('smallWins', (localStorage.getItem('smallWins') || '') + wins + ',');
-                    document.getElementById('amritFeedback').textContent = 'Win celebrated! Keep growing.';
-                }
-            };
-
-            // Mohini's Wisdom
-            window.saveSuccessReflection = function() {
-                const reflection = document.getElementById('successReflection').value;
-                if (reflection) {
-                    localStorage.setItem('successReflection', reflection);
-                    document.getElementById('mohiniFeedback').textContent = 'Reflection saved. Share wisely.';
-                }
-            };
-
-            // Rahu-Ketu Balancer
-            window.saveShadowJournal = function() {
-                const journal = document.getElementById('shadowJournal').value;
-                if (journal) {
-                    localStorage.setItem('shadowJournal', journal);
-                    document.getElementById('rahuKetuFeedback').textContent = 'Shadows addressed. Seek balance.';
-                }
-            };
-
-            // Continuous Growth
-            window.saveGrowthIntention = function() {
-                const intention = document.getElementById('growthIntention').value;
-                if (intention) {
-                    localStorage.setItem('growthIntention', intention);
-                    document.getElementById('growthFeedback').textContent = `Intention set: ${intention}. Embrace challenges.`;
-                }
-            };
-
-            // Legacy Builder
-            window.saveLegacyStory = function() {
-                const story = document.getElementById('legacyStory').value;
-                if (story) {
-                    localStorage.setItem('legacyStory', story);
-                    document.getElementById('legacyFeedback').textContent = 'Story saved. Inspire others.';
-                }
-            };
+            // Load initial streak and badges
+            updateStreak();
+            updateBadges();
         });
     </script>
 </body>
