@@ -26,9 +26,15 @@ header { background: linear-gradient(90deg, #1a3c5e, #3a5e80); color: #fff; padd
 main { max-width: 1200px; margin: 0 auto; padding: 3rem 1.5rem; display: flex; flex-direction: column; gap: 2rem; }
 section { margin-bottom: 3rem; }
 
+/* Meditation Container */
+.meditation-container { padding: 2rem; background: rgba(255, 255, 255, 0.05); border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); }
+.intro { text-align: center; margin-bottom: 2rem; }
+.cta-button { display: inline-block; padding: 1rem 2rem; background: #d4a017; color: #1a1a1a; text-decoration: none; border: 2px solid #fff; border-radius: 8px; font-size: 1.1rem; font-weight: bold; transition: background 0.3s, transform 0.2s; }
+.cta-button:hover { background: #b08613; transform: translateY(-2px); }
+
 /* Pre/Post-Session Mood */
 .pre-session, .post-session { background: rgba(255, 255, 255, 0.1); padding: 1.5rem; border-radius: 5px; text-align: center; }
-.mood-options { display: flex; justify-content: center; gap: 1rem; margin: 1rem 0; }
+.mood-options { display: flex; justify-content: center; gap: 1rem; margin: 1rem 0; flex-wrap: wrap; }
 .mood-emoji { font-size: 2rem; cursor: pointer; padding: 1rem; border-radius: 50%; transition: background 0.3s; }
 .mood-emoji span { display: block; font-size: 1rem; color: #d4a017; }
 .mood-emoji:hover { background: rgba(255, 255, 255, 0.2); }
@@ -38,7 +44,7 @@ section { margin-bottom: 3rem; }
 .ocean-background { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, #1a3c5e, #001f3f); animation: waves 5s infinite linear; }
 @keyframes waves { 0% { background-position: 0 0; } 100% { background-position: 100px 0; } }
 .serpent { position: absolute; bottom: 50%; left: 0; width: 100%; height: 15px; background: #D4A017; border-radius: 5px; animation: wave 3s ease-in-out infinite; }
-@keyframes wave { 0% { transform: translateX(-20px) scaleX(1); } 50% { transform: translateX(20px) scaleX(1.1); } 100% { transform: translateX(-20px) scaleX(1); } }
+@keyframes wave { 0% { transform: translateX(-20px); } 50% { transform: translateX(20px); } 100% { transform: translateX(-20px); } }
 .turtle { position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 150px; height: 50px; background: #556b2f; border-radius: 50%; }
 .treasure { position: absolute; display: none; top: 50%; left: 50%; width: 30px; height: 30px; background: gold; border-radius: 50%; animation: float 2s infinite; box-shadow: 0 0 10px gold; }
 .poison { position: absolute; display: none; top: 50%; left: 50%; width: 30px; height: 30px; background: black; border-radius: 50%; animation: float 2s infinite; box-shadow: 0 0 10px black; }
@@ -51,36 +57,24 @@ section { margin-bottom: 3rem; }
 .exhale-dot { animation: exhale-dot 2s forwards; }
 @keyframes exhale-dot { 0% { width: 100px; height: 100px; opacity: 0; } 100% { width: 50px; height: 50px; opacity: 0.5; } }
 
-/* Dashboard */
-.dashboard { margin-top: 2rem; background: rgba(255, 255, 255, 0.1); padding: 1rem; border-radius: 5px; }
-
-/* Meditation Steps */
-#meditationSteps { margin-top: 1rem; font-weight: bold; }
-#eventDescription { margin-top: 1rem; color: #d4a017; }
-
-/* Music Controls */
+/* Guided Meditation */
+.guided-meditation { margin-top: 2rem; padding: 1.5rem; background: rgba(255, 255, 255, 0.1); border-radius: 5px; }
+#breathingGuidance { font-size: 1.2rem; text-align: center; margin-bottom: 1rem; }
 .music-controls { margin: 1rem 0; display: flex; justify-content: center; gap: 1rem; }
 
-/* Compassion Practice */
-.compassion-practice { margin-top: 2rem; padding: 1.5rem; background: rgba(255, 255, 255, 0.1); border-radius: 5px; }
+/* Journal */
+.journal { margin-top: 2rem; padding: 1.5rem; background: rgba(255, 255, 255, 0.1); border-radius: 5px; }
+.journal textarea { width: 100%; padding: 1rem; margin-top: 0.5rem; border: 1px solid #d4a017; border-radius: 5px; background: rgba(0, 0, 0, 0.2); color: #fff; }
+.journal ul { list-style: disc; margin-left: 2rem; margin-top: 1rem; }
 
-/* Buddy Practice */
-.buddy-practice { margin-top: 2rem; padding: 1.5rem; background: rgba(255, 255, 255, 0.1); border-radius: 5px; }
+/* Wisdom Section */
+.wisdom-section { margin-top: 2rem; padding: 1.5rem; background: rgba(255, 255, 255, 0.1); border-radius: 5px; }
 
 /* Book Integration */
-.book-integration { margin-top: 2rem; padding: 1.5rem; background: rgba(255, 255, 255, 0.1); border-radius: 5px; }
+.book-integration { margin-top: 2rem; padding: 1.5rem; background: rgba(255, 255, 255, 0.1); border-radius: 5px; text-align: center; }
 
-/* Badges */
-.badges { margin-top: 2rem; padding: 1.5rem; background: rgba(255, 255, 255, 0.1); border-radius: 5px; }
-.badge { display: inline-block; padding: 0.5rem 1rem; margin: 0.5rem; background: #d4a017; color: #1a3c5e; border-radius: 5px; }
-
-/* Glowing Effect */
-.glowing { animation: glow 1s ease-in-out infinite; }
-@keyframes glow { 0% { box-shadow: 0 0 5px #d4a017; } 50% { box-shadow: 0 0 15px #d4a017; } 100% { box-shadow: 0 0 5px #d4a017; } }
-
-/* Sparkle Effect */
-.sparkle { animation: sparkle 1s ease-in-out; }
-@keyframes sparkle { 0% { opacity: 0; } 50% { opacity: 1; box-shadow: 0 0 20px gold; } 100% { opacity: 0; } }
+/* Share Section */
+.share-section { margin-top: 2rem; padding: 1.5rem; background: rgba(255, 255, 255, 0.1); border-radius: 5px; text-align: center; }
 
 /* Footer */
 footer { background-color: #1a3c5e; color: #fff; text-align: center; padding: 1.5rem; font-size: 0.9rem; }
@@ -92,6 +86,7 @@ footer a:hover { text-decoration: underline; }
     .mood-options { flex-direction: column; }
     .visualization { height: 200px; }
     .breath-dot { width: 40px; height: 40px; }
+    .cta-button { padding: 0.8rem 1.5rem; font-size: 1rem; }
 }
 @media (min-width: 768px) {
     section { padding: 3rem; }
