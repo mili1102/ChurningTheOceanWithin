@@ -31,21 +31,30 @@
 
     <main>
         <section class="meditation-container">
+            <div class="intro">
+                <h2>Churning the Ocean Within</h2>
+                <p>Inspired by the ancient wisdom of Samudra Manthan, discover inner peace through meditation, reflection, and self-discovery.</p>
+                <button onclick="startMeditation()" class="cta-button">Start Meditation</button>
+            </div>
+
             <div class="pre-session">
                 <h3>Pre-Session Mood Check</h3>
                 <p>Select your current mood:</p>
                 <div class="mood-options">
-                    <div class="mood-emoji" onclick="selectMood('calm')">
-                        😌 <span>Calm</span>
-                    </div>
                     <div class="mood-emoji" onclick="selectMood('stressed')">
                         😩 <span>Stressed</span>
                     </div>
-                    <div class="mood-emoji" onclick="selectMood('energized')">
-                        💪 <span>Energized</span>
+                    <div class="mood-emoji" onclick="selectMood('anxious')">
+                        😰 <span>Anxious</span>
                     </div>
-                    <div class="mood-emoji" onclick="selectMood('healing')">
-                        🌿 <span>Healing</span>
+                    <div class="mood-emoji" onclick="selectMood('low energy')">
+                        😴 <span>Low Energy</span>
+                    </div>
+                    <div class="mood-emoji" onclick="selectMood('focused')">
+                        🤓 <span>Focused</span>
+                    </div>
+                    <div class="mood-emoji" onclick="selectMood('calm')">
+                        😌 <span>Calm</span>
                     </div>
                 </div>
                 <p id="preMoodSelected"></p>
@@ -59,77 +68,84 @@
                 <div class="poison"></div>
                 <div class="breath-dot"></div>
             </div>
-            <input type="text" id="goalInput" placeholder="Set your goal/intention (Mount Mandara)">
-            <button onclick="startMeditation()" class="cta-button">Start Churning</button>
-            <p id="breathingGuidance">Breathe In</p>
-            <div class="music-controls">
-                <select class="frequency-select" id="frequencySelect">
-                    <option value="none">Silent</option>
-                    <option value="om">Om Chanting</option>
-                    <option value="174">174Hz</option>
-                    <option value="285">285Hz</option>
-                    <option value="396">396Hz</option>
-                    <option value="417">417Hz</option>
-                    <option value="528">528Hz</option>
-                    <option value="639">639Hz</option>
-                    <option value="741">741Hz</option>
-                    <option value="852">852Hz</option>
-                    <option value="963">963Hz</option>
-                </select>
-                <button id="playButton" class="cta-button">Play</button>
-                <button id="muteButton" class="cta-button">Mute</button>
-            </div>
-            <div id="meditationSteps"></div>
-            <div id="eventDescription"></div>
-            <a href="book.html" class="cta-button book-cta" style="display: none;">Excited? Buy the Book for More Wisdom!</a>
-            <p id="streakTracker">Current Streak: 0 days</p>
-            <div class="badges">
-                <h3>Your Unlocked Treasures</h3>
-                <div id="unlockedBadges"></div>
+
+            <div class="guided-meditation">
+                <h3>Guided Meditation Practice</h3>
+                <p id="breathingGuidance">Breathe In</p>
+                <div class="music-controls">
+                    <select class="frequency-select" id="frequencySelect">
+                        <option value="none">Silent</option>
+                        <option value="om">Om Chanting</option>
+                        <option value="174">174Hz</option>
+                        <option value="285">285Hz</option>
+                        <option value="396">396Hz</option>
+                        <option value="417">417Hz</option>
+                        <option value="528">528Hz</option>
+                        <option value="639">639Hz</option>
+                        <option value="741">741Hz</option>
+                        <option value="852">852Hz</option>
+                        <option value="963">963Hz</option>
+                    </select>
+                    <button id="playButton" class="cta-button">Play</button>
+                    <button id="muteButton" class="cta-button">Mute</button>
+                </div>
+                <div id="meditationSteps"></div>
+                <div id="eventDescription"></div>
             </div>
 
             <div class="post-session">
                 <h3>Post-Session Mood Check</h3>
                 <p>Select your mood after meditation:</p>
                 <div class="mood-options">
-                    <div class="mood-emoji" onclick="selectPostMood('calm')">
-                        😌 <span>Calm</span>
-                    </div>
                     <div class="mood-emoji" onclick="selectPostMood('stressed')">
                         😩 <span>Stressed</span>
                     </div>
-                    <div class="mood-emoji" onclick="selectPostMood('energized')">
-                        💪 <span>Energized</span>
+                    <div class="mood-emoji" onclick="selectPostMood('anxious')">
+                        😰 <span>Anxious</span>
                     </div>
-                    <div class="mood-emoji" onclick="selectPostMood('healing')">
-                        🌿 <span>Healing</span>
+                    <div class="mood-emoji" onclick="selectPostMood('low energy')">
+                        😴 <span>Low Energy</span>
+                    </div>
+                    <div class="mood-emoji" onclick="selectPostMood('focused')">
+                        🤓 <span>Focused</span>
+                    </div>
+                    <div class="mood-emoji" onclick="selectPostMood('calm')">
+                        😌 <span>Calm</span>
                     </div>
                 </div>
                 <p id="postMoodSelected"></p>
                 <p id="moodComparison"></p>
             </div>
 
-            <div class="compassion-practice">
-                <h3>Compassion Practice</h3>
-                <p>Send kindness to someone today:</p>
-                <input type="text" id="kindnessPrompt" placeholder="Enter a name or 'self'">
-                <button onclick="sendKindness()" class="cta-button">Send Kindness</button>
-                <p id="kindnessFeedback"></p>
+            <div class="journal">
+                <h3>Daily Reflection Journal</h3>
+                <textarea id="journalInput" placeholder="Reflect on your session..."></textarea>
+                <button onclick="saveJournal()" class="cta-button">Save</button>
+                <p>Reflective Questions inspired by churning the mind:</p>
+                <ul>
+                    <li>What 'poison' (negativity) did you encounter today?</li>
+                    <li>What 'treasure' (clarity or wisdom) did you discover?</li>
+                    <li>How did churning your thoughts lead to success or peace?</li>
+                </ul>
             </div>
 
-            <div class="buddy-practice">
-                <h3>Buddy Practice</h3>
-                <p>Invite a friend to meditate together:</p>
-                <input type="text" id="buddyCode" placeholder="Enter buddy code or generate one">
-                <button onclick="syncBuddy()" class="cta-button">Sync with Buddy</button>
-                <p id="buddyStatus">Sync status: Not connected</p>
+            <div class="wisdom-section">
+                <h3>Wisdom Section</h3>
+                <p>In the ancient Hindu epic of Samudra Manthan, gods and demons churned the ocean to extract the nectar of immortality (amrita). They used Mount Mandara as the churning rod and the serpent Vasuki as the rope. During the process, deadly poison (halahala) emerged first, which Lord Shiva swallowed to save the world. Eventually, treasures like the moon, Lakshmi, and the amrita appeared.</p>
+                <p>Relatable message: The mind is an ocean—when churned through meditation and reflection, it reveals both negativity (poison) and treasures (clarity, wisdom, success). Embrace the process to declutter and transform.</p>
             </div>
 
             <div class="book-integration">
-                <h3>Deepen Your Journey</h3>
-                <p>Explore more in the book *Churning the Ocean Within* by Millie Jess.</p>
-                <a href="https://notionpress.com/in/read/churning-the-ocean-within" class="cta-button">Buy on Notion Press</a>
-                <a href="https://amazon.com/churning-the-ocean-within" class="cta-button">Buy on Amazon</a>
+                <h3>Featured Book</h3>
+                <p>“Churning the Ocean Within: A Journey to Power, Wisdom, and Secrets of Success” by Millie Jess</p>
+                <p>Unlock the Secrets of Success and Inner Transformation with "Churning the Ocean Within: A Journey to Power, Wisdom, and Secrets of Success." Inspired by the ancient Hindu epic of Samudra Manthan, this thought-provoking book offers a modern interpretation of the timeless wisdom found in the churning of the ocean. This powerful metaphor illustrates the challenges we face in life, and how those struggles can be turned into opportunities for growth and success after decluttering the mind.</p>
+                <a href="https://notionpress.com/in/read/churning-the-ocean-within" class="cta-button">Buy Now</a>
+            </div>
+
+            <div class="share-section">
+                <h3>Share Your Progress</h3>
+                <p>Share your meditation journey, mood logs, or reflections.</p>
+                <button onclick="shareProgress()" class="cta-button">Share</button>
             </div>
         </section>
     </main>
@@ -141,7 +157,6 @@
     <audio id="oceanSound" src="path/to/ocean-waves.mp3" loop></audio>
     <audio id="bellSound" src="path/to/soft-bell.mp3"></audio>
     <audio id="wellDoneVoice" src="path/to/well-done-voice.mp3"></audio>
-    <audio id="kindnessVoice" src="path/to/kindness-voice.mp3"></audio>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -214,10 +229,10 @@
 
             // Meditation flow
             const steps = [
-                "Step 1: Set your determination (Mount Mandara) - Enter your goal.",
-                "Step 2: Engage your inner energy (Vasuki) - Focus on the push-pull of breath.",
+                "Step 1: Set your determination (Mount Mandara) - Reflect on your goal.",
+                "Step 2: Engage your inner energy (Vasuki) - Focus on your breath.",
                 "Step 3: Stabilize with faith (Kurma) - Remain steady.",
-                "Step 4: Acknowledge positive and negative thoughts (Devas & Asuras).",
+                "Step 4: Acknowledge thoughts (Devas & Asuras).",
                 "Step 5: Release negativity (Halahal).",
                 "Step 6: Discover treasures (Strengths).",
                 "Step 7: Attain wisdom (Amrit).",
@@ -225,12 +240,6 @@
             ];
 
             window.startMeditation = function() {
-                const goal = document.getElementById('goalInput').value;
-                if (!goal) {
-                    alert('Please set a goal.');
-                    return;
-                }
-
                 document.getElementById('oceanSound').play();
                 let stepIndex = 0;
                 const stepsDiv = document.getElementById('meditationSteps');
@@ -251,7 +260,7 @@
                 // Breathing guidance with dot sync
                 let inhale = true;
                 setInterval(() => {
-                    document.getElementById('breathingGuidance').textContent = inhale ? 'Inhale' : 'Exhale';
+                    document.getElementById('breathingGuidance').textContent = inhale ? 'Breathe In' : 'Breathe Out';
                     const dot = document.querySelector('.breath-dot');
                     dot.classList.add(inhale ? 'inhale-dot' : 'exhale-dot');
                     setTimeout(() => dot.classList.remove('inhale-dot', 'exhale-dot'), 4000);
@@ -265,7 +274,6 @@
                 document.getElementById('eventDescription').textContent = 'A poison (negativity) has appeared. Acknowledge it.';
                 setTimeout(() => {
                     poison.style.display = 'none';
-                    increment('poisonsAcknowledged');
                 }, 5000);
             }
 
@@ -277,83 +285,32 @@
                 setTimeout(() => {
                     treasure.style.display = 'none';
                     treasure.classList.remove('sparkle');
-                    increment('treasuresDiscovered');
                 }, 5000);
                 document.getElementById('bellSound').play();
             }
 
-            function increment(key) {
-                let value = parseInt(localStorage.getItem(key) || '0') + 1;
-                localStorage.setItem(key, value);
-            }
-
             function completeSession() {
-                increment('sessionsCompleted');
-                increment('wisdomLevel');
-                updateStreak();
-                updateBadges();
-                alert('Session completed! Treasure earned.');
-                document.getElementById('bellSound').play();
+                alert('Session completed!');
                 document.getElementById('wellDoneVoice').play();
-                document.querySelector('.book-cta').style.display = 'block';
-                document.querySelector('.post-session').style.display = 'block'; // Show post-session mood
+                document.querySelector('.post-session').style.display = 'block';
             }
 
-            function updateStreak() {
-                const lastDate = localStorage.getItem('lastPracticeDate');
-                const today = new Date().toDateString();
-                let streak = parseInt(localStorage.getItem('streak') || '0');
-                if (lastDate === today) {
-                    // Already counted today
-                } else if (lastDate === new Date(Date.now() - 86400000).toDateString()) {
-                    streak++;
+            window.saveJournal = function() {
+                const journal = document.getElementById('journalInput').value;
+                if (journal) {
+                    localStorage.setItem('journal', journal);
+                    alert('Journal saved!');
+                }
+            };
+
+            window.shareProgress = function() {
+                const journal = localStorage.getItem('journal');
+                if (journal) {
+                    alert('Progress shared: ' + journal);
                 } else {
-                    streak = 1;
+                    alert('No journal entry to share. Reflect and save first!');
                 }
-                localStorage.setItem('streak', streak);
-                localStorage.setItem('lastPracticeDate', today);
-                document.getElementById('streakTracker').textContent = `Current Streak: ${streak} days`;
-                document.getElementById('streakTracker').classList.add('glowing');
-                setTimeout(() => document.getElementById('streakTracker').classList.remove('glowing'), 2000);
-            }
-
-            function updateBadges() {
-                const sessions = parseInt(localStorage.getItem('sessionsCompleted') || '0');
-                const badgesDiv = document.getElementById('unlockedBadges');
-                badgesDiv.innerHTML = '';
-                if (sessions >= 1) {
-                    badgesDiv.innerHTML += '<div class="badge conch">Conch Unlocked</div>';
-                }
-                if (sessions >= 5) {
-                    badgesDiv.innerHTML += '<div class="badge gem">Gem Unlocked</div>';
-                }
-                if (sessions >= 10) {
-                    badgesDiv.innerHTML += '<div class="badge nectar">Nectar Drop Unlocked</div>';
-                }
-            }
-
-            window.sendKindness = function() {
-                const name = document.getElementById('kindnessPrompt').value;
-                if (name) {
-                    document.getElementById('kindnessFeedback').textContent = `Kindness sent to ${name}!`;
-                    document.getElementById('kindnessVoice').play();
-                    document.getElementById('kindnessFeedback').classList.add('glowing');
-                    setTimeout(() => document.getElementById('kindnessFeedback').classList.remove('glowing'), 2000);
-                }
-            }
-
-            window.syncBuddy = function() {
-                const code = document.getElementById('buddyCode').value;
-                if (code) {
-                    document.getElementById('buddyStatus').textContent = `Connected with buddy! Start meditating together.`;
-                } else {
-                    document.getElementById('buddyStatus').textContent = 'Enter a valid buddy code.';
-                }
-            }
-
-            // Load initial streak and badges
-            updateStreak();
-            updateBadges();
+            };
         });
     </script>
 </body>
