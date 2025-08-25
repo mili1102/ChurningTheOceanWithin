@@ -43,6 +43,65 @@ section { margin-bottom: 3rem; }
     .book-cover { max-width: 200px; }
 }
 
+/* Technique Description */
+.technique-description { background: rgba(0, 0, 0, 0.3); padding: 1rem; margin-bottom: 1rem; text-align: center; font-style: italic; }
+
+/* Visualization */
+.visualization { position: relative; height: 300px; width: 100%; overflow: hidden; }
+.ocean-background { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, #1a3c5e, #001f3f); animation: waves 5s infinite linear; }
+@keyframes waves { 0% { background-position: 0 0; } 100% { background-position: 100px 0; } }
+.mountain { position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 120px; height: 180px; background: linear-gradient(45deg, #5C4033, #8B5A2B); border-radius: 10px 10px 0 0; clip-path: polygon(50% 0%, 0% 100%, 100% 100%); }
+.serpent { position: absolute; bottom: 50%; left: 0; width: 100%; height: 15px; background: #D4A017; border-radius: 5px; animation: wave 3s ease-in-out infinite; }
+@keyframes wave { 0% { transform: translateX(-20px) scaleX(1); } 50% { transform: translateX(20px) scaleX(1.1); } 100% { transform: translateX(-20px) scaleX(1); } }
+.turtle { position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 150px; height: 50px; background: #556b2f; border-radius: 50%; }
+.treasure { position: absolute; display: none; top: 50%; left: 50%; width: 30px; height: 30px; background: gold; border-radius: 50%; animation: float 2s infinite; box-shadow: 0 0 10px gold; }
+.poison { position: absolute; display: none; top: 50%; left: 50%; width: 30px; height: 30px; background: black; border-radius: 50%; animation: float 2s infinite; box-shadow: 0 0 10px black; }
+@keyframes float { 0% { transform: translateY(0); } 50% { transform: translateY(-10px); } 100% { transform: translateY(0); } }
+
+/* Dashboard */
+.dashboard { margin-top: 2rem; background: rgba(255, 255, 255, 0.1); padding: 1rem; border-radius: 5px; }
+
+/* Meditation Steps */
+#meditationSteps { margin-top: 1rem; font-weight: bold; }
+#eventDescription { margin-top: 1rem; color: #d4a017; }
+
+/* Meditation Practice */
+.meditation-container { text-align: center; }
+.breath-animation { width: 100px; height: 100px; background: #3a5e80; border-radius: 50%; margin: 2rem auto; animation: breathe 8s infinite; }
+@keyframes breathe {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+.music-controls { margin: 1rem 0; display: flex; justify-content: center; gap: 1rem; }
+.music-controls button, .music-controls select { padding: 0.75rem 1.5rem; background: #1a3c5e; color: #fff; border: none; border-radius: 5px; cursor: pointer; transition: background 0.3s; }
+.music-controls button:hover, .music-controls select:hover { background: #2a4068; }
+
+/* Mood Tracker */
+.mood-tracker { text-align: center; padding: 2rem; background: rgba(255, 255, 255, 0.05); border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); }
+.mood-options { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin: 1rem 0; }
+.mood-option { padding: 0.75rem 1.5rem; background: #3a5e80; color: #fff; border-radius: 5px; cursor: pointer; transition: background 0.3s; }
+.mood-option:hover { background: #d4a017; }
+.suggestion { margin-top: 1rem; color: #d4a017; font-weight: bold; }
+
+/* Journal */
+.journal-entry { background: rgba(255, 255, 255, 0.1); padding: 1.5rem; border-radius: 5px; }
+.journal-entry textarea { width: 100%; height: 200px; margin-top: 1rem; padding: 1rem; border: 1px solid #d4a017; border-radius: 5px; background: rgba(0, 0, 0, 0.2); color: #fff; }
+.journal-entry button { display: inline-block; padding: 1rem 2rem; background: #d4a017; color: #1a3c5e; text-decoration: none; border-radius: 5px; margin-top: 1rem; font-weight: bold; transition: background 0.3s; }
+.journal-entry button:hover { background: #b08613; }
+.reflective-questions { margin-top: 1rem; color: #fff; }
+.reflective-questions ul { list-style-type: disc; padding-left: 20px; }
+
+/* Wisdom Section */
+.wisdom-section { background: rgba(255, 255, 255, 0.1); padding: 1.5rem; border-radius: 5px; }
+.wisdom-section p { color: #fff; }
+
+/* Book Section */
+.book-container { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 2rem; padding: 2rem; background: rgba(255, 255, 255, 0.05); border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); }
+
+/* Share Feature */
+.share-buttons { margin-top: 1rem; text-align: center; display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; padding: 2rem; background: rgba(255, 255, 255, 0.05); border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); }
+
 /* Footer */
 footer { background-color: #1a3c5e; color: #fff; text-align: center; padding: 1.5rem; font-size: 0.9rem; }
 footer a { color: #d4a017; text-decoration: none; }
@@ -50,7 +109,18 @@ footer a:hover { text-decoration: underline; }
 
 /* Responsive Design */
 @media (min-width: 768px) {
+    .book-container { flex-direction: row; text-align: left; }
+    .book-details { margin-left: 2rem; }
+    .breath-animation { width: 150px; height: 150px; }
+    section { padding: 3rem; }
+    .welcome-section { flex-wrap: nowrap; }
     .book-cover { max-width: 300px; }
+    .self-discovery-guide textarea { height: 200px; }
+}
+@media (max-width: 767px) {
+    .welcome-section { flex-direction: column; text-align: center; }
+    .book-cover-section { margin-top: 1rem; }
+    .book-cover { max-width: 200px; }
 }
 @media (min-width: 1200px) {
     main { padding: 3rem; }
