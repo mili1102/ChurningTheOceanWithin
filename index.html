@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Explore 'Churning the Ocean Within' by Millie Jess. Unlock inner wisdom with guided meditation, mood tracking, and journaling inspired by the Samudra Manthan epic.">
+    <meta name="description" content="Explore 'Churning the Ocean Within' by Millie Jess. Unlock inner wisdom with guided meditation inspired by the Samudra Manthan epic.">
     <meta name="keywords" content="meditation, mindfulness, Samudra Manthan, inner wisdom, Millie Jess, book, self-growth">
     <meta name="author" content="Millie Jess">
     <title>Churning the Ocean Within - Home</title>
@@ -30,35 +30,9 @@
     <main>
         <section>
             <h3>Welcome to Your Inner Journey</h3>
-            <p>Discover the ancient technique of *Samudra Manthan* (Churning of the Ocean), a powerful metaphor for inner transformation from my book <em>Churning the Ocean Within</em>. This practice, rooted in mythological wisdom, guides you to churn your mind, uncover treasures, and achieve wisdom.</p>
-            <a href="book.html" class="buy-button">Buy the Book for Deeper Insights</a>
-
-            <div class="technique-description">
-                Begin by exploring your inner ocean—your mind—and identifying its currents.
-            </div>
-
-            <div class="self-discovery-guide">
-                <h4>Identify Your Inner Ocean</h4>
-                <p>Take a moment to reflect on your mind as an ocean. Use the questions below to map your thoughts and emotions:</p>
-                <ul>
-                    <li><strong>Your Ocean (Mind):</strong> What thoughts or feelings dominate your daily experience? (e.g., calm, stormy)</li>
-                    <li><strong>Devas (Positive Qualities):</strong> What strengths or virtues do you notice? (e.g., kindness, clarity)</li>
-                    <li><strong>Asuras (Negative Emotions):</strong> What challenges or emotions arise? (e.g., fear, doubt)</li>
-                </ul>
-                <textarea id="oceanReflection" placeholder="Write your observations here..."></textarea>
-                <button onclick="saveReflection()">Save Your Insights</button>
-                <p id="reflectionFeedback"></p>
-                <a href="practice.html" class="buy-button">Start Churning Your Ocean</a>
-            </div>
-
-            <div class="dashboard">
-                <h3>Your Churning Progress</h3>
-                <p id="sessionsCompleted">Sessions Completed: 0</p>
-                <p id="poisonsAcknowledged">Poisons Acknowledged: 0</p>
-                <p id="treasuresDiscovered">Treasures Discovered: 0</p>
-                <p id="wisdomLevel">Wisdom Level (Amrit Score): 0</p>
-                <p id="streak">Current Streak: 0 days</p>
-            </div>
+            <p>Embark on a transformative experience with *Churning the Ocean Within*, inspired by the ancient *Samudra Manthan* myth from my book. Discover inner peace, wisdom, and strength through guided meditation and self-reflection.</p>
+            <a href="book.html" class="buy-button">Learn More in My Book</a>
+            <a href="practice.html" class="buy-button">Start Your Journey</a>
         </section>
     </main>
 
@@ -74,48 +48,6 @@
                 toggle.addEventListener('click', () => {
                     menu.classList.toggle('active');
                 });
-            }
-
-            // Load progress
-            const sessions = localStorage.getItem('sessionsCompleted') || 0;
-            const poisons = localStorage.getItem('poisonsAcknowledged') || 0;
-            const treasures = localStorage.getItem('treasuresDiscovered') || 0;
-            const wisdom = localStorage.getItem('wisdomLevel') || 0;
-
-            document.getElementById('sessionsCompleted').textContent = `Sessions Completed: ${sessions}`;
-            document.getElementById('poisonsAcknowledged').textContent = `Poisons Acknowledged: ${poisons}`;
-            document.getElementById('treasuresDiscovered').textContent = `Treasures Discovered: ${treasures}`;
-            document.getElementById('wisdomLevel').textContent = `Wisdom Level (Amrit Score): ${wisdom}`;
-
-            // Streak tracking
-            const lastSessionDate = localStorage.getItem('lastSessionDate');
-            const today = new Date().toDateString();
-            let streak = parseInt(localStorage.getItem('streak') || '0');
-            if (lastSessionDate === today) {
-                // Already counted today
-            } else if (lastSessionDate === new Date(Date.now() - 86400000).toDateString()) {
-                streak++;
-            } else {
-                streak = 1;
-            }
-            localStorage.setItem('lastSessionDate', today);
-            localStorage.setItem('streak', streak);
-            document.getElementById('streak').textContent = `Current Streak: ${streak} days`;
-
-            // Predictable notifications
-            if (Notification.permission === 'granted') {
-                new Notification('Daily Churn Reminder', { body: 'Time to churn your mind for inner wisdom!' });
-            } else if (Notification.permission !== 'denied') {
-                Notification.requestPermission();
-            }
-
-            window.saveReflection = function() {
-                const reflection = document.getElementById('oceanReflection').value;
-                if (reflection) {
-                    localStorage.setItem('oceanReflection', reflection);
-                    document.getElementById('reflectionFeedback').textContent = 'Insights saved! Ready to start your journey.';
-                    document.getElementById('oceanReflection').value = ''; // Clear input
-                }
             }
         });
     </script>
