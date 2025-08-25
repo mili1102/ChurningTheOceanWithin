@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Share your progress with 'Churning the Ocean Within' by Millie Jess.">
-    <meta name="keywords" content="share meditation, mindfulness progress, Millie Jess">
+    <meta name="description" content="Share your journey with 'Churning the Ocean Within' by Millie Jess.">
+    <meta name="keywords" content="share, community, reflection, Millie Jess, Samudra Manthan">
     <meta name="author" content="Millie Jess">
     <title>Churning the Ocean Within - Share</title>
     <link rel="stylesheet" href="styles.css">
@@ -28,13 +28,16 @@
     </header>
 
     <main>
-        <section class="share-buttons">
-            <h3>Share Your Progress</h3>
-            <p>Share your meditation journey, mood logs, or reflections.</p>
-            <a href="whatsapp://send?text=Check%20out%20my%20progress%20with%20Churning%20the%20Ocean%20Within!" class="share-button">WhatsApp</a>
-            <a href="https://twitter.com/intent/tweet?text=Exploring%20inner%20wisdom%20with%20Churning%20the%20Ocean%20Within%20by%20Millie%20Jess!" class="share-button">Twitter</a>
-            <a href="https://www.instagram.com/?url=Check%20out%20my%20meditation%20journey!" class="share-button">Instagram</a>
-            <a href="mailto:?subject=Meditation%20Progress&body=Check%20out%20my%20journey%20with%20Churning%20the%20Ocean%20Within!" class="share-button">Email</a>
+        <section>
+            <div class="technique-description">
+                You are practicing the ancient technique of Churning the Ocean Within (Samudra Manthan).
+            </div>
+            <h3>Share Your Journey</h3>
+            <textarea id="reflectionInput" placeholder="Share your Amrit wisdom or reflection..."></textarea>
+            <button onclick="shareReflection()">Submit Reflection</button>
+            <div id="aiMessage"></div>
+            <div class="shared-reflections" id="sharedReflections"></div>
+            <a href="book.html" class="buy-button book-cta" style="display: none;">Inspire More - Buy the Book!</a>
         </section>
     </main>
 
@@ -51,6 +54,38 @@
                     menu.classList.toggle('active');
                 });
             }
+
+            async function getAIInsight(data) {
+                const response = await fetch('http://localhost:3000/api/insight', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                const result = await response.json();
+                return result.insight || 'Great job—keep sharing your wisdom!';
+            }
+
+            window.shareReflection = async function() {
+                const reflection = document.getElementById('reflectionInput').value;
+                if (reflection) {
+                    const aiMessage = await getAIInsight({ entry: `Encourage this reflection: ${reflection}` });
+                    document.getElementById('aiMessage').textContent = aiMessage;
+                    const reflections = JSON.parse(localStorage.getItem('sharedReflections') || '[]');
+                    reflections.push({ text: reflection, timestamp: new Date().toLocaleString() });
+                    localStorage.setItem('sharedReflections', JSON.stringify(reflections));
+                    updateReflections();
+                    document.querySelector('.book-cta').style.display = 'block'; // Show book CTA
+                    document.getElementById('reflectionInput').value = ''; // Clear input
+                }
+            }
+
+            function updateReflections() {
+                const reflections = JSON.parse(localStorage.getItem('sharedReflections') || '[]');
+                const div = document.getElementById('sharedReflections');
+                div.innerHTML = reflections.map(r => `<p>${r.text} <small>(Shared: ${r.timestamp})</small></p>`).join('');
+            }
+
+            updateReflections(); // Load existing reflections
         });
     </script>
 </body>
