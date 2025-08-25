@@ -31,7 +31,17 @@
         <section>
             <h3>Welcome to Your Inner Journey</h3>
             <p>Inspired by the ancient wisdom of Samudra Manthan, discover inner peace through meditation, reflection, and self-discovery.</p>
+            <div class="technique-description">
+                You are practicing the ancient technique of Churning the Ocean Within (Samudra Manthan).
+            </div>
             <a href="practice.html" class="buy-button">Start Meditation</a>
+            <div class="dashboard">
+                <h3>Your Churning Progress</h3>
+                <p id="sessionsCompleted">Sessions Completed: 0</p>
+                <p id="poisonsAcknowledged">Poisons Acknowledged: 0</p>
+                <p id="treasuresDiscovered">Treasures Discovered: 0</p>
+                <p id="wisdomLevel">Wisdom Level (Amrit Score): 0</p>
+            </div>
         </section>
     </main>
 
@@ -48,6 +58,17 @@
                     menu.classList.toggle('active');
                 });
             }
+
+            // Load progress
+            const sessions = localStorage.getItem('sessionsCompleted') || 0;
+            const poisons = localStorage.getItem('poisonsAcknowledged') || 0;
+            const treasures = localStorage.getItem('treasuresDiscovered') || 0;
+            const wisdom = localStorage.getItem('wisdomLevel') || 0;
+
+            document.getElementById('sessionsCompleted').textContent = `Sessions Completed: ${sessions}`;
+            document.getElementById('poisonsAcknowledged').textContent = `Poisons Acknowledged: ${poisons}`;
+            document.getElementById('treasuresDiscovered').textContent = `Treasures Discovered: ${treasures}`;
+            document.getElementById('wisdomLevel').textContent = `Wisdom Level (Amrit Score): ${wisdom}`;
         });
     </script>
 </body>
