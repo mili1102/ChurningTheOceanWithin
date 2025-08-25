@@ -1,6 +1,6 @@
 /* Reset and Base Styles */
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'Georgia', serif; line-height: 1.6; color: #fff; background: linear-gradient(135deg, #1a3c5e, #2a4068); }
+body { font-family: 'Georgia', serif; line-height: 1.6; color: #fff; background: linear-gradient(135deg, #1a3c5e, #2a4068); transition: all 0.3s ease; }
 
 /* Header */
 header { background: linear-gradient(90deg, #1a3c5e, #3a5e80); color: #fff; text-align: center; padding: 1rem; position: sticky; top: 0; z-index: 100; }
@@ -40,8 +40,8 @@ h3 { font-size: 1.8rem; margin-bottom: 1rem; color: #d4a017; }
 .serpent { position: absolute; bottom: 50%; left: 0; width: 100%; height: 20px; background: green; animation: pull 3s alternate infinite; }
 @keyframes pull { 0% { transform: translateX(-20px); } 100% { transform: translateX(20px); } }
 .turtle { position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 150px; height: 50px; background: #556b2f; border-radius: 50%; }
-.treasure { position: absolute; display: none; top: 50%; left: 50%; width: 30px; height: 30px; background: gold; border-radius: 50%; animation: float 2s infinite; }
-.poison { position: absolute; display: none; top: 50%; left: 50%; width: 30px; height: 30px; background: black; border-radius: 50%; animation: float 2s infinite; }
+.treasure { position: absolute; display: none; top: 50%; left: 50%; width: 30px; height: 30px; background: gold; border-radius: 50%; animation: float 2s infinite; box-shadow: 0 0 10px gold; }
+.poison { position: absolute; display: none; top: 50%; left: 50%; width: 30px; height: 30px; background: black; border-radius: 50%; animation: float 2s infinite; box-shadow: 0 0 10px black; }
 @keyframes float { 0% { transform: translateY(0); } 50% { transform: translateY(-10px); } 100% { transform: translateY(0); } }
 
 /* Dashboard */
