@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Reflect and journal with 'Churning the Ocean Within' by Millie Jess.">
-    <meta name="keywords" content="journaling, reflection, mindfulness, Millie Jess, Samudra Manthan">
+    <meta name="description" content="Journal your reflections with 'Churning the Ocean Within' by Millie Jess.">
+    <meta name="keywords" content="journaling, mindfulness, Samudra Manthan, Millie Jess">
     <meta name="author" content="Millie Jess">
     <title>Churning the Ocean Within - Journal</title>
     <link rel="stylesheet" href="styles.css">
@@ -12,8 +12,10 @@
 <body>
     <header>
         <div class="menu-toggle">☰</div>
-        <h1>Churning the Ocean Within</h1>
-        <h2>A Journey to Power, Wisdom, and Secrets of Success</h2>
+        <div class="logo">
+            <h1>Churning the Ocean Within</h1>
+            <h2>A Journey to Power, Wisdom, and Success</h2>
+        </div>
         <nav class="nav-menu">
             <ul>
                 <li><a href="index.html">Home</a></li>
@@ -28,23 +30,20 @@
     </header>
 
     <main>
-        <section class="journal-entry">
-            <div class="technique-description">
-                You are practicing the ancient technique of Churning the Ocean Within (Samudra Manthan).
+        <section class="welcome-section">
+            <div class="welcome-text">
+                <h3>Reflect on Your Journey</h3>
+                <p>Journal your thoughts and insights using the Samudra Manthan approach.</p>
+                <a href="#journal-content" class="cta-button">Start Journaling</a>
             </div>
-            <h3>Daily Reflection Journal</h3>
-            <textarea id="journalEntry" placeholder="Write your thoughts..."></textarea>
-            <button onclick="saveEntry()">Save Reflection</button>
-            <div id="journalInsight"></div>
-            <div class="reflective-questions">
-                <h4>Gratitude Prompts</h4>
-                <ul>
-                    <li>What treasure (strength) are you grateful for today?</li>
-                    <li>How did you release a poison (negativity) today?</li>
-                    <li>What wisdom (Amrit) did you gain from your churning?</li>
-                </ul>
+            <div class="book-cover-section">
+                <img src="book-cover.jpg" alt="Churning the Ocean Within Book Cover" class="book-cover">
+                <a href="book.html" class="cta-button">Learn More in My Book</a>
             </div>
-            <a href="book.html" class="buy-button book-cta" style="display: none;">Deepen Your Journey - Buy the Book!</a>
+        </section>
+        <section id="journal-content">
+            <!-- Journal content to be added -->
+            <p>Placeholder for journaling interface.</p>
         </section>
     </main>
 
@@ -60,27 +59,6 @@
                 toggle.addEventListener('click', () => {
                     menu.classList.toggle('active');
                 });
-            }
-
-            async function getAIInsight(data) {
-                const response = await fetch('http://localhost:3000/api/insight', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(data)
-                });
-                const result = await response.json();
-                return result.insight || 'No insight available';
-            }
-
-            window.saveEntry = function() {
-                const entry = document.getElementById('journalEntry').value;
-                if (entry) {
-                    alert('Reflection saved locally!');
-                    getAIInsight({ entry: entry }).then(insight => {
-                        document.getElementById('journalInsight').textContent = insight;
-                        document.querySelector('.book-cta').style.display = 'block'; // Show book CTA
-                    }).catch(error => console.error('AI Insight Error:', error));
-                }
             }
         });
     </script>
