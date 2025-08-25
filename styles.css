@@ -23,45 +23,80 @@ header { background: linear-gradient(90deg, #1a3c5e, #3a5e80); color: #fff; padd
 }
 
 /* Main Content */
-main { max-width: 1200px; margin: 0 auto; padding: 3rem 1.5rem; }
+main { max-width: 1200px; margin: 0 auto; padding: 3rem 1.5rem; display: flex; flex-direction: column; gap: 2rem; }
 section { margin-bottom: 3rem; }
 
-/* Meditation Container */
-.meditation-container { padding: 2rem; background: rgba(255, 255, 255, 0.05); border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); }
-.technique-description { background: rgba(0, 0, 0, 0.3); padding: 1rem; margin-bottom: 1rem; text-align: center; font-style: italic; }
+/* Pre/Post-Session Mood */
+.pre-session, .post-session { background: rgba(255, 255, 255, 0.1); padding: 1.5rem; border-radius: 5px; text-align: center; }
+.mood-options { display: flex; justify-content: center; gap: 1rem; margin: 1rem 0; }
+.mood-emoji { font-size: 2rem; cursor: pointer; padding: 1rem; border-radius: 50%; transition: background 0.3s; }
+.mood-emoji span { display: block; font-size: 1rem; color: #d4a017; }
+.mood-emoji:hover { background: rgba(255, 255, 255, 0.2); }
 
-/* Common Section Styles */
-.inner-ocean-map, .my-anchor-builder, .vasuki-energy-balancer, .halahal-release, .gems-obstacles, .my-amrit-journey, .mohini-navigator, .rahu-ketu-balancer, .growth-planner, .legacy-builder {
-    margin-top: 2rem; padding: 1.5rem; background: rgba(255, 255, 255, 0.1); border-radius: 5px;
-}
-h3 { color: #d4a017; margin-bottom: 1rem; }
-p { margin-bottom: 1rem; }
-textarea, input { width: 100%; padding: 1rem; margin-top: 0.5rem; border: 1px solid #d4a017; border-radius: 5px; background: rgba(0, 0, 0, 0.2); color: #fff; }
-.cta-button { display: inline-block; padding: 1.2rem 2.5rem; background: #d4a017; color: #1a1a1a; text-decoration: none; border: 2px solid #fff; border-radius: 8px; font-size: 1.1rem; font-weight: bold; transition: background 0.3s, transform 0.2s; margin-top: 1rem; }
-.cta-button:hover { background: #b08613; transform: translateY(-2px); }
-#mindFeedback, #anchorFeedback, #energyFeedback, #toxicFeedback, #dualityFeedback, #amritFeedback, #mohiniFeedback, #rahuKetuFeedback, #growthFeedback, #legacyFeedback { margin-top: 1rem; color: #fff; }
-
-/* Visualization (Simplified without Strike) */
-.visualization { position: relative; height: 200px; width: 100%; margin: 2rem 0; background: linear-gradient(to bottom, #1a3c5e, #001f3f); overflow: hidden; }
-.ocean-background { position: absolute; top: 0; left: 0; width: 100%; height: 100%; animation: waves 5s infinite linear; }
+/* Visualization */
+.visualization { position: relative; height: 300px; width: 100%; overflow: hidden; }
+.ocean-background { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, #1a3c5e, #001f3f); animation: waves 5s infinite linear; }
 @keyframes waves { 0% { background-position: 0 0; } 100% { background-position: 100px 0; } }
-.mountain { position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 120px; height: 120px; background: linear-gradient(45deg, #5C4033, #8B5A2B); border-radius: 10px 10px 0 0; }
-.serpent { position: absolute; bottom: 50%; left: 0; width: 100%; height: 10px; background: #D4A017; border-radius: 5px; animation: wave 3s ease-in-out infinite; }
-@keyframes wave { 0% { transform: translateX(-20px); } 50% { transform: translateX(20px); } 100% { transform: translateX(-20px); } }
-.turtle { position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 100px; height: 30px; background: #556b2f; border-radius: 50%; }
+.serpent { position: absolute; bottom: 50%; left: 0; width: 100%; height: 15px; background: #D4A017; border-radius: 5px; animation: wave 3s ease-in-out infinite; }
+@keyframes wave { 0% { transform: translateX(-20px) scaleX(1); } 50% { transform: translateX(20px) scaleX(1.1); } 100% { transform: translateX(-20px) scaleX(1); } }
+.turtle { position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 150px; height: 50px; background: #556b2f; border-radius: 50%; }
+.treasure { position: absolute; display: none; top: 50%; left: 50%; width: 30px; height: 30px; background: gold; border-radius: 50%; animation: float 2s infinite; box-shadow: 0 0 10px gold; }
+.poison { position: absolute; display: none; top: 50%; left: 50%; width: 30px; height: 30px; background: black; border-radius: 50%; animation: float 2s infinite; box-shadow: 0 0 10px black; }
+@keyframes float { 0% { transform: translateY(0); } 50% { transform: translateY(-10px); } 100% { transform: translateY(0); } }
+
+/* Flame Animation */
+.flame-animation { position: absolute; bottom: 20%; left: 50%; transform: translateX(-50%); width: 80px; height: 120px; background: radial-gradient(ellipse at bottom, #ff8c00 0%, #ff4500 50%, transparent 100%); animation: flame-flicker 1s infinite alternate; border-radius: 50% 50% 0 0; }
+@keyframes flame-flicker { 0% { height: 120px; opacity: 0.8; } 100% { height: 140px; opacity: 1; } }
+.inhale-flame { animation: inhale-flame 2s; }
+@keyframes inhale-flame { 0% { height: 120px; } 100% { height: 160px; } }
+.exhale-flame { animation: exhale-flame 2s; }
+@keyframes exhale-flame { 0% { height: 160px; } 100% { height: 120px; } }
+
+/* Dashboard */
+.dashboard { margin-top: 2rem; background: rgba(255, 255, 255, 0.1); padding: 1rem; border-radius: 5px; }
+
+/* Meditation Steps */
+#meditationSteps { margin-top: 1rem; font-weight: bold; }
+#eventDescription { margin-top: 1rem; color: #d4a017; }
+
+/* Music Controls */
+.music-controls { margin: 1rem 0; display: flex; justify-content: center; gap: 1rem; }
+
+/* Compassion Practice */
+.compassion-practice { margin-top: 2rem; padding: 1.5rem; background: rgba(255, 255, 255, 0.1); border-radius: 5px; }
+
+/* Buddy Practice */
+.buddy-practice { margin-top: 2rem; padding: 1.5rem; background: rgba(255, 255, 255, 0.1); border-radius: 5px; }
 
 /* Book Integration */
-.book-integration { margin-top: 2rem; text-align: center; padding: 1.5rem; background: rgba(255, 255, 255, 0.05); border-radius: 5px; }
+.book-integration { margin-top: 2rem; padding: 1.5rem; background: rgba(255, 255, 255, 0.1); border-radius: 5px; }
+
+/* Badges */
+.badges { margin-top: 2rem; padding: 1.5rem; background: rgba(255, 255, 255, 0.1); border-radius: 5px; }
+.badge { display: inline-block; padding: 0.5rem 1rem; margin: 0.5rem; background: #d4a017; color: #1a3c5e; border-radius: 5px; }
+
+/* Glowing Effect */
+.glowing { animation: glow 1s ease-in-out infinite; }
+@keyframes glow { 0% { box-shadow: 0 0 5px #d4a017; } 50% { box-shadow: 0 0 15px #d4a017; } 100% { box-shadow: 0 0 5px #d4a017; } }
+
+/* Sparkle Effect */
+.sparkle { animation: sparkle 1s ease-in-out; }
+@keyframes sparkle { 0% { opacity: 0; } 50% { opacity: 1; box-shadow: 0 0 20px gold; } 100% { opacity: 0; } }
+
+/* Footer */
+footer { background-color: #1a3c5e; color: #fff; text-align: center; padding: 1.5rem; font-size: 0.9rem; }
+footer a { color: #d4a017; text-decoration: none; }
+footer a:hover { text-decoration: underline; }
 
 /* Responsive Design */
 @media (max-width: 767px) {
-    .meditation-container { padding: 1rem; }
-    h3 { font-size: 1.5rem; }
-    textarea, input { font-size: 0.9rem; }
-    .cta-button { padding: 1rem 2rem; font-size: 1rem; }
+    .mood-options { flex-direction: column; }
+    .visualization { height: 200px; }
+    .flame-animation { width: 60px; height: 90px; }
 }
 @media (min-width: 768px) {
-    .meditation-container { padding: 2.5rem; }
+    .breath-animation { width: 150px; height: 150px; }
+    section { padding: 3rem; }
 }
 @media (min-width: 1200px) {
     main { padding: 3rem; }
