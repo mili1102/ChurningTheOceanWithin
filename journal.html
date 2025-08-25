@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Log your daily reflections with 'Churning the Ocean Within' by Millie Jess.">
-    <meta name="keywords" content="daily journal, reflection, mindfulness, Millie Jess">
+    <meta name="description" content="Reflect and journal with 'Churning the Ocean Within' by Millie Jess.">
+    <meta name="keywords" content="journaling, reflection, mindfulness, Millie Jess, Samudra Manthan">
     <meta name="author" content="Millie Jess">
     <title>Churning the Ocean Within - Journal</title>
     <link rel="stylesheet" href="styles.css">
@@ -29,18 +29,22 @@
 
     <main>
         <section class="journal-entry">
+            <div class="technique-description">
+                You are practicing the ancient technique of Churning the Ocean Within (Samudra Manthan).
+            </div>
             <h3>Daily Reflection Journal</h3>
-            <textarea id="journalEntry" placeholder="Write your thoughts here..."></textarea>
-            <button class="buy-button" onclick="saveEntry()">Save</button>
+            <textarea id="journalEntry" placeholder="Write your thoughts..."></textarea>
+            <button onclick="saveEntry()">Save Reflection</button>
+            <div id="journalInsight"></div>
             <div class="reflective-questions">
-                <p>Reflective Questions inspired by churning the mind:</p>
+                <h4>Gratitude Prompts</h4>
                 <ul>
-                    <li>What 'poison' (negativity) did you encounter today?</li>
-                    <li>What 'treasure' (clarity or wisdom) did you discover?</li>
-                    <li>How did churning your thoughts lead to success or peace?</li>
+                    <li>What treasure (strength) are you grateful for today?</li>
+                    <li>How did you release a poison (negativity) today?</li>
+                    <li>What wisdom (Amrit) did you gain from your churning?</li>
                 </ul>
             </div>
-            <div id="journalInsight" class="suggestion"></div>
+            <a href="book.html" class="buy-button book-cta" style="display: none;">Deepen Your Journey - Buy the Book!</a>
         </section>
     </main>
 
@@ -59,32 +63,22 @@
             }
 
             async function getAIInsight(data) {
-                const apiKey = 'YOUR_OPENAI_API_KEY'; // Replace with your OpenAI API key
-                const response = await fetch('https://api.openai.com/v1/chat/completions', {
+                const response = await fetch('http://localhost:3000/api/insight', {
                     method: 'POST',
-                    headers: {
-                        'Authorization': `Bearer ${apiKey}`,
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        model: 'gpt-3.5-turbo',
-                        messages: [
-                            { role: 'system', content: 'You are a mindfulness coach analyzing journal entries inspired by the Samudra Manthan epic.' },
-                            { role: 'user', content: `Analyze this journal entry and provide a concise insight: ${data.entry}` }
-                        ],
-                        max_tokens: 100
-                    })
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
                 });
                 const result = await response.json();
-                return result.choices[0].message.content.trim() || 'No insight available';
+                return result.insight || 'No insight available';
             }
 
-            function saveEntry() {
+            window.saveEntry = function() {
                 const entry = document.getElementById('journalEntry').value;
                 if (entry) {
-                    alert('Entry saved locally!'); // Placeholder for local storage or backend
-                    getAIInsight({ entry: entry, context: 'journal_analysis' }).then(insight => {
+                    alert('Reflection saved locally!');
+                    getAIInsight({ entry: entry }).then(insight => {
                         document.getElementById('journalInsight').textContent = insight;
+                        document.querySelector('.book-cta').style.display = 'block'; // Show book CTA
                     }).catch(error => console.error('AI Insight Error:', error));
                 }
             }
