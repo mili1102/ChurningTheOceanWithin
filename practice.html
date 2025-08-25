@@ -57,7 +57,7 @@
                 <div class="turtle"></div>
                 <div class="treasure"></div>
                 <div class="poison"></div>
-                <div class="flame-animation"></div>
+                <div class="breath-dot"></div>
             </div>
             <input type="text" id="goalInput" placeholder="Set your goal/intention (Mount Mandara)">
             <button onclick="startMeditation()" class="cta-button">Start Churning</button>
@@ -248,13 +248,13 @@
                     }
                 }, 10000); // 10 seconds per step
 
-                // Breathing guidance with flame sync
+                // Breathing guidance with dot sync
                 let inhale = true;
                 setInterval(() => {
                     document.getElementById('breathingGuidance').textContent = inhale ? 'Inhale' : 'Exhale';
-                    const flame = document.querySelector('.flame-animation');
-                    flame.classList.add(inhale ? 'inhale-flame' : 'exhale-flame');
-                    setTimeout(() => flame.classList.remove('inhale-flame', 'exhale-flame'), 4000);
+                    const dot = document.querySelector('.breath-dot');
+                    dot.classList.add(inhale ? 'inhale-dot' : 'exhale-dot');
+                    setTimeout(() => dot.classList.remove('inhale-dot', 'exhale-dot'), 4000);
                     inhale = !inhale;
                 }, 4000); // 4 seconds per breath
             }
@@ -329,6 +329,25 @@
                 }
                 if (sessions >= 10) {
                     badgesDiv.innerHTML += '<div class="badge nectar">Nectar Drop Unlocked</div>';
+                }
+            }
+
+            window.sendKindness = function() {
+                const name = document.getElementById('kindnessPrompt').value;
+                if (name) {
+                    document.getElementById('kindnessFeedback').textContent = `Kindness sent to ${name}!`;
+                    document.getElementById('kindnessVoice').play();
+                    document.getElementById('kindnessFeedback').classList.add('glowing');
+                    setTimeout(() => document.getElementById('kindnessFeedback').classList.remove('glowing'), 2000);
+                }
+            }
+
+            window.syncBuddy = function() {
+                const code = document.getElementById('buddyCode').value;
+                if (code) {
+                    document.getElementById('buddyStatus').textContent = `Connected with buddy! Start meditating together.`;
+                } else {
+                    document.getElementById('buddyStatus').textContent = 'Enter a valid buddy code.';
                 }
             }
 
