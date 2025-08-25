@@ -32,6 +32,27 @@
             <div class="technique-description">
                 You are practicing the ancient technique of Churning the Ocean Within (Samudra Manthan).
             </div>
+
+            <div class="self-discovery-guide">
+                <h4>Identify Your Samudra Manthan Elements</h4>
+                <p>Before you begin, reflect on the components of your inner journey. Use the prompts below to identify your mind and its qualities:</p>
+                <ul>
+                    <li><strong>Inner Ocean (Mind):</strong> What is the state of your mind today? (e.g., calm, turbulent) [Add examples here]</li>
+                    <li><strong>Mount Mandara (Anchor):</strong> What grounds you? (e.g., a value, goal) [Add examples here]</li>
+                    <li><strong>Vasuki (Energy):</strong> How do you feel your energy flowing? (e.g., balanced, strained) [Add examples here]</li>
+                    <li><strong>Devas (Positive Qualities):</strong> What strengths shine through? (e.g., kindness, focus) [Add examples here]</li>
+                    <li><strong>Asuras (Negative Emotions):</strong> What challenges arise? (e.g., fear, doubt) [Add examples here]</li>
+                    <li><strong>Halahal (Toxic Emotions):</strong> What negativity needs release? (e.g., anger) [Add examples here]</li>
+                    <li><strong>Treasures (Opportunities):</strong> What potential do you see? (e.g., resilience) [Add examples here]</li>
+                    <li><strong>Amrit (Wisdom):</strong> What is your ultimate goal? (e.g., peace) [Add examples here]</li>
+                    <li><strong>Mohini (Conscience):</strong> How will you stay grounded in success? (e.g., humility) [Add examples here]</li>
+                    <li><strong>Rahu/Ketu (Shadows):</strong> What doubts or desires linger? (e.g., greed) [Add examples here]</li>
+                </ul>
+                <textarea id="elementReflection" placeholder="Write your reflections here..."></textarea>
+                <button onclick="saveElements()">Save Your Insights</button>
+                <p id="elementFeedback"></p>
+            </div>
+
             <h3>Guided Meditation Practice</h3>
             <div class="visualization">
                 <div class="ocean-background"></div>
@@ -205,6 +226,15 @@
                 alert('Session completed! Treasure earned.');
                 document.getElementById('bellSound').play();
                 document.querySelector('.book-cta').style.display = 'block'; // Show book CTA for excitement
+            }
+
+            window.saveElements = function() {
+                const reflection = document.getElementById('elementReflection').value;
+                if (reflection) {
+                    localStorage.setItem('elementReflection', reflection);
+                    document.getElementById('elementFeedback').textContent = 'Elements identified! Begin your meditation.';
+                    document.getElementById('elementReflection').value = ''; // Clear input
+                }
             }
         });
     </script>
