@@ -44,13 +44,12 @@ section { margin-bottom: 3rem; }
 .poison { position: absolute; display: none; top: 50%; left: 50%; width: 30px; height: 30px; background: black; border-radius: 50%; animation: float 2s infinite; box-shadow: 0 0 10px black; }
 @keyframes float { 0% { transform: translateY(0); } 50% { transform: translateY(-10px); } 100% { transform: translateY(0); } }
 
-/* Flame Animation */
-.flame-animation { position: absolute; bottom: 20%; left: 50%; transform: translateX(-50%); width: 80px; height: 120px; background: radial-gradient(ellipse at bottom, #ff8c00 0%, #ff4500 50%, transparent 100%); animation: flame-flicker 1s infinite alternate; border-radius: 50% 50% 0 0; }
-@keyframes flame-flicker { 0% { height: 120px; opacity: 0.8; } 100% { height: 140px; opacity: 1; } }
-.inhale-flame { animation: inhale-flame 2s; }
-@keyframes inhale-flame { 0% { height: 120px; } 100% { height: 160px; } }
-.exhale-flame { animation: exhale-flame 2s; }
-@keyframes exhale-flame { 0% { height: 160px; } 100% { height: 120px; } }
+/* Breath Dot Animation */
+.breath-dot { position: absolute; bottom: 20%; left: 50%; transform: translateX(-50%); width: 50px; height: 50px; background: rgba(255, 255, 255, 0.8); border-radius: 50%; opacity: 0.5; }
+.inhale-dot { animation: inhale-dot 2s forwards; }
+@keyframes inhale-dot { 0% { width: 50px; height: 50px; opacity: 0.5; } 100% { width: 100px; height: 100px; opacity: 0; } }
+.exhale-dot { animation: exhale-dot 2s forwards; }
+@keyframes exhale-dot { 0% { width: 100px; height: 100px; opacity: 0; } 100% { width: 50px; height: 50px; opacity: 0.5; } }
 
 /* Dashboard */
 .dashboard { margin-top: 2rem; background: rgba(255, 255, 255, 0.1); padding: 1rem; border-radius: 5px; }
@@ -92,10 +91,9 @@ footer a:hover { text-decoration: underline; }
 @media (max-width: 767px) {
     .mood-options { flex-direction: column; }
     .visualization { height: 200px; }
-    .flame-animation { width: 60px; height: 90px; }
+    .breath-dot { width: 40px; height: 40px; }
 }
 @media (min-width: 768px) {
-    .breath-animation { width: 150px; height: 150px; }
     section { padding: 3rem; }
 }
 @media (min-width: 1200px) {
