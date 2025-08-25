@@ -29,9 +29,22 @@
 
     <main>
         <section class="meditation-container">
+            <div class="technique-description">
+                You are practicing the ancient technique of Churning the Ocean Within (Samudra Manthan).
+            </div>
             <h3>Guided Meditation Practice</h3>
+            <div class="visualization">
+                <div class="ocean-background"></div>
+                <div class="mountain"></div>
+                <div class="serpent"></div>
+                <div class="turtle"></div>
+                <div class="treasure"></div>
+                <div class="poison"></div>
+            </div>
+            <input type="text" id="goalInput" placeholder="Set your goal/intention (Mount Mandara)">
+            <button onclick="startMeditation()">Start Churning</button>
             <div class="breath-animation"></div>
-            <p>Breathe In</p>
+            <p id="breathingGuidance">Breathe In</p>
             <div class="music-controls">
                 <select class="frequency-select" id="frequencySelect">
                     <option value="none">Silent</option>
@@ -49,14 +62,17 @@
                 <button id="playButton">Play</button>
                 <button id="muteButton">Mute</button>
             </div>
-            <button id="getGuidance" class="buy-button">Get AI Guidance</button>
-            <div id="meditationGuidance" class="suggestion"></div>
+            <div id="meditationSteps"></div>
+            <div id="eventDescription"></div>
         </section>
     </main>
 
     <footer>
         <p>&copy; 2025 Millie Jess. All rights reserved. | <a href="contact.html">Connect with Millie</a></p>
     </footer>
+
+    <audio id="oceanSound" src="path/to/ocean-waves.mp3" loop></audio>
+    <audio id="bellSound" src="path/to/soft-bell.mp3"></audio>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -68,43 +84,22 @@
                 });
             }
 
-            async function getAIInsight(data) {
-                const apiKey = 'YOUR_OPENAI_API_KEY'; // Replace with your OpenAI API key
-                const response = await fetch('https://api.openai.com/v1/chat/completions', {
-                    method: 'POST',
-                    headers: {
-                        'Authorization': `Bearer ${apiKey}`,
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        model: 'gpt-3.5-turbo',
-                        messages: [
-                            { role: 'system', content: 'You are a meditation guide inspired by the Samudra Manthan epic, offering guidance based on frequency choices.' },
-                            { role: 'user', content: `Provide a short meditation guidance for the frequency ${data.frequency}. Relate it to inner wisdom or the churning process.` }
-                        ],
-                        max_tokens: 50
-                    })
-                });
-                const result = await response.json();
-                return result.choices[0].message.content.trim() || 'No guidance available';
-            }
-
             let audio = new Audio('path/to/om.mp3'); // Replace with actual paths
             let isPlaying = false;
             let isMuted = false;
 
             const audioSources = {
                 'none': '',
-                'om': 'https://example.com/om-chanting.mp3',
-                '174': 'https://example.com/174hz.mp3',
-                '285': 'https://example.com/285hz.mp3',
-                '396': 'https://example.com/396hz.mp3',
-                '417': 'https://example.com/417hz.mp3',
-                '528': 'https://example.com/528hz.mp3',
-                '639': 'https://example.com/639hz.mp3',
-                '741': 'https://example.com/741hz.mp3',
-                '852': 'https://example.com/852hz.mp3',
-                '963': 'https://example.com/963hz.mp3'
+                'om': 'path/to/om-chanting.mp3',
+                '174': 'path/to/174hz.mp3',
+                '285': 'path/to/285hz.mp3',
+                '396': 'path/to/396hz.mp3',
+                '417': 'path/to/417hz.mp3',
+                '528': 'path/to/528hz.mp3',
+                '639': 'path/to/639hz.mp3',
+                '741': 'path/to/741hz.mp3',
+                '852': 'path/to/852hz.mp3',
+                '963': 'path/to/963hz.mp3'
             };
 
             document.getElementById('playButton').addEventListener('click', () => {
@@ -133,12 +128,82 @@
                 }
             });
 
-            document.getElementById('getGuidance').addEventListener('click', () => {
-                const freq = document.getElementById('frequencySelect').value;
-                getAIInsight({ frequency: freq, context: 'meditation_guidance' }).then(guidance => {
-                    document.getElementById('meditationGuidance').textContent = guidance;
-                }).catch(error => console.error('AI Guidance Error:', error));
-            });
+            // Meditation flow
+            const steps = [
+                "Step 1: Set your determination (Mount Mandara) - Enter your goal.",
+                "Step 2: Engage your inner energy (Vasuki) - Focus on the push-pull of breath.",
+                "Step 3: Stabilize with faith (Kurma) - Remain steady.",
+                "Step 4: Acknowledge positive and negative thoughts (Devas & Asuras).",
+                "Step 5: Release negativity (Halahal).",
+                "Step 6: Discover treasures (Strengths).",
+                "Step 7: Attain wisdom (Amrit).",
+                "Step 8: Avoid distractions (Mohini)."
+            ];
+
+            window.startMeditation = function() {
+                const goal = document.getElementById('goalInput').value;
+                if (!goal) {
+                    alert('Please set a goal.');
+                    return;
+                }
+
+                document.getElementById('oceanSound').play();
+                let stepIndex = 0;
+                const stepsDiv = document.getElementById('meditationSteps');
+                stepsDiv.textContent = steps[stepIndex];
+
+                const interval = setInterval(() => {
+                    stepIndex++;
+                    if (stepIndex < steps.length) {
+                        stepsDiv.textContent = steps[stepIndex];
+                        if (stepIndex === 4) showPoison();
+                        if (stepIndex === 5) showTreasure();
+                    } else {
+                        clearInterval(interval);
+                        completeSession();
+                    }
+                }, 10000); // 10 seconds per step
+
+                // Breathing guidance
+                let inhale = true;
+                setInterval(() => {
+                    document.getElementById('breathingGuidance').textContent = inhale ? 'Inhale' : 'Exhale';
+                    inhale = !inhale;
+                }, 4000); // 4 seconds per breath
+            }
+
+            function showPoison() {
+                const poison = document.querySelector('.poison');
+                poison.style.display = 'block';
+                document.getElementById('eventDescription').textContent = 'A poison (negativity) has appeared. Acknowledge it.';
+                setTimeout(() => {
+                    poison.style.display = 'none';
+                    increment('poisonsAcknowledged');
+                }, 5000);
+            }
+
+            function showTreasure() {
+                const treasure = document.querySelector('.treasure');
+                treasure.style.display = 'block';
+                document.getElementById('eventDescription').textContent = 'A treasure (strength) has emerged. Discover it.';
+                setTimeout(() => {
+                    treasure.style.display = 'none';
+                    increment('treasuresDiscovered');
+                }, 5000);
+                document.getElementById('bellSound').play();
+            }
+
+            function increment(key) {
+                let value = parseInt(localStorage.getItem(key) || '0') + 1;
+                localStorage.setItem(key, value);
+            }
+
+            function completeSession() {
+                increment('sessionsCompleted');
+                increment('wisdomLevel');
+                alert('Session completed! Treasure earned.');
+                document.getElementById('bellSound').play();
+            }
         });
     </script>
 </body>
