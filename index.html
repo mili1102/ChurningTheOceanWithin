@@ -30,11 +30,27 @@
     <main>
         <section>
             <h3>Welcome to Your Inner Journey</h3>
-            <p>Inspired by the ancient wisdom of Samudra Manthan, discover inner peace through meditation, reflection, and self-discovery.</p>
+            <p>Discover the ancient technique of *Samudra Manthan* (Churning of the Ocean), a powerful metaphor for inner transformation from my book <em>Churning the Ocean Within</em>. This practice, rooted in mythological wisdom, guides you to churn your mind, uncover treasures, and achieve wisdom.</p>
+            <a href="book.html" class="buy-button">Buy the Book for Deeper Insights</a>
+
             <div class="technique-description">
-                Begin your journey by exploring the depths of your mind, where treasures and wisdom await.
+                Begin by exploring your inner ocean—your mind—and identifying its currents.
             </div>
-            <a href="practice.html" class="buy-button">Start Meditation</a>
+
+            <div class="self-discovery-guide">
+                <h4>Identify Your Inner Ocean</h4>
+                <p>Take a moment to reflect on your mind as an ocean. Use the questions below to map your thoughts and emotions:</p>
+                <ul>
+                    <li><strong>Your Ocean (Mind):</strong> What thoughts or feelings dominate your daily experience? (e.g., calm, stormy)</li>
+                    <li><strong>Devas (Positive Qualities):</strong> What strengths or virtues do you notice? (e.g., kindness, clarity)</li>
+                    <li><strong>Asuras (Negative Emotions):</strong> What challenges or emotions arise? (e.g., fear, doubt)</li>
+                </ul>
+                <textarea id="oceanReflection" placeholder="Write your observations here..."></textarea>
+                <button onclick="saveReflection()">Save Your Insights</button>
+                <p id="reflectionFeedback"></p>
+                <a href="practice.html" class="buy-button">Start Churning Your Ocean</a>
+            </div>
+
             <div class="dashboard">
                 <h3>Your Churning Progress</h3>
                 <p id="sessionsCompleted">Sessions Completed: 0</p>
@@ -91,6 +107,15 @@
                 new Notification('Daily Churn Reminder', { body: 'Time to churn your mind for inner wisdom!' });
             } else if (Notification.permission !== 'denied') {
                 Notification.requestPermission();
+            }
+
+            window.saveReflection = function() {
+                const reflection = document.getElementById('oceanReflection').value;
+                if (reflection) {
+                    localStorage.setItem('oceanReflection', reflection);
+                    document.getElementById('reflectionFeedback').textContent = 'Insights saved! Ready to start your journey.';
+                    document.getElementById('oceanReflection').value = ''; // Clear input
+                }
             }
         });
     </script>
