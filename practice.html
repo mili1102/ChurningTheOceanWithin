@@ -64,6 +64,7 @@
             </div>
             <div id="meditationSteps"></div>
             <div id="eventDescription"></div>
+            <a href="book.html" class="buy-button book-cta" style="display: none;">Excited? Buy the Book for More Wisdom!</a>
         </section>
     </main>
 
@@ -203,6 +204,7 @@
                 increment('wisdomLevel');
                 alert('Session completed! Treasure earned.');
                 document.getElementById('bellSound').play();
+                document.querySelector('.book-cta').style.display = 'block'; // Show book CTA for excitement
             }
         });
     </script>
