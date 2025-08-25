@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Share your journey with 'Churning the Ocean Within' by Millie Jess.">
-    <meta name="keywords" content="share, community, reflection, Millie Jess, Samudra Manthan">
+    <meta name="keywords" content="sharing, mindfulness, Samudra Manthan, Millie Jess">
     <meta name="author" content="Millie Jess">
     <title>Churning the Ocean Within - Share</title>
     <link rel="stylesheet" href="styles.css">
@@ -12,8 +12,10 @@
 <body>
     <header>
         <div class="menu-toggle">☰</div>
-        <h1>Churning the Ocean Within</h1>
-        <h2>A Journey to Power, Wisdom, and Secrets of Success</h2>
+        <div class="logo">
+            <h1>Churning the Ocean Within</h1>
+            <h2>A Journey to Power, Wisdom, and Success</h2>
+        </div>
         <nav class="nav-menu">
             <ul>
                 <li><a href="index.html">Home</a></li>
@@ -28,16 +30,20 @@
     </header>
 
     <main>
-        <section>
-            <div class="technique-description">
-                You are practicing the ancient technique of Churning the Ocean Within (Samudra Manthan).
+        <section class="welcome-section">
+            <div class="welcome-text">
+                <h3>Share Your Journey</h3>
+                <p>Connect with others by sharing your Samudra Manthan experiences.</p>
+                <a href="#share-content" class="cta-button">Share Now</a>
             </div>
-            <h3>Share Your Journey</h3>
-            <textarea id="reflectionInput" placeholder="Share your Amrit wisdom or reflection..."></textarea>
-            <button onclick="shareReflection()">Submit Reflection</button>
-            <div id="aiMessage"></div>
-            <div class="shared-reflections" id="sharedReflections"></div>
-            <a href="book.html" class="buy-button book-cta" style="display: none;">Inspire More - Buy the Book!</a>
+            <div class="book-cover-section">
+                <img src="book-cover.jpg" alt="Churning the Ocean Within Book Cover" class="book-cover">
+                <a href="book.html" class="cta-button">Learn More in My Book</a>
+            </div>
+        </section>
+        <section id="share-content">
+            <!-- Share content to be added -->
+            <p>Placeholder for sharing interface.</p>
         </section>
     </main>
 
@@ -54,38 +60,6 @@
                     menu.classList.toggle('active');
                 });
             }
-
-            async function getAIInsight(data) {
-                const response = await fetch('http://localhost:3000/api/insight', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(data)
-                });
-                const result = await response.json();
-                return result.insight || 'Great job—keep sharing your wisdom!';
-            }
-
-            window.shareReflection = async function() {
-                const reflection = document.getElementById('reflectionInput').value;
-                if (reflection) {
-                    const aiMessage = await getAIInsight({ entry: `Encourage this reflection: ${reflection}` });
-                    document.getElementById('aiMessage').textContent = aiMessage;
-                    const reflections = JSON.parse(localStorage.getItem('sharedReflections') || '[]');
-                    reflections.push({ text: reflection, timestamp: new Date().toLocaleString() });
-                    localStorage.setItem('sharedReflections', JSON.stringify(reflections));
-                    updateReflections();
-                    document.querySelector('.book-cta').style.display = 'block'; // Show book CTA
-                    document.getElementById('reflectionInput').value = ''; // Clear input
-                }
-            }
-
-            function updateReflections() {
-                const reflections = JSON.parse(localStorage.getItem('sharedReflections') || '[]');
-                const div = document.getElementById('sharedReflections');
-                div.innerHTML = reflections.map(r => `<p>${r.text} <small>(Shared: ${r.timestamp})</small></p>`).join('');
-            }
-
-            updateReflections(); // Load existing reflections
         });
     </script>
 </body>
