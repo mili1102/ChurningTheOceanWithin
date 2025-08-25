@@ -142,6 +142,14 @@
                 <a href="https://notionpress.com/in/read/churning-the-ocean-within" class="cta-button">Buy Now</a>
             </div>
 
+            <div class="compassion-practice">
+                <h3>Compassion Practice</h3>
+                <p>Send kindness to someone today:</p>
+                <input type="text" id="kindnessPrompt" placeholder="Enter a name or 'self'">
+                <button onclick="sendKindness()" class="cta-button">Send Kindness</button>
+                <p id="kindnessFeedback"></p>
+            </div>
+
             <div class="share-section">
                 <h3>Share Your Progress</h3>
                 <p>Share your meditation journey, mood logs, or reflections.</p>
@@ -157,6 +165,7 @@
     <audio id="oceanSound" src="path/to/ocean-waves.mp3" loop></audio>
     <audio id="bellSound" src="path/to/soft-bell.mp3"></audio>
     <audio id="wellDoneVoice" src="path/to/well-done-voice.mp3"></audio>
+    <audio id="kindnessVoice" src="path/to/kindness-voice.mp3"></audio>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -300,6 +309,16 @@
                 if (journal) {
                     localStorage.setItem('journal', journal);
                     alert('Journal saved!');
+                }
+            };
+
+            window.sendKindness = function() {
+                const name = document.getElementById('kindnessPrompt').value;
+                if (name) {
+                    document.getElementById('kindnessFeedback').textContent = `Kindness sent to ${name}!`;
+                    document.getElementById('kindnessVoice').play();
+                    document.getElementById('kindnessFeedback').classList.add('glowing');
+                    setTimeout(() => document.getElementById('kindnessFeedback').classList.remove('glowing'), 2000);
                 }
             };
 
