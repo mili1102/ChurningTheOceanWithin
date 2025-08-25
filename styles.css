@@ -26,68 +26,42 @@ header { background: linear-gradient(90deg, #1a3c5e, #3a5e80); color: #fff; padd
 main { max-width: 1200px; margin: 0 auto; padding: 3rem 1.5rem; }
 section { margin-bottom: 3rem; }
 
-/* Welcome Section */
-.welcome-section { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center; padding: 2rem; background: rgba(255, 255, 255, 0.1); border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); }
-.welcome-text h3 { font-size: 2.5rem; margin-bottom: 1rem; color: #d4a017; }
-.welcome-text p { font-size: 1.2rem; margin-bottom: 1.5rem; }
-.cta-button { display: inline-block; padding: 1.2rem 2.5rem; background: #d4a017; color: #1a1a1a; text-decoration: none; border: 2px solid #fff; border-radius: 8px; font-size: 1.1rem; font-weight: bold; transition: background 0.3s, transform 0.2s; }
-.cta-button:hover { background: #b08613; transform: translateY(-2px); }
-.book-cover-section { text-align: center; }
-.book-cover { max-width: 100%; height: auto; border: 2px solid #d4a017; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); border-radius: 8px; margin-bottom: 1rem; transition: transform 0.3s; }
-.book-cover:hover { transform: scale(1.05); }
-@media (max-width: 767px) {
-    .welcome-section { grid-template-columns: 1fr; text-align: center; padding: 1.5rem; }
-    .welcome-text h3 { font-size: 2rem; }
-    .welcome-text p { font-size: 1rem; }
-    .cta-button { padding: 1rem 2rem; font-size: 1rem; }
-    .book-cover { max-width: 200px; }
-}
-
-/* Technique Description */
+/* Meditation Container */
+.meditation-container { padding: 2rem; background: rgba(255, 255, 255, 0.05); border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); }
 .technique-description { background: rgba(0, 0, 0, 0.3); padding: 1rem; margin-bottom: 1rem; text-align: center; font-style: italic; }
 
-/* Visualization */
-.visualization { position: relative; height: 300px; width: 100%; overflow: hidden; }
-.ocean-background { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, #1a3c5e, #001f3f); animation: waves 5s infinite linear; }
-@keyframes waves { 0% { background-position: 0 0; } 100% { background-position: 100px 0; } }
-.mountain { position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 120px; height: 180px; background: linear-gradient(45deg, #5C4033, #8B5A2B); border-radius: 10px 10px 0 0; clip-path: polygon(50% 0%, 0% 100%, 100% 100%); }
-.serpent { position: absolute; bottom: 50%; left: 0; width: 100%; height: 15px; background: #D4A017; border-radius: 5px; animation: wave 3s ease-in-out infinite; }
-@keyframes wave { 0% { transform: translateX(-20px) scaleX(1); } 50% { transform: translateX(20px) scaleX(1.1); } 100% { transform: translateX(-20px) scaleX(1); } }
-.turtle { position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 150px; height: 50px; background: #556b2f; border-radius: 50%; }
-.treasure { position: absolute; display: none; top: 50%; left: 50%; width: 30px; height: 30px; background: gold; border-radius: 50%; animation: float 2s infinite; box-shadow: 0 0 10px gold; }
-.poison { position: absolute; display: none; top: 50%; left: 50%; width: 30px; height: 30px; background: black; border-radius: 50%; animation: float 2s infinite; box-shadow: 0 0 10px black; }
-@keyframes float { 0% { transform: translateY(0); } 50% { transform: translateY(-10px); } 100% { transform: translateY(0); } }
-
-/* Dashboard */
-.dashboard { margin-top: 2rem; background: rgba(255, 255, 255, 0.1); padding: 1rem; border-radius: 5px; }
-
-/* Meditation Steps */
-#meditationSteps { margin-top: 1rem; font-weight: bold; }
-#eventDescription { margin-top: 1rem; color: #d4a017; }
-
-/* Meditation Practice */
-.meditation-container { text-align: center; padding: 2rem; background: rgba(255, 255, 255, 0.05); border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); }
-.breath-animation { width: 100px; height: 100px; background: #3a5e80; border-radius: 50%; margin: 2rem auto; animation: breathe 8s infinite; }
-@keyframes breathe {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.2); }
-    100% { transform: scale(1); }
+/* Common Section Styles */
+.inner-ocean-map, .my-anchor-builder, .vasuki-energy-balancer, .halahal-release, .gems-obstacles, .my-amrit-journey, .mohini-navigator, .rahu-ketu-balancer, .growth-planner, .legacy-builder {
+    margin-top: 2rem; padding: 1.5rem; background: rgba(255, 255, 255, 0.1); border-radius: 5px;
 }
-.music-controls { margin: 1rem 0; display: flex; justify-content: center; gap: 1rem; }
-.music-controls button, .music-controls select { padding: 0.75rem 1.5rem; background: #1a3c5e; color: #fff; border: none; border-radius: 5px; cursor: pointer; transition: background 0.3s; }
-.music-controls button:hover, .music-controls select:hover { background: #2a4068; }
+h3 { color: #d4a017; margin-bottom: 1rem; }
+p { margin-bottom: 1rem; }
+textarea, input { width: 100%; padding: 1rem; margin-top: 0.5rem; border: 1px solid #d4a017; border-radius: 5px; background: rgba(0, 0, 0, 0.2); color: #fff; }
+.cta-button { display: inline-block; padding: 1.2rem 2.5rem; background: #d4a017; color: #1a1a1a; text-decoration: none; border: 2px solid #fff; border-radius: 8px; font-size: 1.1rem; font-weight: bold; transition: background 0.3s, transform 0.2s; margin-top: 1rem; }
+.cta-button:hover { background: #b08613; transform: translateY(-2px); }
+#mindFeedback, #anchorFeedback, #energyFeedback, #toxicFeedback, #dualityFeedback, #amritFeedback, #mohiniFeedback, #rahuKetuFeedback, #growthFeedback, #legacyFeedback { margin-top: 1rem; color: #fff; }
 
-/* Self-Discovery Guide */
-.self-discovery-guide { margin-top: 2rem; background: rgba(255, 255, 255, 0.1); padding: 1.5rem; border-radius: 5px; }
-.self-discovery-guide h3 { color: #d4a017; margin-bottom: 1rem; }
-.self-discovery-guide ul { margin-bottom: 1rem; list-style-type: disc; padding-left: 20px; }
-.self-discovery-guide textarea { width: 100%; height: 150px; margin-top: 1rem; padding: 1rem; border: 1px solid #d4a017; border-radius: 5px; background: rgba(0, 0, 0, 0.2); color: #fff; }
-#elementFeedback { margin-top: 1rem; color: #fff; }
+/* Visualization (Simplified without Strike) */
+.visualization { position: relative; height: 200px; width: 100%; margin: 2rem 0; background: linear-gradient(to bottom, #1a3c5e, #001f3f); overflow: hidden; }
+.ocean-background { position: absolute; top: 0; left: 0; width: 100%; height: 100%; animation: waves 5s infinite linear; }
+@keyframes waves { 0% { background-position: 0 0; } 100% { background-position: 100px 0; } }
+.mountain { position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 120px; height: 120px; background: linear-gradient(45deg, #5C4033, #8B5A2B); border-radius: 10px 10px 0 0; }
+.serpent { position: absolute; bottom: 50%; left: 0; width: 100%; height: 10px; background: #D4A017; border-radius: 5px; animation: wave 3s ease-in-out infinite; }
+@keyframes wave { 0% { transform: translateX(-20px); } 50% { transform: translateX(20px); } 100% { transform: translateX(-20px); } }
+.turtle { position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 100px; height: 30px; background: #556b2f; border-radius: 50%; }
+
+/* Book Integration */
+.book-integration { margin-top: 2rem; text-align: center; padding: 1.5rem; background: rgba(255, 255, 255, 0.05); border-radius: 5px; }
 
 /* Responsive Design */
+@media (max-width: 767px) {
+    .meditation-container { padding: 1rem; }
+    h3 { font-size: 1.5rem; }
+    textarea, input { font-size: 0.9rem; }
+    .cta-button { padding: 1rem 2rem; font-size: 1rem; }
+}
 @media (min-width: 768px) {
-    .breath-animation { width: 150px; height: 150px; }
-    .self-discovery-guide textarea { height: 200px; }
+    .meditation-container { padding: 2.5rem; }
 }
 @media (min-width: 1200px) {
     main { padding: 3rem; }
