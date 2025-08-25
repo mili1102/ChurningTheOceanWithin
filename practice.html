@@ -35,37 +35,30 @@
                 You are practicing the ancient technique of Churning the Ocean Within (Samudra Manthan).
             </div>
 
-            <div class="self-discovery-guide">
-                <h3>Identify Your Samudra Manthan Elements</h3>
-                <p>Before you begin, reflect on the components of your inner journey. Use the prompts below to identify your mind and its qualities:</p>
-                <ul>
-                    <li><strong>Inner Ocean (Mind):</strong> What is the state of your mind today? (e.g., calm, turbulent) [Add examples here]</li>
-                    <li><strong>Mount Mandara (Anchor):</strong> What grounds you? (e.g., a value, goal) [Add examples here]</li>
-                    <li><strong>Vasuki (Energy):</strong> How do you feel your energy flowing? (e.g., balanced, strained) [Add examples here]</li>
-                    <li><strong>Devas (Positive Qualities):</strong> What strengths shine through? (e.g., kindness, focus) [Add examples here]</li>
-                    <li><strong>Asuras (Negative Emotions):</strong> What challenges arise? (e.g., fear, doubt) [Add examples here]</li>
-                    <li><strong>Halahal (Toxic Emotions):</strong> What negativity needs release? (e.g., anger) [Add examples here]</li>
-                    <li><strong>Treasures (Opportunities):</strong> What potential do you see? (e.g., resilience) [Add examples here]</li>
-                    <li><strong>Amrit (Wisdom):</strong> What is your ultimate goal? (e.g., peace) [Add examples here]</li>
-                    <li><strong>Mohini (Conscience):</strong> How will you stay grounded in success? (e.g., humility) [Add examples here]</li>
-                    <li><strong>Rahu/Ketu (Shadows):</strong> What doubts or desires linger? (e.g., greed) [Add examples here]</li>
-                </ul>
-                <textarea id="elementReflection" placeholder="Write your reflections here..."></textarea>
-                <a href="#" class="cta-button" onclick="saveElements()">Save Your Insights</a>
-                <p id="elementFeedback"></p>
+            <div class="mood-pre-tracker">
+                <h3>Pre-Session Mood Check</h3>
+                <p>Select your mood to tailor the meditation:</p>
+                <select id="moodSelect">
+                    <option value="calm">Calm</option>
+                    <option value="stressed">Stressed</option>
+                    <option value="energized">Energized</option>
+                    <option value="healing">Healing</option>
+                </select>
+                <p id="moodSuggestion"></p>
             </div>
 
-            <h3>Guided Meditation Practice</h3>
             <div class="visualization">
                 <div class="ocean-background"></div>
-                <div class="mountain"></div>
-                <div class="serpent"></div>
-                <div class="turtle"></div>
+                <div class="mountain" onmouseover="showPopup('mountain')"> </div>
+                <div class="serpent" onmouseover="showPopup('serpent')"> </div>
+                <div class="turtle" onmouseover="showPopup('turtle')"> </div>
                 <div class="treasure"></div>
                 <div class="poison"></div>
             </div>
+            <div id="popup" class="popup"></div>
+
             <input type="text" id="goalInput" placeholder="Set your goal/intention (Mount Mandara)">
-            <a href="#" class="cta-button" onclick="startMeditation()">Start Churning</a>
+            <button onclick="startMeditation()" class="cta-button">Start Churning</button>
             <div class="breath-animation"></div>
             <p id="breathingGuidance">Breathe In</p>
             <div class="music-controls">
@@ -88,6 +81,34 @@
             <div id="meditationSteps"></div>
             <div id="eventDescription"></div>
             <a href="book.html" class="cta-button book-cta" style="display: none;">Excited? Buy the Book for More Wisdom!</a>
+            <p id="streakTracker">Current Streak: 0 days</p>
+            <div class="badges">
+                <h3>Your Unlocked Treasures</h3>
+                <div id="unlockedBadges"></div>
+            </div>
+
+            <div class="compassion-practice">
+                <h3>Compassion Practice</h3>
+                <p>Send kindness to someone today:</p>
+                <input type="text" id="kindnessPrompt" placeholder="Enter a name or 'self'">
+                <button onclick="sendKindness()" class="cta-button">Send Kindness</button>
+                <p id="kindnessFeedback"></p>
+            </div>
+
+            <div class="buddy-practice">
+                <h3>Buddy Practice</h3>
+                <p>Invite a friend to meditate together:</p>
+                <input type="text" id="buddyCode" placeholder="Enter buddy code or generate one">
+                <button onclick="syncBuddy()" class="cta-button">Sync with Buddy</button>
+                <p id="buddyStatus">Sync status: Not connected</p>
+            </div>
+
+            <div class="book-integration">
+                <h3>Deepen Your Journey</h3>
+                <p>Explore more in the book *Churning the Ocean Within* by Millie Jess.</p>
+                <a href="https://notionpress.com/in/read/churning-the-ocean-within" class="cta-button">Buy on Notion Press</a>
+                <a href="https://amazon.com/churning-the-ocean-within" class="cta-button">Buy on Amazon</a>
+            </div>
         </section>
     </main>
 
@@ -97,6 +118,8 @@
 
     <audio id="oceanSound" src="path/to/ocean-waves.mp3" loop></audio>
     <audio id="bellSound" src="path/to/soft-bell.mp3"></audio>
+    <audio id="wellDoneVoice" src="path/to/well-done-voice.mp3"></audio>
+    <audio id="kindnessVoice" src="path/to/kindness-voice.mp3"></audio>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -152,6 +175,28 @@
                 }
             });
 
+            // Mood suggestions
+            const moodSuggestions = {
+                'calm': 'Recommended: Calming meditation with 528Hz.',
+                'stressed': 'Recommended: Energizing meditation with 741Hz.',
+                'energized': 'Recommended: Healing meditation with 396Hz.',
+                'healing': 'Recommended: Balancing meditation with 639Hz.'
+            };
+            document.getElementById('moodSelect').addEventListener('change', (e) => {
+                document.getElementById('moodSuggestion').textContent = moodSuggestions[e.target.value] || 'Select a mood to personalize.';
+                document.getElementById('frequencySelect').value = getRecommendedFreq(e.target.value);
+            });
+
+            function getRecommendedFreq(mood) {
+                const freqMap = {
+                    'calm': '528',
+                    'stressed': '741',
+                    'energized': '396',
+                    'healing': '639'
+                };
+                return freqMap[mood] || 'none';
+            }
+
             // Meditation flow
             const steps = [
                 "Step 1: Set your determination (Mount Mandara) - Enter your goal.",
@@ -188,10 +233,13 @@
                     }
                 }, 10000); // 10 seconds per step
 
-                // Breathing guidance
+                // Breathing guidance with voice and glowing
                 let inhale = true;
                 setInterval(() => {
                     document.getElementById('breathingGuidance').textContent = inhale ? 'Inhale' : 'Exhale';
+                    const breathDiv = document.querySelector('.breath-animation');
+                    breathDiv.classList.add('glowing');
+                    setTimeout(() => breathDiv.classList.remove('glowing'), 2000);
                     inhale = !inhale;
                 }, 4000); // 4 seconds per breath
             }
@@ -209,9 +257,11 @@
             function showTreasure() {
                 const treasure = document.querySelector('.treasure');
                 treasure.style.display = 'block';
+                treasure.classList.add('sparkle');
                 document.getElementById('eventDescription').textContent = 'A treasure (strength) has emerged. Discover it.';
                 setTimeout(() => {
                     treasure.style.display = 'none';
+                    treasure.classList.remove('sparkle');
                     increment('treasuresDiscovered');
                 }, 5000);
                 document.getElementById('bellSound').play();
@@ -225,19 +275,69 @@
             function completeSession() {
                 increment('sessionsCompleted');
                 increment('wisdomLevel');
+                updateStreak();
+                updateBadges();
                 alert('Session completed! Treasure earned.');
                 document.getElementById('bellSound').play();
-                document.querySelector('.book-cta').style.display = 'block'; // Show book CTA for excitement
+                document.getElementById('wellDoneVoice').play();
+                document.querySelector('.book-cta').style.display = 'block';
             }
 
-            window.saveElements = function() {
-                const reflection = document.getElementById('elementReflection').value;
-                if (reflection) {
-                    localStorage.setItem('elementReflection', reflection);
-                    document.getElementById('elementFeedback').textContent = 'Elements identified! Begin your meditation.';
-                    document.getElementById('elementReflection').value = ''; // Clear input
+            function updateStreak() {
+                const lastDate = localStorage.getItem('lastPracticeDate');
+                const today = new Date().toDateString();
+                let streak = parseInt(localStorage.getItem('streak') || '0');
+                if (lastDate === today) {
+                    // Already practiced today
+                } else if (lastDate === new Date(Date.now() - 86400000).toDateString()) {
+                    streak++;
+                } else {
+                    streak = 1;
+                }
+                localStorage.setItem('streak', streak);
+                localStorage.setItem('lastPracticeDate', today);
+                document.getElementById('streakTracker').textContent = `Current Streak: ${streak} days`;
+                document.getElementById('streakTracker').classList.add('glowing');
+                setTimeout(() => document.getElementById('streakTracker').classList.remove('glowing'), 2000);
+            }
+
+            function updateBadges() {
+                const sessions = parseInt(localStorage.getItem('sessionsCompleted') || '0');
+                const badgesDiv = document.getElementById('unlockedBadges');
+                badgesDiv.innerHTML = '';
+                if (sessions >= 1) {
+                    badgesDiv.innerHTML += '<div class="badge conch">Conch Unlocked</div>';
+                }
+                if (sessions >= 5) {
+                    badgesDiv.innerHTML += '<div class="badge gem">Gem Unlocked</div>';
+                }
+                if (sessions >= 10) {
+                    badgesDiv.innerHTML += '<div class="badge nectar">Nectar Drop Unlocked</div>';
                 }
             }
+
+            window.sendKindness = function() {
+                const name = document.getElementById('kindnessPrompt').value;
+                if (name) {
+                    document.getElementById('kindnessFeedback').textContent = `Kindness sent to ${name}!`;
+                    document.getElementById('kindnessVoice').play();
+                    document.getElementById('kindnessFeedback').classList.add('glowing');
+                    setTimeout(() => document.getElementById('kindnessFeedback').classList.remove('glowing'), 2000);
+                }
+            }
+
+            window.syncBuddy = function() {
+                const code = document.getElementById('buddyCode').value;
+                if (code) {
+                    document.getElementById('buddyStatus').textContent = `Connected with buddy! Start meditating together.`;
+                } else {
+                    document.getElementById('buddyStatus').textContent = 'Enter a valid buddy code.';
+                }
+            }
+
+            // Load initial streak and badges
+            updateStreak();
+            updateBadges();
         });
     </script>
 </body>
