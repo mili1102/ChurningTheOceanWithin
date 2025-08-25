@@ -27,11 +27,11 @@ main { max-width: 1200px; margin: 0 auto; padding: 3rem 1.5rem; }
 section { margin-bottom: 3rem; }
 
 /* Welcome Section */
-.welcome-section { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center; padding: 2rem; background: rgba(255, 255, 255, 0.05); border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); }
+.welcome-section { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center; padding: 2rem; background: rgba(255, 255, 255, 0.1); border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); }
 .welcome-text h3 { font-size: 2.5rem; margin-bottom: 1rem; color: #d4a017; }
 .welcome-text p { font-size: 1.2rem; margin-bottom: 1.5rem; }
-.cta-button { display: inline-block; padding: 1rem 2rem; background: #d4a017; color: #1a3c5e; text-decoration: none; border-radius: 5px; font-weight: bold; transition: background 0.3s; }
-.cta-button:hover { background: #b08613; }
+.cta-button { display: inline-block; padding: 1.2rem 2.5rem; background: #d4a017; color: #1a1a1a; text-decoration: none; border: 2px solid #fff; border-radius: 8px; font-size: 1.1rem; font-weight: bold; transition: background 0.3s, transform 0.2s; }
+.cta-button:hover { background: #b08613; transform: translateY(-2px); }
 .book-cover-section { text-align: center; }
 .book-cover { max-width: 100%; height: auto; border: 2px solid #d4a017; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); border-radius: 8px; margin-bottom: 1rem; transition: transform 0.3s; }
 .book-cover:hover { transform: scale(1.05); }
@@ -39,6 +39,7 @@ section { margin-bottom: 3rem; }
     .welcome-section { grid-template-columns: 1fr; text-align: center; padding: 1.5rem; }
     .welcome-text h3 { font-size: 2rem; }
     .welcome-text p { font-size: 1rem; }
+    .cta-button { padding: 1rem 2rem; font-size: 1rem; }
     .book-cover { max-width: 200px; }
 }
 
