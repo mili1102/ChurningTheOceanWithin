@@ -12,33 +12,56 @@ header { background: linear-gradient(90deg, #1a3c5e, #3a5e80); color: #fff; padd
 .nav-menu ul { display: flex; gap: 1.5rem; }
 .nav-menu li { list-style-type: none; }
 .nav-menu a { color: #fff; text-decoration: none; font-size: 1rem; font-weight: 500; transition: color 0.3s; }
-.nav-menu a:hover { color: #d4a017; }
+.nav-menu a:hover { color: #e8b923; }
 
-/* Main Content */
-main { max-width: 1200px; margin: 0 auto; padding: 3rem 1.5rem; display: flex; flex-direction: column; gap: 2rem; }
-section.intro { margin-bottom: 3rem; display: flex; flex-wrap: wrap; gap: 2rem; align-items: center; justify-content: space-between; }
+/* Hero Section */
+.hero { position: relative; overflow: hidden; }
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.1), transparent);
+    animation: wave 10s infinite linear;
+    z-index: -1;
+}
+@keyframes wave {
+    0% { transform: translateY(0); opacity: 0.1; }
+    50% { transform: translateY(20px); opacity: 0.2; }
+    100% { transform: translateY(0); opacity: 0.1; }
+}
+
+/* Intro Section */
+.intro { display: flex; flex-wrap: wrap; gap: 2rem; align-items: center; justify-content: space-between; padding: 3rem 1.5rem; max-width: 1200px; margin: 0 auto; }
 .intro-content { flex: 1; min-width: 300px; text-align: left; }
+.book-promo { text-align: center; padding: 1rem 1.5rem; max-width: 1200px; margin: 0 auto; }
 .cta-button { 
     display: inline-block; 
-    padding: 0.75rem 1.5rem; 
-    background: #d4a017; 
+    padding: 0.85rem 1.75rem; 
+    background: #e8b923; 
     color: #1a1a1a; 
     text-decoration: none; 
     border: 2px solid #fff; 
     border-radius: 8px; 
-    font-size: 1rem; 
+    font-size: 1.05rem; 
     font-weight: bold; 
-    margin: 0.5rem 0; 
-    transition: background 0.3s, transform 0.2s, opacity 0.5s; 
-    animation: fadeIn 1s ease-in; 
+    margin: 1rem 0; 
+    transition: background 0.3s, transform 0.2s; 
 }
-.cta-button:hover { background: #b08613; transform: translateY(-2px); }
-@keyframes fadeIn { 0% { opacity: 0; } 100% { opacity: 1; } }
+.cta-button.primary { animation: pulse 2s infinite ease-in-out; }
+.cta-button:hover { background: #d4a017; transform: translateY(-2px); }
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
 
 /* Book Cover */
 .book-cover-container { flex: 0 0 auto; }
 .book-cover { 
-    max-width: 200px; 
+    max-width: 180px; 
     width: 100%; 
     height: auto; 
     border: 2px solid #fff; 
@@ -46,11 +69,13 @@ section.intro { margin-bottom: 3rem; display: flex; flex-wrap: wrap; gap: 2rem; 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
     transition: transform 0.3s ease; 
 }
+.book-cover.glowing { animation: glow 1s ease-in-out infinite; }
 .book-cover:hover { transform: scale(1.05); }
+@keyframes glow { 0% { box-shadow: 0 0 5px #e8b923; } 50% { box-shadow: 0 0 15px #e8b923; } 100% { box-shadow: 0 0 5px #e8b923; } }
 
 /* Footer */
 footer { background-color: #1a3c5e; color: #fff; text-align: center; padding: 1.5rem; font-size: 0.9rem; }
-footer a { color: #d4a017; text-decoration: none; }
+footer a { color: #e8b923; text-decoration: none; }
 footer a:hover { text-decoration: underline; }
 
 /* Responsive Design */
@@ -61,10 +86,10 @@ footer a:hover { text-decoration: underline; }
     .nav-menu ul { flex-direction: column; gap: 0.5rem; }
     .logo h1 { font-size: 1.5rem; }
     .logo h2 { font-size: 0.9rem; }
-    section.intro { flex-direction: column; text-align: center; }
+    .intro { flex-direction: column; text-align: center; }
     .intro-content { text-align: center; }
     .book-cover-container { margin-top: 1rem; }
-    .book-cover { max-width: 120px; }
+    .book-cover { max-width: 100px; }
 }
 @media (min-width: 768px) {
     section { padding: 3rem; }
