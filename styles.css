@@ -16,19 +16,33 @@ header { background: linear-gradient(90deg, #1a3c5e, #3a5e80); color: #fff; padd
 
 /* Main Content */
 main { max-width: 1200px; margin: 0 auto; padding: 3rem 1.5rem; display: flex; flex-direction: column; gap: 2rem; }
-section.intro { margin-bottom: 3rem; text-align: center; }
-.cta-button { display: inline-block; padding: 1rem 2rem; background: #d4a017; color: #1a1a1a; text-decoration: none; border: 2px solid #fff; border-radius: 8px; font-size: 1.1rem; font-weight: bold; transition: background 0.3s, transform 0.2s; }
-.cta-button:hover { background: #b08613; transform: translateY(-2px); }
-
-/* Book Cover */
-.book-cover { 
-    max-width: 250px; 
-    width: 100%; 
-    height: auto; 
-    margin: 1.5rem auto; 
+section.intro { margin-bottom: 3rem; display: flex; flex-wrap: wrap; gap: 2rem; align-items: center; justify-content: space-between; }
+.intro-content { flex: 1; min-width: 300px; text-align: left; }
+.cta-button { 
+    display: inline-block; 
+    padding: 0.75rem 1.5rem; 
+    background: #d4a017; 
+    color: #1a1a1a; 
+    text-decoration: none; 
     border: 2px solid #fff; 
     border-radius: 8px; 
-    display: block; 
+    font-size: 1rem; 
+    font-weight: bold; 
+    margin: 0.5rem 0; 
+    transition: background 0.3s, transform 0.2s, opacity 0.5s; 
+    animation: fadeIn 1s ease-in; 
+}
+.cta-button:hover { background: #b08613; transform: translateY(-2px); }
+@keyframes fadeIn { 0% { opacity: 0; } 100% { opacity: 1; } }
+
+/* Book Cover */
+.book-cover-container { flex: 0 0 auto; }
+.book-cover { 
+    max-width: 200px; 
+    width: 100%; 
+    height: auto; 
+    border: 2px solid #fff; 
+    border-radius: 8px; 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
     transition: transform 0.3s ease; 
 }
@@ -47,7 +61,10 @@ footer a:hover { text-decoration: underline; }
     .nav-menu ul { flex-direction: column; gap: 0.5rem; }
     .logo h1 { font-size: 1.5rem; }
     .logo h2 { font-size: 0.9rem; }
-    .book-cover { max-width: 150px; margin: 1rem auto; }
+    section.intro { flex-direction: column; text-align: center; }
+    .intro-content { text-align: center; }
+    .book-cover-container { margin-top: 1rem; }
+    .book-cover { max-width: 120px; }
 }
 @media (min-width: 768px) {
     section { padding: 3rem; }
