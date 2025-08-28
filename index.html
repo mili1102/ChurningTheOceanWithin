@@ -3,71 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Churning the Ocean - Official Website</title>
+    <meta name="description" content="Explore 'Churning the Ocean Within' by Millie Jess. Unlock inner wisdom with guided meditation inspired by the Samudra Manthan epic.">
+    <meta name="keywords" content="meditation, mindfulness, Samudra Manthan, inner wisdom, Millie Jess, book, self-growth">
+    <meta name="author" content="Millie Jess">
+    <title>Churning the Ocean Within - Home</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <header>
-        <nav>
+        <div class="menu-toggle">☰</div>
+        <div class="logo">
+            <h1>Churning the Ocean Within</h1>
+            <h2>A Journey to Power, Wisdom, and Success</h2>
+        </div>
+        <nav class="nav-menu">
             <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#meditation">Meditation</a></li>
-                <li><a href="#journal">Journal</a></li>
-                <li><a href="#mood-tracker">Mood Tracker</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="practice.html">Practice</a></li>
+                <li><a href="mood-tracker.html">Mood Tracker</a></li>
+                <li><a href="journal.html">Journal</a></li>
+                <li><a href="wisdom.html">Wisdom</a></li>
+                <li><a href="book.html">Book</a></li>
+                <li><a href="share.html">Share</a></li>
             </ul>
         </nav>
     </header>
 
-    <section id="home">
-        <h1>Churning the Ocean</h1>
-        <img src="book-cover-placeholder.jpg" alt="Book Cover" class="book-cover">
-        <p>A profound journey through mindfulness and self-discovery, inspired by ancient myths. Dive into the depths of your inner world.</p>
-        <a href="https://example.com/buy" class="btn">Buy Now</a>
-    </section>
-
-    <section id="meditation">
-        <h2>Meditation Feature</h2>
-        <p>Guided session: Breathe deeply as the ocean churns.</p>
-        <input type="number" id="meditation-time" value="5" min="1"> minutes
-        <button id="start-meditation">Start</button>
-        <div id="timer">00:00</div>
-        <audio id="bell" src="bell-sound.mp3"></audio> <!-- Replace with your audio file -->
-    </section>
-
-    <section id="journal">
-        <h2>Journal</h2>
-        <textarea id="journal-entry" placeholder="Write your thoughts..."></textarea>
-        <button id="save-journal">Save Entry</button>
-        <div id="journal-entries"></div>
-    </section>
-
-    <section id="mood-tracker">
-        <h2>Mood Tracker</h2>
-        <p>Select your mood today:</p>
-        <div class="moods">
-            <button data-mood="😊" data-value="5">😊 Happy</button>
-            <button data-mood="😐" data-value="3">😐 Neutral</button>
-            <button data-mood="😢" data-value="1">😢 Sad</button>
-        </div>
-        <canvas id="mood-chart"></canvas>
-    </section>
-
-    <section id="contact">
-        <h2>Contact</h2>
-        <form>
-            <input type="text" placeholder="Name">
-            <input type="email" placeholder="Email">
-            <textarea placeholder="Message"></textarea>
-            <button type="submit">Send</button>
-        </form>
-    </section>
+    <main>
+        <section class="welcome-section">
+            <div class="welcome-text">
+                <h3>Welcome to Your Inner Journey</h3>
+                <p>Inspired by the ancient wisdom of Samudra Manthan, discover inner peace through meditation, reflection, and self-discovery.</p>
+                <a href="practice.html" class="cta-button">Start Your Journey</a>
+            </div>
+            <div class="book-cover-section">
+                <img src="book-cover.jpg" alt="Churning the Ocean Within Book Cover" class="book-cover">
+                <a href="book.html" class="cta-button">Learn More in My Book</a>
+            </div>
+        </section>
+    </main>
 
     <footer>
-        <p>&copy; 2025 Churning the Ocean. All rights reserved.</p>
+        <p>&copy; 2025 Millie Jess. All rights reserved. | <a href="contact.html">Connect with Millie</a></p>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggle = document.querySelector('.menu-toggle');
+            const menu = document.querySelector('.nav-menu');
+            if (toggle && menu) {
+                toggle.addEventListener('click', () => {
+                    menu.classList.toggle('active');
+                });
+            }
+        });
+    </script>
 </body>
 </html>
