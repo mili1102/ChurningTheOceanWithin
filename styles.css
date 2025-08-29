@@ -47,7 +47,7 @@ header { background: linear-gradient(90deg, #1a3c5e, #3a5e80); color: #fff; padd
     border-radius: 8px; 
     font-size: 1.05rem; 
     font-weight: bold; 
-    margin: 0.5rem 0; 
+    margin: 0.5rem; 
     transition: background 0.3s, transform 0.2s; 
 }
 .cta-button.primary { animation: pulse 2s infinite ease-in-out; }
@@ -58,30 +58,38 @@ header { background: linear-gradient(90deg, #1a3c5e, #3a5e80); color: #fff; padd
     100% { transform: scale(1); }
 }
 
-/* Book Cover */
-.book-cover-container { 
-    flex: 0 0 auto; 
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
-    gap: 0.5rem; 
+/* Module Sections */
+.section { padding: 2rem 1.5rem; max-width: 800px; margin: 0 auto; }
+.section h2 { font-size: 1.8rem; margin-bottom: 1rem; text-align: center; }
+.moods { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; }
+.moods button { 
+    padding: 0.5rem 1rem; 
+    background: #3a5e80; 
+    color: #fff; 
+    border: 1px solid #fff; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    transition: background 0.3s; 
 }
-.book-cover { 
-    max-width: 220px; 
-    width: 100%; 
-    height: auto; 
-    border: 2px solid #fff; 
-    border-radius: 8px; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
-    transition: transform 0.3s ease; 
+.moods button:hover { background: #e8b923; color: #1a1a1a; }
+.breathing-animation { 
+    text-align: center; 
+    font-size: 1.5rem; 
+    margin: 1rem 0; 
+    animation: breathe 12s infinite ease-in-out; 
 }
-.book-cover.glowing { animation: glow 1s ease-in-out infinite; }
-.book-cover:hover { transform: scale(1.05); }
-@keyframes glow { 
-    0% { box-shadow: 0 0 5px #e8b923; } 
-    50% { box-shadow: 0 0 15px #e8b923; } 
-    100% { box-shadow: 0 0 5px #e8b923; } 
+@keyframes breathe {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.8; }
+    100% { transform: scale(1); opacity: 1; }
 }
+.module-form, .step { margin: 1rem 0; }
+.module-form label { display: block; margin: 0.5rem 0; }
+.module-form textarea, .module-form select { width: 100%; padding: 0.5rem; border-radius: 5px; border: 1px solid #fff; background: #2a4068; color: #fff; }
+.module-nav { display: flex; justify-content: space-between; margin-top: 1rem; }
+.share-buttons { display: flex; gap: 1rem; justify-content: center; }
+#progress-bar { font-size: 1.2rem; text-align: center; margin-top: 1rem; }
+#streak-counter { font-size: 1.2rem; text-align: center; margin-top: 0.5rem; }
 
 /* Footer */
 footer { background-color: #1a3c5e; color: #fff; text-align: center; padding: 1.5rem; font-size: 0.9rem; }
@@ -115,11 +123,9 @@ footer a:hover { text-decoration: underline; }
     .logo h2 { font-size: 0.9rem; }
     .intro { flex-direction: column; text-align: center; }
     .intro-content { text-align: center; }
-    .book-cover-container { margin-top: 1rem; align-items: center; }
-    .book-cover { max-width: 120px; }
 }
 @media (min-width: 768px) {
-    section { padding: 3rem; }
+    .section { padding: 3rem; }
 }
 @media (min-width: 1200px) {
     main { padding: 3rem; }
