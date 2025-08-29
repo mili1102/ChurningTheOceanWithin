@@ -31,7 +31,7 @@
             <div class="intro">
                 <div class="intro-content">
                     <h2>Personal Samudra Manthan</h2>
-                    <p>Welcome to your journey of self-discovery. Inspired by the Samudra Manthan, this 10-module practice guides you to "churn your inner ocean," reflecting on your strengths (Devas) and challenges (Asuras), confronting toxic emotions, and embracing growth. Each module includes a task and reflection to help you gain wisdom and resilience. Complete the journey daily or at your own pace, and track your progress with a streak counter. Begin now to uncover your inner nectar!</p>
+                    <p>Welcome to your journey of self-discovery. Inspired by the Samudra Manthan, this 6-module practice guides you to "churn your inner ocean," reflecting on your strengths (Devas) and challenges (Asuras), confronting toxic emotions, and embracing growth. Each module includes a task and reflection to help you gain wisdom and resilience. Complete the journey daily or at your own pace, and track your progress with a streak counter. Begin now to uncover your inner nectar!</p>
                     <a href="#module-1" class="cta-button primary">Begin Journey</a>
                     <p id="progress-bar">Progress: 0%</p>
                     <p id="streak-counter">Meditation Streak: 0 days</p>
@@ -40,34 +40,15 @@
         </section>
 
         <section id="module-1" class="section module">
-            <h2>Module 1: The Ocean Within</h2>
-            <p>Find a quiet space and reflect on your mind’s duality. List your positive qualities (Devas) and negative tendencies (Asuras), then accept both without judgment.</p>
+            <h2>Module 1: The Ocean Within & Mount Mandaar</h2>
+            <p>Find a quiet space to map your mind’s duality (Devas/Asuras) and anchor yourself with core values/goals. Accept both sides and choose one anchor to stabilize you.</p>
             <div class="step">
-                <h3>Step 1: Map Your Inner Ocean</h3>
+                <h3>Step 1: Map and Anchor</h3>
                 <form class="module-form">
                     <label>Positive Qualities (Devas):</label>
                     <textarea class="devas-input" rows="3" placeholder="E.g., kindness, patience, creativity..."></textarea>
                     <label>Negative Tendencies (Asuras):</label>
                     <textarea class="asuras-input" rows="3" placeholder="E.g., anger, insecurity, procrastination..."></textarea>
-                    <button type="submit" class="submit-step cta-button">Submit</button>
-                </form>
-            </div>
-            <div class="step">
-                <h3>Step 2: Reflect</h3>
-                <textarea class="reflection-input" rows="5" placeholder="What insights did you gain about your inner ocean’s duality?"></textarea>
-                <button class="save-reflection cta-button">Save Reflection</button>
-            </div>
-            <div class="module-nav">
-                <a href="#module-2" class="cta-button">Next Module</a>
-            </div>
-        </section>
-
-        <section id="module-2" class="section module">
-            <h2>Module 2: Mount Mandaar</h2>
-            <p>Identify your core values and goals to anchor yourself. Choose one anchor (e.g., a value or practice) to revisit when feeling uncentered.</p>
-            <div class="step">
-                <h3>Step 1: Find Your Anchor</h3>
-                <form class="module-form">
                     <label>List 3-5 Core Values:</label>
                     <textarea class="values-input" rows="3" placeholder="E.g., integrity, kindness, growth..."></textarea>
                     <label>Set a SMART Goal:</label>
@@ -77,17 +58,16 @@
             </div>
             <div class="step">
                 <h3>Step 2: Reflect</h3>
-                <textarea class="reflection-input" rows="5" placeholder="How does your chosen anchor stabilize you in chaos?"></textarea>
+                <textarea class="reflection-input" rows="5" placeholder="How does your anchor balance your inner duality?"></textarea>
                 <button class="save-reflection cta-button">Save Reflection</button>
             </div>
             <div class="module-nav">
-                <a href="#module-1" class="cta-button">Back</a>
-                <a href="#module-3" class="cta-button">Next Module</a>
+                <a href="#module-2" class="cta-button">Next Module</a>
             </div>
         </section>
 
-        <section id="module-3" class="section module">
-            <h2>Module 3: Vasuki</h2>
+        <section id="module-2" class="section module">
+            <h2>Module 2: Vasuki</h2>
             <p>Use mindful breathing (4-2-6: inhale 4s, hold 2s, exhale 6s) to release negative energy and balance your mind.</p>
             <div class="timer-controls">
                 <h3>Custom Timer for Breathing</h3>
@@ -109,17 +89,17 @@
                 <button class="save-reflection cta-button">Save Reflection</button>
             </div>
             <div class="module-nav">
-                <a href="#module-2" class="cta-button">Back</a>
-                <a href="#module-4" class="cta-button">Next Module</a>
+                <a href="#module-1" class="cta-button">Back</a>
+                <a href="#module-3" class="cta-button">Next Module</a>
             </div>
         </section>
 
-        <section id="module-4" class="section module">
-            <h2>Module 4: Halahal</h2>
-            <p>Acknowledge a toxic emotion (e.g., anger, fear), identify its trigger, and plan one action to release it mindfully.</p>
+        <section id="module-3" class="section module">
+            <h2>Module 3: Halahal & Treasures</h2>
+            <p>Acknowledge a toxic emotion, identify its trigger and a related opportunity, then plan one action to transform it.</p>
             <div class="timer-controls">
                 <h3>Custom Timer for Reflection</h3>
-                <p>Set a timer (5-10 minutes) to focus on your emotions.</p>
+                <p>Set a timer (5-10 minutes) to confront and transform emotions.</p>
                 <input type="number" class="meditation-time" min="1" max="60" value="5">
                 <button class="start-timer cta-button">Start Timer</button>
                 <button class="stop-timer cta-button">Stop Timer</button>
@@ -127,9 +107,9 @@
                 <audio class="bell" src="https://example.com/bell.mp3"></audio>
             </div>
             <div class="step">
-                <h3>Step 1: Confront Toxic Emotions</h3>
+                <h3>Step 1: Confront and Identify</h3>
                 <form class="module-form">
-                    <label>Select Emotion:</label>
+                    <label>Select Emotion (Halahal):</label>
                     <select class="emotion-input">
                         <option value="anger">Anger</option>
                         <option value="fear">Fear</option>
@@ -138,12 +118,47 @@
                     </select>
                     <label>Describe Trigger:</label>
                     <textarea class="trigger-input" rows="3" placeholder="What caused this emotion?"></textarea>
+                    <label>Related Opportunity (Treasure):</label>
+                    <textarea class="treasure-input" rows="3" placeholder="What strength or opportunity can emerge?"></textarea>
                     <button type="submit" class="submit-step cta-button">Submit</button>
                 </form>
             </div>
             <div class="step">
-                <h3>Step 2: Plan Release</h3>
-                <textarea class="reflection-input" rows="5" placeholder="What action will you take to release this emotion?"></textarea>
+                <h3>Step 2: Plan Transformation</h3>
+                <textarea class="reflection-input" rows="5" placeholder="What action will you take to transform this poison into treasure?"></textarea>
+                <button class="save-reflection cta-button">Save Reflection</button>
+            </div>
+            <div class="module-nav">
+                <a href="#module-2" class="cta-button">Back</a>
+                <a href="#module-4" class="cta-button">Next Module</a>
+            </div>
+        </section>
+
+        <section id="module-4" class="section module">
+            <h2>Module 4: Amrit & Mohini</h2>
+            <p>Define your Amrit (success) and check for ego influence, then reflect on managing it with humility.</p>
+            <div class="timer-controls">
+                <h3>Custom Timer for Reflection</h3>
+                <p>Set a timer (5-10 minutes) to plan mindful success.</p>
+                <input type="number" class="meditation-time" min="1" max="60" value="5">
+                <button class="start-timer cta-button">Start Timer</button>
+                <button class="stop-timer cta-button">Stop Timer</button>
+                <p class="timer">05:00</p>
+                <audio class="bell" src="https://example.com/bell.mp3"></audio>
+            </div>
+            <div class="step">
+                <h3>Step 1: Define and Check</h3>
+                <form class="module-form">
+                    <label>Your Amrit (Success):</label>
+                    <textarea class="amrit-input" rows="3" placeholder="What does fulfillment mean to you?"></textarea>
+                    <label>Ego Influence:</label>
+                    <textarea class="ego-input" rows="3" placeholder="How might ego affect this success?"></textarea>
+                    <button type="submit" class="submit-step cta-button">Submit</button>
+                </form>
+            </div>
+            <div class="step">
+                <h3>Step 2: Reflect on Humility</h3>
+                <textarea class="reflection-input" rows="5" placeholder="How will you manage success with wisdom and humility?"></textarea>
                 <button class="save-reflection cta-button">Save Reflection</button>
             </div>
             <div class="module-nav">
@@ -153,11 +168,11 @@
         </section>
 
         <section id="module-5" class="section module">
-            <h2>Module 5: Treasures and Challenges</h2>
-            <p>Identify a recent opportunity (treasure) and challenge, then plan one action to embrace or overcome it.</p>
+            <h2>Module 5: Rahu, Ketu & Journey Forward</h2>
+            <p>Balance ambition with detachment and set a growth intention with community support.</p>
             <div class="timer-controls">
                 <h3>Custom Timer for Reflection</h3>
-                <p>Set a timer (5-10 minutes) to reflect on your opportunities.</p>
+                <p>Set a timer (5-10 minutes) to plan balanced growth.</p>
                 <input type="number" class="meditation-time" min="1" max="60" value="5">
                 <button class="start-timer cta-button">Start Timer</button>
                 <button class="stop-timer cta-button">Stop Timer</button>
@@ -165,139 +180,11 @@
                 <audio class="bell" src="https://example.com/bell.mp3"></audio>
             </div>
             <div class="step">
-                <h3>Step 1: Identify Treasures</h3>
-                <form class="module-form">
-                    <label>Recent Opportunity (Treasure):</label>
-                    <textarea class="treasure-input" rows="3" placeholder="Describe a recent positive outcome..."></textarea>
-                    <label>Current Challenge:</label>
-                    <textarea class="challenge-input" rows="3" placeholder="Describe an obstacle you face..."></textarea>
-                    <button type="submit" class="submit-step cta-button">Submit</button>
-                </form>
-            </div>
-            <div class="step">
-                <h3>Step 2: Plan Action</h3>
-                <textarea class="reflection-input" rows="5" placeholder="What action will you take to embrace this opportunity or overcome the challenge?"></textarea>
-                <button class="save-reflection cta-button">Save Reflection</button>
-            </div>
-            <div class="module-nav">
-                <a href="#module-4" class="cta-button">Back</a>
-                <a href="#module-6" class="cta-button">Next Module</a>
-            </div>
-        </section>
-
-        <section id="module-6" class="section module">
-            <h2>Module 6: Amrit</h2>
-            <p>Define your Amrit (success and fulfillment) and plan steps to stay aligned with it.</p>
-            <div class="timer-controls">
-                <h3>Custom Timer for Reflection</h3>
-                <p>Set a timer (5-10 minutes) to focus on your goals.</p>
-                <input type="number" class="meditation-time" min="1" max="60" value="5">
-                <button class="start-timer cta-button">Start Timer</button>
-                <button class="stop-timer cta-button">Stop Timer</button>
-                <p class="timer">05:00</p>
-                <audio class="bell" src="https://example.com/bell.mp3"></audio>
-            </div>
-            <div class="step">
-                <h3>Step 1: Define Your Amrit</h3>
-                <form class="module-form">
-                    <label>Your Amrit (Success):</label>
-                    <textarea class="amrit-input" rows="3" placeholder="What does fulfillment mean to you?"></textarea>
-                    <button type="submit" class="submit-step cta-button">Submit</button>
-                </form>
-            </div>
-            <div class="step">
-                <h3>Step 2: Plan Alignment</h3>
-                <textarea class="reflection-input" rows="5" placeholder="What steps will you take to stay aligned with your Amrit?"></textarea>
-                <button class="save-reflection cta-button">Save Reflection</button>
-            </div>
-            <div class="module-nav">
-                <a href="#module-5" class="cta-button">Back</a>
-                <a href="#module-7" class="cta-button">Next Module</a>
-            </div>
-        </section>
-
-        <section id="module-7" class="section module">
-            <h2>Module 7: Mohini</h2>
-            <p>Reflect on a success and manage ego (Asuras) using your inner wisdom (Mohini).</p>
-            <div class="timer-controls">
-                <h3>Custom Timer for Reflection</h3>
-                <p>Set a timer (5-10 minutes) to reflect on your success.</p>
-                <input type="number" class="meditation-time" min="1" max="60" value="5">
-                <button class="start-timer cta-button">Start Timer</button>
-                <button class="stop-timer cta-button">Stop Timer</button>
-                <p class="timer">05:00</p>
-                <audio class="bell" src="https://example.com/bell.mp3"></audio>
-            </div>
-            <div class="step">
-                <h3>Step 1: Ego Check</h3>
-                <form class="module-form">
-                    <label>Recent Success:</label>
-                    <textarea class="success-input" rows="3" placeholder="Describe a recent achievement..."></textarea>
-                    <label>Ego Influence (Asuras):</label>
-                    <textarea class="ego-input" rows="3" placeholder="How might ego affect this success?"></textarea>
-                    <button type="submit" class="submit-step cta-button">Submit</button>
-                </form>
-            </div>
-            <div class="step">
-                <h3>Step 2: Apply Wisdom</h3>
-                <textarea class="reflection-input" rows="5" placeholder="How will you use your inner wisdom to stay humble?"></textarea>
-                <button class="save-reflection cta-button">Save Reflection</button>
-            </div>
-            <div class="module-nav">
-                <a href="#module-6" class="cta-button">Back</a>
-                <a href="#module-8" class="cta-button">Next Module</a>
-            </div>
-        </section>
-
-        <section id="module-8" class="section module">
-            <h2>Module 8: Rahu and Ketu</h2>
-            <p>Balance ambition (Rahu) with detachment (Ketu) to align desires with deeper purpose.</p>
-            <div class="timer-controls">
-                <h3>Custom Timer for Reflection</h3>
-                <p>Set a timer (5-10 minutes) to reflect on your ambitions.</p>
-                <input type="number" class="meditation-time" min="1" max="60" value="5">
-                <button class="start-timer cta-button">Start Timer</button>
-                <button class="stop-timer cta-button">Stop Timer</button>
-                <p class="timer">05:00</p>
-                <audio class="bell" src="https://example.com/bell.mp3"></audio>
-            </div>
-            <div class="step">
-                <h3>Step 1: Balance Scale</h3>
+                <h3>Step 1: Balance and Intend</h3>
                 <form class="module-form">
                     <label>Rate Ambition (1-10):</label>
                     <input type="range" class="ambition-input" min="1" max="10" value="5">
                     <span class="ambition-value">Value: 5</span>
-                    <label>Detachment Insight:</label>
-                    <textarea class="detachment-input" rows="3" placeholder="How can you detach from material gains?"></textarea>
-                    <button type="submit" class="submit-step cta-button">Submit</button>
-                </form>
-            </div>
-            <div class="step">
-                <h3>Step 2: Reflect</h3>
-                <textarea class="reflection-input" rows="5" placeholder="How will you balance ambition with inner fulfillment?"></textarea>
-                <button class="save-reflection cta-button">Save Reflection</button>
-            </div>
-            <div class="module-nav">
-                <a href="#module-7" class="cta-button">Back</a>
-                <a href="#module-9" class="cta-button">Next Module</a>
-            </div>
-        </section>
-
-        <section id="module-9" class="section module">
-            <h2>Module 9: The Journey Forward</h2>
-            <p>Set a growth intention and identify a supporter to encourage your progress.</p>
-            <div class="timer-controls">
-                <h3>Custom Timer for Reflection</h3>
-                <p>Set a timer (5-10 minutes) to plan your growth.</p>
-                <input type="number" class="meditation-time" min="1" max="60" value="5">
-                <button class="start-timer cta-button">Start Timer</button>
-                <button class="stop-timer cta-button">Stop Timer</button>
-                <p class="timer">05:00</p>
-                <audio class="bell" src="https://example.com/bell.mp3"></audio>
-            </div>
-            <div class="step">
-                <h3>Step 1: Set Intentions</h3>
-                <form class="module-form">
                     <label>Growth Intention:</label>
                     <textarea class="intention-input" rows="3" placeholder="What do you want to learn or improve?"></textarea>
                     <label>Supporter:</label>
@@ -307,17 +194,17 @@
             </div>
             <div class="step">
                 <h3>Step 2: Reflect</h3>
-                <textarea class="reflection-input" rows="5" placeholder="How will you engage with your supporter to foster growth?"></textarea>
+                <textarea class="reflection-input" rows="5" placeholder="How will you balance ambition with detachment and community?"></textarea>
                 <button class="save-reflection cta-button">Save Reflection</button>
             </div>
             <div class="module-nav">
-                <a href="#module-8" class="cta-button">Back</a>
-                <a href="#module-10" class="cta-button">Next Module</a>
+                <a href="#module-4" class="cta-button">Back</a>
+                <a href="#module-6" class="cta-button">Next Module</a>
             </div>
         </section>
 
-        <section id="module-10" class="section module">
-            <h2>Module 10: The Legacy of Churning</h2>
+        <section id="module-6" class="section module">
+            <h2>Module 6: Legacy of Churning</h2>
             <p>Share a lesson from your journey with someone who can benefit.</p>
             <div class="timer-controls">
                 <h3>Custom Timer for Reflection</h3>
@@ -342,14 +229,14 @@
                 <button class="save-reflection cta-button">Save Reflection</button>
             </div>
             <div class="module-nav">
-                <a href="#module-9" class="cta-button">Back</a>
+                <a href="#module-5" class="cta-button">Back</a>
                 <a href="#completion" class="cta-button">Next Module</a>
             </div>
         </section>
 
         <section id="completion" class="section">
             <h2>Congratulations!</h2>
-            <p>You’ve completed all 10 modules of the Samudra Manthan journey. Share your achievement!</p>
+            <p>You’ve completed all 6 modules of the Samudra Manthan journey. Share your achievement!</p>
             <div class="share-buttons">
                 <button class="share-x cta-button">Share on X</button>
                 <button class="share-facebook cta-button">Share on Facebook</button>
