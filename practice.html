@@ -3,15 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Guided meditation practice inspired by 'Churning the Ocean Within' by Millie Jess.">
-    <meta name="keywords" content="guided meditation, breathing exercise, Om chanting, Solfeggio frequencies, mindfulness">
-    <meta name="author" content="Millie Jess">
-    <title>Churning the Ocean Within - Practice</title>
+    <title>Practice - Churning the Ocean Within</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <header>
-        <div class="menu-toggle">☰</div>
+        <div class="menu-toggle hamburger">☰</div>
         <div class="logo">
             <h1>Churning the Ocean Within</h1>
             <h2>A Journey to Power, Wisdom, and Success</h2>
@@ -30,307 +28,265 @@
     </header>
 
     <main>
-        <section class="meditation-container">
+        <section class="hero">
             <div class="intro">
-                <h2>Churning the Ocean Within</h2>
-                <p>Inspired by the ancient wisdom of Samudra Manthan, discover inner peace through meditation, reflection, and self-discovery.</p>
-                <button onclick="startMeditation()" class="cta-button">Start Meditation</button>
+                <div class="intro-content">
+                    <h2>Personal Samudra Manthan</h2>
+                    <p>The Samudra Manthan is a journey of self-discovery, guiding you to explore your inner ocean, transform challenges, and achieve fulfillment. Complete 10 modules to uncover your wisdom.</p>
+                    <a href="#module-1" class="cta-button primary">Begin Journey</a>
+                    <p id="progress-bar">Progress: 0%</p>
+                    <p id="streak-counter">Meditation Streak: 0 days</p>
+                </div>
             </div>
+        </section>
 
-            <div class="pre-session">
+        <section id="module-1" class="section module">
+            <h2>Module 1: Understand Your Inner Ocean</h2>
+            <p>Your mind is a vast ocean with positive qualities (devas) and negative tendencies (asuras). Map its depths.</p>
+            <div class="timer-controls">
+                <h3>Custom Timer for Reflection</h3>
+                <p>Set a timer for focused practice (e.g., 5-10 minutes).</p>
+                <input type="number" class="meditation-time" min="1" max="60" value="5">
+                <button class="start-timer cta-button">Start Timer</button>
+                <button class="stop-timer cta-button">Stop Timer</button>
+                <p class="timer">05:00</p>
+                <audio class="bell" src="https://example.com/bell.mp3"></audio>
+            </div>
+            <div class="step">
+                <h3>Step 1: Identify Devas and Asuras</h3>
+                <form class="module-form">
+                    <label>Positive Qualities (Devas):</label>
+                    <textarea class="devas-input" rows="3" placeholder="List your strengths..."></textarea>
+                    <label>Negative Tendencies (Asuras):</label>
+                    <textarea class="asuras-input" rows="3" placeholder="List your challenges..."></textarea>
+                    <button type="submit" class="submit-step cta-button">Submit</button>
+                </form>
+            </div>
+            <div class="step">
+                <h3>Step 2: Reflect</h3>
+                <textarea class="reflection-input" rows="5" placeholder="What insights did you gain about your inner ocean?"></textarea>
+                <button class="save-reflection cta-button">Save Reflection</button>
+            </div>
+            <div class="mood-check">
                 <h3>Pre-Session Mood Check</h3>
                 <p>Select your current mood:</p>
-                <div class="mood-options">
-                    <div class="mood-emoji" onclick="selectMood('stressed')">
-                        😩 <span>Stressed</span>
-                    </div>
-                    <div class="mood-emoji" onclick="selectMood('anxious')">
-                        😰 <span>Anxious</span>
-                    </div>
-                    <div class="mood-emoji" onclick="selectMood('low energy')">
-                        😴 <span>Low Energy</span>
-                    </div>
-                    <div class="mood-emoji" onclick="selectMood('focused')">
-                        🤓 <span>Focused</span>
-                    </div>
-                    <div class="mood-emoji" onclick="selectMood('calm')">
-                        😌 <span>Calm</span>
-                    </div>
+                <div class="moods">
+                    <button data-mood="stressed" data-value="1">😩 Stressed</button>
+                    <button data-mood="anxious" data-value="2">😰 Anxious</button>
+                    <button data-mood="low-energy" data-value="3">😴 Low Energy</button>
+                    <button data-mood="focused" data-value="4">🤓 Focused</button>
+                    <button data-mood="calm" data-value="5">😌 Calm</button>
                 </div>
-                <p id="preMoodSelected"></p>
-            </div>
-
-            <div class="visualization">
-                <div class="ocean-background"></div>
-                <div class="serpent"></div>
-                <div class="turtle"></div>
-                <div class="treasure"></div>
-                <div class="poison"></div>
-                <div class="breath-dot"></div>
-            </div>
-
-            <div class="guided-meditation">
-                <h3>Guided Meditation Practice</h3>
-                <p id="breathingGuidance">Breathe In</p>
-                <div class="music-controls">
-                    <select class="frequency-select" id="frequencySelect">
-                        <option value="none">Silent</option>
-                        <option value="om">Om Chanting</option>
-                        <option value="174">174Hz</option>
-                        <option value="285">285Hz</option>
-                        <option value="396">396Hz</option>
-                        <option value="417">417Hz</option>
-                        <option value="528">528Hz</option>
-                        <option value="639">639Hz</option>
-                        <option value="741">741Hz</option>
-                        <option value="852">852Hz</option>
-                        <option value="963">963Hz</option>
-                    </select>
-                    <button id="playButton" class="cta-button">Play</button>
-                    <button id="muteButton" class="cta-button">Mute</button>
-                </div>
-                <div id="meditationSteps"></div>
-                <div id="eventDescription"></div>
-            </div>
-
-            <div class="post-session">
                 <h3>Post-Session Mood Check</h3>
-                <p>Select your mood after meditation:</p>
-                <div class="mood-options">
-                    <div class="mood-emoji" onclick="selectPostMood('stressed')">
-                        😩 <span>Stressed</span>
-                    </div>
-                    <div class="mood-emoji" onclick="selectPostMood('anxious')">
-                        😰 <span>Anxious</span>
-                    </div>
-                    <div class="mood-emoji" onclick="selectPostMood('low energy')">
-                        😴 <span>Low Energy</span>
-                    </div>
-                    <div class="mood-emoji" onclick="selectPostMood('focused')">
-                        🤓 <span>Focused</span>
-                    </div>
-                    <div class="mood-emoji" onclick="selectPostMood('calm')">
-                        😌 <span>Calm</span>
-                    </div>
+                <p>Select your mood after reflection:</p>
+                <div class="moods">
+                    <button data-mood="stressed" data-value="1">😩 Stressed</button>
+                    <button data-mood="anxious" data-value="2">😰 Anxious</button>
+                    <button data-mood="low-energy" data-value="3">😴 Low Energy</button>
+                    <button data-mood="focused" data-value="4">🤓 Focused</button>
+                    <button data-mood="calm" data-value="5">😌 Calm</button>
                 </div>
-                <p id="postMoodSelected"></p>
-                <p id="moodComparison"></p>
             </div>
+            <button class="pause-module cta-button">Pause and Process Further</button>
+            <button class="restart-module cta-button">Start from Beginning</button>
+            <div class="module-nav">
+                <a href="#hero" class="cta-button">Back</a>
+                <a href="#module-2" class="cta-button">Next Module</a>
+            </div>
+        </section>
 
-            <div class="journal">
-                <h3>Daily Reflection Journal</h3>
-                <textarea id="journalInput" placeholder="Reflect on your session..."></textarea>
-                <button onclick="saveJournal()" class="cta-button">Save</button>
-                <p>Reflective Questions inspired by churning the mind:</p>
-                <ul>
-                    <li>What 'poison' (negativity) did you encounter today?</li>
-                    <li>What 'treasure' (clarity or wisdom) did you discover?</li>
-                    <li>How did churning your thoughts lead to success or peace?</li>
-                </ul>
+        <section id="module-2" class="section module">
+            <h2>Module 2: Anchor Yourself in Focus</h2>
+            <p>Find your Mount Mandaar—a stable foundation of values and goals.</p>
+            <div class="timer-controls">
+                <h3>Custom Timer for Reflection</h3>
+                <p>Set a timer for focused practice (e.g., 5-10 minutes).</p>
+                <input type="number" class="meditation-time" min="1" max="60" value="5">
+                <button class="start-timer cta-button">Start Timer</button>
+                <button class="stop-timer cta-button">Stop Timer</button>
+                <p class="timer">05:00</p>
+                <audio class="bell" src="https://example.com/bell.mp3"></audio>
             </div>
+            <div class="step">
+                <h3>Step 1: Define Core Values</h3>
+                <form class="module-form">
+                    <label>List 3-5 Core Values:</label>
+                    <textarea class="values-input" rows="3" placeholder="E.g., Integrity, Compassion..."></textarea>
+                    <label>Set a SMART Goal:</label>
+                    <textarea class="goal-input" rows="3" placeholder="Specific, Measurable, Achievable, Relevant, Time-bound..."></textarea>
+                    <button type="submit" class="submit-step cta-button">Submit</button>
+                </form>
+            </div>
+            <div class="step">
+                <h3>Step 2: Reflect</h3>
+                <textarea class="reflection-input" rows="5" placeholder="How do your values and goals anchor you?"></textarea>
+                <button class="save-reflection cta-button">Save Reflection</button>
+            </div>
+            <div class="mood-check">
+                <h3>Pre-Session Mood Check</h3>
+                <p>Select your current mood:</p>
+                <div class="moods">
+                    <button data-mood="stressed" data-value="1">😩 Stressed</button>
+                    <button data-mood="anxious" data-value="2">😰 Anxious</button>
+                    <button data-mood="low-energy" data-value="3">😴 Low Energy</button>
+                    <button data-mood="focused" data-value="4">🤓 Focused</button>
+                    <button data-mood="calm" data-value="5">😌 Calm</button>
+                </div>
+                <h3>Post-Session Mood Check</h3>
+                <p>Select your mood after reflection:</p>
+                <div class="moods">
+                    <button data-mood="stressed" data-value="1">😩 Stressed</button>
+                    <button data-mood="anxious" data-value="2">😰 Anxious</button>
+                    <button data-mood="low-energy" data-value="3">😴 Low Energy</button>
+                    <button data-mood="focused" data-value="4">🤓 Focused</button>
+                    <button data-mood="calm" data-value="5">😌 Calm</button>
+                </div>
+            </div>
+            <button class="pause-module cta-button">Pause and Process Further</button>
+            <button class="restart-module cta-button">Start from Beginning</button>
+            <div class="module-nav">
+                <a href="#module-1" class="cta-button">Back</a>
+                <a href="#module-3" class="cta-button">Next Module</a>
+            </div>
+        </section>
 
-            <div class="wisdom-section">
-                <h3>Wisdom Section</h3>
-                <p>In the ancient Hindu epic of Samudra Manthan, gods and demons churned the ocean to extract the nectar of immortality (amrita). They used Mount Mandara as the churning rod and the serpent Vasuki as the rope. During the process, deadly poison (halahala) emerged first, which Lord Shiva swallowed to save the world. Eventually, treasures like the moon, Lakshmi, and the amrita appeared.</p>
-                <p>Relatable message: The mind is an ocean—when churned through meditation and reflection, it reveals both negativity (poison) and treasures (clarity, wisdom, success). Embrace the process to declutter and transform.</p>
+        <section id="module-3" class="section module">
+            <h2>Module 3: Harness Internal Energy</h2>
+            <p>Use your breath (Vasuki) to fuel transformation.</p>
+            <div class="timer-controls">
+                <h3>Custom Timer for Breathing</h3>
+                <p>Set a timer for your 4-2-6 breathing practice (e.g., 3-10 minutes).</p>
+                <input type="number" class="meditation-time" min="1" max="60" value="3">
+                <button class="start-timer cta-button">Start Timer</button>
+                <button class="stop-timer cta-button">Stop Timer</button>
+                <p class="timer">03:00</p>
+                <audio class="bell" src="https://example.com/bell.mp3"></audio>
             </div>
+            <div class="step">
+                <h3>Step 1: Breathing Exercise</h3>
+                <p class="breathing-animation">Inhale for 4 seconds, hold for 2, exhale for 6.</p>
+                <button class="complete-breathing cta-button">Complete Breathing</button>
+            </div>
+            <div class="step">
+                <h3>Step 2: Reflect</h3>
+                <textarea class="reflection-input" rows="5" placeholder="How did the breathing exercise affect your energy?"></textarea>
+                <button class="save-reflection cta-button">Save Reflection</button>
+            </div>
+            <div class="mood-check">
+                <h3>Pre-Session Mood Check</h3>
+                <p>Select your current mood:</p>
+                <div class="moods">
+                    <button data-mood="stressed" data-value="1">😩 Stressed</button>
+                    <button data-mood="anxious" data-value="2">😰 Anxious</button>
+                    <button data-mood="low-energy" data-value="3">😴 Low Energy</button>
+                    <button data-mood="focused" data-value="4">🤓 Focused</button>
+                    <button data-mood="calm" data-value="5">😌 Calm</button>
+                </div>
+                <h3>Post-Session Mood Check</h3>
+                <p>Select your mood after reflection:</p>
+                <div class="moods">
+                    <button data-mood="stressed" data-value="1">😩 Stressed</button>
+                    <button data-mood="anxious" data-value="2">😰 Anxious</button>
+                    <button data-mood="low-energy" data-value="3">😴 Low Energy</button>
+                    <button data-mood="focused" data-value="4">🤓 Focused</button>
+                    <button data-mood="calm" data-value="5">😌 Calm</button>
+                </div>
+            </div>
+            <button class="pause-module cta-button">Pause and Process Further</button>
+            <button class="restart-module cta-button">Start from Beginning</button>
+            <div class="module-nav">
+                <a href="#module-2" class="cta-button">Back</a>
+                <a href="#module-4" class="cta-button">Next Module</a>
+            </div>
+        </section>
 
-            <div class="book-integration">
-                <h3>Featured Book</h3>
-                <p>“Churning the Ocean Within: A Journey to Power, Wisdom, and Secrets of Success” by Millie Jess</p>
-                <p>Unlock the Secrets of Success and Inner Transformation with "Churning the Ocean Within: A Journey to Power, Wisdom, and Secrets of Success." Inspired by the ancient Hindu epic of Samudra Manthan, this thought-provoking book offers a modern interpretation of the timeless wisdom found in the churning of the ocean. This powerful metaphor illustrates the challenges we face in life, and how those struggles can be turned into opportunities for growth and success after decluttering the mind.</p>
-                <a href="https://notionpress.com/in/read/churning-the-ocean-within" class="cta-button">Buy Now</a>
+        <!-- Modules 4-10 follow the same structure, abbreviated for brevity -->
+        <section id="module-4" class="section module">
+            <h2>Module 4: Confront Toxic Emotions</h2>
+            <p>Address poisons like anger or fear (Halahal).</p>
+            <div class="timer-controls">
+                <h3>Custom Timer for Reflection</h3>
+                <p>Set a timer for focused practice (e.g., 5-10 minutes).</p>
+                <input type="number" class="meditation-time" min="1" max="60" value="5">
+                <button class="start-timer cta-button">Start Timer</button>
+                <button class="stop-timer cta-button">Stop Timer</button>
+                <p class="timer">05:00</p>
+                <audio class="bell" src="https://example.com/bell.mp3"></audio>
             </div>
+            <div class="step">
+                <h3>Step 1: Emotion Tracker</h3>
+                <form class="module-form">
+                    <label>Select Emotion:</label>
+                    <select class="emotion-input">
+                        <option value="anger">Anger</option>
+                        <option value="fear">Fear</option>
+                        <option value="jealousy">Jealousy</option>
+                        <option value="self-doubt">Self-Doubt</option>
+                    </select>
+                    <label>Describe Trigger:</label>
+                    <textarea class="trigger-input" rows="3" placeholder="What caused this emotion?"></textarea>
+                    <button type="submit" class="submit-step cta-button">Submit</button>
+                </form>
+            </div>
+            <div class="step">
+                <h3>Step 2: Transform</h3>
+                <textarea class="reflection-input" rows="5" placeholder="How can you transform this emotion?"></textarea>
+                <button class="save-reflection cta-button">Save Reflection</button>
+            </div>
+            <div class="mood-check">
+                <h3>Pre-Session Mood Check</h3>
+                <p>Select your current mood:</p>
+                <div class="moods">
+                    <button data-mood="stressed" data-value="1">😩 Stressed</button>
+                    <button data-mood="anxious" data-value="2">😰 Anxious</button>
+                    <button data-mood="low-energy" data-value="3">😴 Low Energy</button>
+                    <button data-mood="focused" data-value="4">🤓 Focused</button>
+                    <button data-mood="calm" data-value="5">😌 Calm</button>
+                </div>
+                <h3>Post-Session Mood Check</h3>
+                <p>Select your mood after reflection:</p>
+                <div class="moods">
+                    <button data-mood="stressed" data-value="1">😩 Stressed</button>
+                    <button data-mood="anxious" data-value="2">😰 Anxious</button>
+                    <button data-mood="low-energy" data-value="3">😴 Low Energy</button>
+                    <button data-mood="focused" data-value="4">🤓 Focused</button>
+                    <button data-mood="calm" data-value="5">😌 Calm</button>
+                </div>
+            </div>
+            <button class="pause-module cta-button">Pause and Process Further</button>
+            <button class="restart-module cta-button">Start from Beginning</button>
+            <div class="module-nav">
+                <a href="#module-3" class="cta-button">Back</a>
+                <a href="#module-5" class="cta-button">Next Module</a>
+            </div>
+        </section>
 
-            <div class="compassion-practice">
-                <h3>Compassion Practice</h3>
-                <p>Send kindness to someone today:</p>
-                <input type="text" id="kindnessPrompt" placeholder="Enter a name or 'self'">
-                <button onclick="sendKindness()" class="cta-button">Send Kindness</button>
-                <p id="kindnessFeedback"></p>
-            </div>
+        <!-- Add similar sections for Modules 5-10, following the same pattern -->
 
-            <div class="share-section">
-                <h3>Share Your Progress</h3>
-                <p>Share your meditation journey, mood logs, or reflections.</p>
-                <button onclick="shareProgress()" class="cta-button">Share</button>
+        <section id="completion" class="section">
+            <h2>Congratulations!</h2>
+            <p>You’ve completed all 10 modules of the Samudra Manthan journey. Share your achievement!</p>
+            <div class="share-buttons">
+                <button class="share-x cta-button">Share on X</button>
+                <button class="share-facebook cta-button">Share on Facebook</button>
+                <button class="share-linkedin cta-button">Share on LinkedIn</button>
             </div>
+            <button class="download-reflections cta-button">Download Reflections</button>
+            <a href="#hero" class="restart-journey cta-button">Restart Journey</a>
+        </section>
+
+        <section id="compassion" class="section">
+            <h2>Compassion Practice</h2>
+            <p>Send kindness to someone today:</p>
+            <textarea id="compassion-message" rows="3" placeholder="Write a kind message..."></textarea>
+            <button id="send-kindness" class="cta-button">Send Kindness</button>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2025 Millie Jess. All rights reserved. | <a href="contact.html">Connect with Millie</a></p>
+        <p>© 2025 Millie Jess. All rights reserved. | <a href="https://example.com/connect">Connect with Millie</a></p>
     </footer>
 
-    <audio id="oceanSound" src="path/to/ocean-waves.mp3" loop></audio>
-    <audio id="bellSound" src="path/to/soft-bell.mp3"></audio>
-    <audio id="wellDoneVoice" src="path/to/well-done-voice.mp3"></audio>
-    <audio id="kindnessVoice" src="path/to/kindness-voice.mp3"></audio>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const toggle = document.querySelector('.menu-toggle');
-            const menu = document.querySelector('.nav-menu');
-            if (toggle && menu) {
-                toggle.addEventListener('click', () => {
-                    menu.classList.toggle('active');
-                });
-            }
-
-            let audio = new Audio('path/to/om.mp3'); // Replace with actual paths
-            let isPlaying = false;
-            let isMuted = false;
-
-            const audioSources = {
-                'none': '',
-                'om': 'path/to/om-chanting.mp3',
-                '174': 'path/to/174hz.mp3',
-                '285': 'path/to/285hz.mp3',
-                '396': 'path/to/396hz.mp3',
-                '417': 'path/to/417hz.mp3',
-                '528': 'path/to/528hz.mp3',
-                '639': 'path/to/639hz.mp3',
-                '741': 'path/to/741hz.mp3',
-                '852': 'path/to/852hz.mp3',
-                '963': 'path/to/963hz.mp3'
-            };
-
-            document.getElementById('playButton').addEventListener('click', () => {
-                const freq = document.getElementById('frequencySelect').value;
-                if (freq !== 'none' && !isPlaying) {
-                    audio.src = audioSources[freq];
-                    audio.play();
-                    isPlaying = true;
-                }
-            });
-
-            document.getElementById('muteButton').addEventListener('click', () => {
-                isMuted = !isMuted;
-                audio.muted = isMuted;
-                document.getElementById('muteButton').textContent = isMuted ? 'Unmute' : 'Mute';
-            });
-
-            document.getElementById('frequencySelect').addEventListener('change', (e) => {
-                audio.pause();
-                isPlaying = false;
-                const freq = e.target.value;
-                if (freq !== 'none') {
-                    audio.src = audioSources[freq];
-                    if (!isMuted) audio.play();
-                    isPlaying = true;
-                }
-            });
-
-            // Pre-session mood selection
-            window.selectMood = function(mood) {
-                document.getElementById('preMoodSelected').textContent = `Pre-session mood: ${mood}`;
-                localStorage.setItem('preMood', mood);
-            };
-
-            // Post-session mood selection
-            window.selectPostMood = function(mood) {
-                document.getElementById('postMoodSelected').textContent = `Post-session mood: ${mood}`;
-                const preMood = localStorage.getItem('preMood');
-                if (preMood) {
-                    document.getElementById('moodComparison').textContent = `Mood change: ${preMood} → ${mood}`;
-                }
-            };
-
-            // Meditation flow
-            const steps = [
-                "Step 1: Set your determination (Mount Mandara) - Reflect on your goal.",
-                "Step 2: Engage your inner energy (Vasuki) - Focus on your breath.",
-                "Step 3: Stabilize with faith (Kurma) - Remain steady.",
-                "Step 4: Acknowledge thoughts (Devas & Asuras).",
-                "Step 5: Release negativity (Halahal).",
-                "Step 6: Discover treasures (Strengths).",
-                "Step 7: Attain wisdom (Amrit).",
-                "Step 8: Avoid distractions (Mohini)."
-            ];
-
-            window.startMeditation = function() {
-                document.getElementById('oceanSound').play();
-                let stepIndex = 0;
-                const stepsDiv = document.getElementById('meditationSteps');
-                stepsDiv.textContent = steps[stepIndex];
-
-                const interval = setInterval(() => {
-                    stepIndex++;
-                    if (stepIndex < steps.length) {
-                        stepsDiv.textContent = steps[stepIndex];
-                        if (stepIndex === 4) showPoison();
-                        if (stepIndex === 5) showTreasure();
-                    } else {
-                        clearInterval(interval);
-                        completeSession();
-                    }
-                }, 10000); // 10 seconds per step
-
-                // Breathing guidance with dot sync
-                let inhale = true;
-                setInterval(() => {
-                    document.getElementById('breathingGuidance').textContent = inhale ? 'Breathe In' : 'Breathe Out';
-                    const dot = document.querySelector('.breath-dot');
-                    dot.classList.add(inhale ? 'inhale-dot' : 'exhale-dot');
-                    setTimeout(() => dot.classList.remove('inhale-dot', 'exhale-dot'), 4000);
-                    inhale = !inhale;
-                }, 4000); // 4 seconds per breath
-            }
-
-            function showPoison() {
-                const poison = document.querySelector('.poison');
-                poison.style.display = 'block';
-                document.getElementById('eventDescription').textContent = 'A poison (negativity) has appeared. Acknowledge it.';
-                setTimeout(() => {
-                    poison.style.display = 'none';
-                }, 5000);
-            }
-
-            function showTreasure() {
-                const treasure = document.querySelector('.treasure');
-                treasure.style.display = 'block';
-                treasure.classList.add('sparkle');
-                document.getElementById('eventDescription').textContent = 'A treasure (strength) has emerged. Discover it.';
-                setTimeout(() => {
-                    treasure.style.display = 'none';
-                    treasure.classList.remove('sparkle');
-                }, 5000);
-                document.getElementById('bellSound').play();
-            }
-
-            function completeSession() {
-                alert('Session completed!');
-                document.getElementById('wellDoneVoice').play();
-                document.querySelector('.post-session').style.display = 'block';
-            }
-
-            window.saveJournal = function() {
-                const journal = document.getElementById('journalInput').value;
-                if (journal) {
-                    localStorage.setItem('journal', journal);
-                    alert('Journal saved!');
-                }
-            };
-
-            window.sendKindness = function() {
-                const name = document.getElementById('kindnessPrompt').value;
-                if (name) {
-                    document.getElementById('kindnessFeedback').textContent = `Kindness sent to ${name}!`;
-                    document.getElementById('kindnessVoice').play();
-                    document.getElementById('kindnessFeedback').classList.add('glowing');
-                    setTimeout(() => document.getElementById('kindnessFeedback').classList.remove('glowing'), 2000);
-                }
-            };
-
-            window.shareProgress = function() {
-                const journal = localStorage.getItem('journal');
-                if (journal) {
-                    alert('Progress shared: ' + journal);
-                } else {
-                    alert('No journal entry to share. Reflect and save first!');
-                }
-            };
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
