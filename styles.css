@@ -1,225 +1,241 @@
-// Hamburger Menu Toggle
-const hamburger = document.querySelector('.hamburger');
-const navMenu = document.querySelector('.nav-menu');
-
-hamburger.addEventListener('click', () => {
-    navMenu.classList.toggle('active');
-    hamburger.setAttribute('aria-expanded', navMenu.classList.contains('active'));
-});
-
-const navLinks = document.querySelectorAll('.nav-menu a');
-navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        navMenu.classList.remove('active');
-        hamburger.setAttribute('aria-expanded', 'false');
-    });
-});
-
-// Module Management
-let currentModule = 1;
-const totalModules = 6;
-const progressBar = document.getElementById('progress-bar');
-let moduleData = JSON.parse(localStorage.getItem('moduleData')) || {};
-let streak = parseInt(localStorage.getItem('meditationStreak')) || 0;
-const streakCounter = document.getElementById('streak-counter');
-
-if (streakCounter) {
-    streakCounter.textContent = `Meditation Streak: ${streak} days`;
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
 }
 
-function updateProgress() {
-    const progress = (currentModule / totalModules) * 100;
-    progressBar.textContent = `Progress: ${Math.round(progress)}%`;
+header {
+    background-color: #26a69a;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    position: relative;
 }
 
-// Timer Functionality (for Modules 2–6)
-document.querySelectorAll('.module').forEach(module => {
-    const startBtn = module.querySelector('.start-timer');
-    const stopBtn = module.querySelector('.stop-timer');
-    const timerDisplay = module.querySelector('.timer');
-    const timeInput = module.querySelector('.meditation-time');
-    const bell = module.querySelector('.bell');
-    let timer, isPaused = false;
-
-    if (startBtn && stopBtn && timerDisplay && timeInput) {
-        startBtn.addEventListener('click', () => {
-            if (isPaused) {
-                isPaused = false;
-                startBtn.textContent = 'Start Timer';
-                if (module.id === 'module-2') {
-                    const breathingCircle = module.querySelector('.breathing-circle');
-                    const meditationAnimation = module.querySelector('.meditation-animation');
-                    breathingCircle.style.animationPlayState = 'running';
-                    // Placeholder: Enable animation for your image once provided
-                    if (meditationAnimation) {
-                        // Add logic to start your image animation here
-                    }
-                }
-            } else {
-                const time = parseInt(timeInput.value) * 60;
-                let remaining = time;
-                clearInterval(timer);
-                timer = setInterval(() => {
-                    if (!isPaused) {
-                        remaining--;
-                        const mins = Math.floor(remaining / 60);
-                        const secs = remaining % 60;
-                        timerDisplay.textContent = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
-                        if (remaining <= 0) {
-                            clearInterval(timer);
-                            bell.play();
-                            const today = new Date().toDateString();
-                            if (localStorage.getItem('lastMeditation') !== today) {
-                                streak++;
-                                localStorage.setItem('meditationStreak', streak);
-                                localStorage.setItem('lastMeditation', today);
-                                streakCounter.textContent = `Meditation Streak: ${streak} days`;
-                            }
-                        }
-                    }
-                }, 1000);
-
-                if (module.id === 'module-2') {
-                    const breathingText = module.querySelector('.breathing-animation');
-                    const breathingCircle = module.querySelector('.breathing-circle');
-                    const meditationAnimation = module.querySelector('.meditation-animation');
-                    breathingCircle.style.animationPlayState = 'running';
-                    // Placeholder: Start your image animation
-                    if (meditationAnimation) {
-                        // Add logic to start your image animation here (e.g., video play, Lottie play)
-                    }
-                    let breathingInterval = setInterval(() => {
-                        if (!isPaused) {
-                            breathingText.textContent = breathingText.textContent.includes('Inhale') ? 'Exhale: Asuras push Vasuki (6s), hold (2s)' : 'Inhale: Devas pull Vasuki (4s)';
-                        }
-                    }, 12000); // 12s cycle for 4-2-6 breathing
-                    stopBtn.addEventListener('click', () => {
-                        clearInterval(breathingInterval);
-                        breathingCircle.style.animationPlayState = 'paused';
-                        if (meditationAnimation) {
-                            // Add logic to pause your image animation here
-                        }
-                    }, { once: true });
-                }
-            }
-        });
-
-        stopBtn.addEventListener('click', () => {
-            isPaused = true;
-            clearInterval(timer);
-            startBtn.textContent = 'Resume Timer';
-            if (module.id === 'module-2') {
-                const breathingCircle = module.querySelector('.breathing-circle');
-                const meditationAnimation = module.querySelector('.meditation-animation');
-                breathingCircle.style.animationPlayState = 'paused';
-                if (meditationAnimation) {
-                    // Add logic to pause your image animation here
-                }
-            }
-        });
-    }
-});
-
-// Module Form Submission
-document.querySelectorAll('.module-form').forEach(form => {
-    form.addEventListener('submit', e => {
-        e.preventDefault();
-        const moduleId = form.closest('.module').id;
-        const inputs = form.querySelectorAll('textarea, select, input[type="range"]');
-        let data = {};
-        inputs.forEach(input => {
-            data[input.className] = input.value;
-        });
-        moduleData[moduleId] = moduleData[moduleId] || {};
-        moduleData[moduleId].step1 = data;
-        localStorage.setItem('moduleData', JSON.stringify(moduleData));
-        form.reset();
-    });
-});
-
-// Reflection Saving with Streak Update for Module 1
-document.querySelectorAll('.save-reflection').forEach(btn => {
-    btn.addEventListener('click', () => {
-        const moduleId = btn.closest('.module').id;
-        const reflection = btn.previousElementSibling.value.trim();
-        if (reflection) {
-            moduleData[moduleId] = moduleData[moduleId] || {};
-            moduleData[moduleId].reflection = { date: new Date().toLocaleString(), text: reflection };
-            localStorage.setItem('moduleData', JSON.stringify(moduleData));
-            btn.previousElementSibling.value = '';
-            if (moduleId === `module-${currentModule}` && currentModule < totalModules) {
-                currentModule++;
-                updateProgress();
-            }
-            // Update streak for Module 1 (no timer)
-            if (moduleId === 'module-1') {
-                const today = new Date().toDateString();
-                if (localStorage.getItem('lastMeditation') !== today) {
-                    streak++;
-                    localStorage.setItem('meditationStreak', streak);
-                    localStorage.setItem('lastMeditation', today);
-                    streakCounter.textContent = `Meditation Streak: ${streak} days`;
-                }
-            }
-        }
-    });
-});
-
-// Breathing Exercise
-document.querySelectorAll('.complete-breathing').forEach(btn => {
-    btn.addEventListener('click', () => {
-        alert('Breathing exercise completed!');
-    });
-});
-
-// Sharing
-document.querySelectorAll('.share-x, .share-facebook, .share-linkedin').forEach(btn => {
-    btn.addEventListener('click', () => {
-        const platform = btn.className.includes('x') ? 'X' : btn.className.includes('facebook') ? 'Facebook' : 'LinkedIn';
-        const shareText = `I completed the Samudra Manthan journey with Churning the Ocean Within! #SamudraManthan`;
-        let shareUrl;
-        if (platform === 'X') {
-            shareUrl = `https://x.com/intent/tweet?text=${encodeURIComponent(shareText)}`;
-        } else if (platform === 'Facebook') {
-            shareUrl = `https://www.facebook.com/sharer/sharer.php?u=https://example.com&quote=${encodeURIComponent(shareText)}`;
-        } else {
-            shareUrl = `https://www.linkedin.com/shareArticle?mini=true&url=https://example.com&title=${encodeURIComponent(shareText)}`;
-        }
-        window.open(shareUrl, '_blank');
-    });
-});
-
-// Download Reflections
-document.querySelector('.download-reflections')?.addEventListener('click', () => {
-    const blob = new Blob([JSON.stringify(moduleData, null, 2)], { type: 'application/json' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'samudra-manthan-reflections.json';
-    a.click();
-    URL.revokeObjectURL(url);
-});
-
-// Restart Journey
-document.querySelector('.restart-journey')?.addEventListener('click', () => {
-    moduleData = {};
-    localStorage.setItem('moduleData', JSON.stringify(moduleData));
-    currentModule = 1;
-    updateProgress();
-    alert('Journey restarted.');
-});
-
-// Compassion Message
-const sendKindnessBtn = document.getElementById('send-kindness');
-const compassionMessage = document.getElementById('compassion-message');
-if (sendKindnessBtn) {
-    sendKindnessBtn.addEventListener('click', () => {
-        const message = compassionMessage.value.trim();
-        if (message) {
-            alert('Kindness sent! (Simulation)');
-            compassionMessage.value = '';
-        }
-    });
+.logo h1 {
+    margin: 0;
+    font-size: 2rem;
 }
 
-updateProgress();
+.logo h2 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: normal;
+}
+
+.nav-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: #4db6ac;
+    padding: 1rem;
+}
+
+.nav-menu.active {
+    display: block;
+}
+
+.nav-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-menu li {
+    margin: 0.5rem 0;
+}
+
+.nav-menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+}
+
+.nav-menu a:hover {
+    text-decoration: underline;
+}
+
+.hamburger {
+    font-size: 1.5rem;
+    cursor: pointer;
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+}
+
+main {
+    padding: 2rem;
+}
+
+.hero {
+    background: linear-gradient(to bottom, #26a69a, #4db6ac);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background: url('https://example.com/wave-pattern.png') repeat-x bottom;
+    animation: wave 10s linear infinite;
+}
+
+@keyframes wave {
+    0% { background-position: 0 bottom; }
+    100% { background-position: 1000px bottom; }
+}
+
+.intro-content {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    background-color: #00796b;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin: 0.5rem;
+    transition: background-color 0.3s;
+}
+
+.cta-button:hover {
+    background-color: #004d40;
+}
+
+.cta-button.primary {
+    background-color: #004d40;
+}
+
+.cta-button.primary:hover {
+    background-color: #00332b;
+}
+
+.section {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 1rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.module {
+    margin-bottom: 2rem;
+}
+
+.module h2 {
+    color: #26a69a;
+}
+
+.step {
+    margin: 1rem 0;
+}
+
+.module-form label {
+    display: block;
+    margin: 0.5rem 0 0.2rem;
+    font-weight: bold;
+}
+
+.module-form textarea, .module-form select, .module-form input[type="range"] {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.timer-controls {
+    margin: 1rem 0;
+}
+
+.timer {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #26a69a;
+}
+
+.breathing-animation {
+    font-size: 1.2rem;
+    color: #00796b;
+    margin: 1rem 0;
+}
+
+.meditation-animation {
+    width: 200px;
+    height: 200px;
+    margin: 1rem auto;
+    background-color: #4db6ac;
+    border: 3px solid #26a69a;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1rem;
+    text-align: center;
+    /* Placeholder style; will be updated with your image */
+}
+
+.breathing-circle {
+    width: 100px;
+    height: 100px;
+    background-color: #4db6ac;
+    border-radius: 50%;
+    margin: 1rem auto;
+    border: 3px solid #26a69a;
+    box-shadow: 0 0 10px rgba(38, 166, 154, 0.5);
+    animation: breathe 12s infinite ease-in-out;
+}
+
+@keyframes breathe {
+    0% { transform: scale(1); opacity: 0.8; }
+    33.33% { transform: scale(1.5); opacity: 1; } /* Inhale (4s) */
+    50% { transform: scale(1.5); opacity: 1; } /* Hold (2s) */
+    100% { transform: scale(1); opacity: 0.8; } /* Exhale (6s) */
+}
+
+.share-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+#compassion-message {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: #26a69a;
+    color: white;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
