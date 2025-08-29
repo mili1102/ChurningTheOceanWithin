@@ -74,7 +74,7 @@ document.querySelectorAll('.module').forEach(module => {
                     const breathingText = module.querySelector('.breathing-animation');
                     let breathingInterval = setInterval(() => {
                         if (!isPaused) {
-                            breathingText.textContent = breathingText.textContent.includes('Inhale') ? 'Exhale for 6 seconds.' : 'Inhale for 4 seconds, hold for 2.';
+                            breathingText.textContent = breathingText.textContent.includes('Inhale') ? 'Exhale: Asuras push Vasuki (6s), hold (2s)' : 'Inhale: Devas pull Vasuki (4s)';
                         }
                     }, 12000); // 12s cycle for 4-2-6 breathing
                     stopBtn.addEventListener('click', () => clearInterval(breathingInterval), { once: true });
