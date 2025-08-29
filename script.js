@@ -17,7 +17,7 @@ navLinks.forEach(link => {
 
 // Module Management
 let currentModule = 1;
-const totalModules = 10;
+const totalModules = 6;
 const progressBar = document.getElementById('progress-bar');
 let moduleData = JSON.parse(localStorage.getItem('moduleData')) || {};
 let streak = parseInt(localStorage.getItem('meditationStreak')) || 0;
@@ -32,7 +32,7 @@ function updateProgress() {
     progressBar.textContent = `Progress: ${Math.round(progress)}%`;
 }
 
-// Timer Functionality (for Modules 3–10)
+// Timer Functionality (for Modules 2–6)
 document.querySelectorAll('.module').forEach(module => {
     const startBtn = module.querySelector('.start-timer');
     const stopBtn = module.querySelector('.stop-timer');
@@ -70,7 +70,7 @@ document.querySelectorAll('.module').forEach(module => {
                     }
                 }, 1000);
 
-                if (module.id === 'module-3') {
+                if (module.id === 'module-2') {
                     const breathingText = module.querySelector('.breathing-animation');
                     let breathingInterval = setInterval(() => {
                         if (!isPaused) {
@@ -107,7 +107,7 @@ document.querySelectorAll('.module-form').forEach(form => {
     });
 });
 
-// Reflection Saving with Streak Update for Modules 1 and 2
+// Reflection Saving with Streak Update for Module 1
 document.querySelectorAll('.save-reflection').forEach(btn => {
     btn.addEventListener('click', () => {
         const moduleId = btn.closest('.module').id;
@@ -121,8 +121,8 @@ document.querySelectorAll('.save-reflection').forEach(btn => {
                 currentModule++;
                 updateProgress();
             }
-            // Update streak for Modules 1 and 2 (no timers)
-            if (moduleId === 'module-1' || moduleId === 'module-2') {
+            // Update streak for Module 1 (no timer)
+            if (moduleId === 'module-1') {
                 const today = new Date().toDateString();
                 if (localStorage.getItem('lastMeditation') !== today) {
                     streak++;
