@@ -20,7 +20,6 @@ let currentModule = 1;
 const totalModules = 10;
 const progressBar = document.getElementById('progress-bar');
 let moduleData = JSON.parse(localStorage.getItem('moduleData')) || {};
-let moods = JSON.parse(localStorage.getItem('moods')) || [];
 let streak = parseInt(localStorage.getItem('meditationStreak')) || 0;
 const streakCounter = document.getElementById('streak-counter');
 
@@ -33,7 +32,7 @@ function updateProgress() {
     progressBar.textContent = `Progress: ${Math.round(progress)}%`;
 }
 
-// Timer Functionality
+// Timer Functionality (for Modules 3–10)
 document.querySelectorAll('.module').forEach(module => {
     const startBtn = module.querySelector('.start-timer');
     const stopBtn = module.querySelector('.stop-timer');
@@ -42,51 +41,53 @@ document.querySelectorAll('.module').forEach(module => {
     const bell = module.querySelector('.bell');
     let timer, isPaused = false;
 
-    startBtn.addEventListener('click', () => {
-        if (isPaused) {
-            isPaused = false;
-            startBtn.textContent = 'Start Timer';
-        } else {
-            const time = parseInt(timeInput.value) * 60;
-            let remaining = time;
-            clearInterval(timer);
-            timer = setInterval(() => {
-                if (!isPaused) {
-                    remaining--;
-                    const mins = Math.floor(remaining / 60);
-                    const secs = remaining % 60;
-                    timerDisplay.textContent = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
-                    if (remaining <= 0) {
-                        clearInterval(timer);
-                        bell.play();
-                        const today = new Date().toDateString();
-                        if (localStorage.getItem('lastMeditation') !== today) {
-                            streak++;
-                            localStorage.setItem('meditationStreak', streak);
-                            localStorage.setItem('lastMeditation', today);
-                            streakCounter.textContent = `Meditation Streak: ${streak} days`;
+    if (startBtn && stopBtn && timerDisplay && timeInput) {
+        startBtn.addEventListener('click', () => {
+            if (isPaused) {
+                isPaused = false;
+                startBtn.textContent = 'Start Timer';
+            } else {
+                const time = parseInt(timeInput.value) * 60;
+                let remaining = time;
+                clearInterval(timer);
+                timer = setInterval(() => {
+                    if (!isPaused) {
+                        remaining--;
+                        const mins = Math.floor(remaining / 60);
+                        const secs = remaining % 60;
+                        timerDisplay.textContent = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+                        if (remaining <= 0) {
+                            clearInterval(timer);
+                            bell.play();
+                            const today = new Date().toDateString();
+                            if (localStorage.getItem('lastMeditation') !== today) {
+                                streak++;
+                                localStorage.setItem('meditationStreak', streak);
+                                localStorage.setItem('lastMeditation', today);
+                                streakCounter.textContent = `Meditation Streak: ${streak} days`;
+                            }
                         }
                     }
+                }, 1000);
+
+                if (module.id === 'module-3') {
+                    const breathingText = module.querySelector('.breathing-animation');
+                    let breathingInterval = setInterval(() => {
+                        if (!isPaused) {
+                            breathingText.textContent = breathingText.textContent.includes('Inhale') ? 'Exhale for 6 seconds.' : 'Inhale for 4 seconds, hold for 2.';
+                        }
+                    }, 12000); // 12s cycle for 4-2-6 breathing
+                    stopBtn.addEventListener('click', () => clearInterval(breathingInterval), { once: true });
                 }
-            }, 1000);
-
-            if (module.id === 'module-3') {
-                const breathingText = module.querySelector('.breathing-animation');
-                let breathingInterval = setInterval(() => {
-                    if (!isPaused) {
-                        breathingText.textContent = breathingText.textContent.includes('Inhale') ? 'Exhale for 6 seconds.' : 'Inhale for 4 seconds, hold for 2.';
-                    }
-                }, 12000); // 12s cycle for 4-2-6 breathing
-                stopBtn.addEventListener('click', () => clearInterval(breathingInterval), { once: true });
             }
-        }
-    });
+        });
 
-    stopBtn.addEventListener('click', () => {
-        isPaused = true;
-        clearInterval(timer);
-        startBtn.textContent = 'Resume Timer';
-    });
+        stopBtn.addEventListener('click', () => {
+            isPaused = true;
+            clearInterval(timer);
+            startBtn.textContent = 'Resume Timer';
+        });
+    }
 });
 
 // Module Form Submission
@@ -94,7 +95,7 @@ document.querySelectorAll('.module-form').forEach(form => {
     form.addEventListener('submit', e => {
         e.preventDefault();
         const moduleId = form.closest('.module').id;
-        const inputs = form.querySelectorAll('textarea, select');
+        const inputs = form.querySelectorAll('textarea, select, input[type="range"]');
         let data = {};
         inputs.forEach(input => {
             data[input.className] = input.value;
@@ -106,7 +107,7 @@ document.querySelectorAll('.module-form').forEach(form => {
     });
 });
 
-// Reflection Saving
+// Reflection Saving with Streak Update for Modules 1 and 2
 document.querySelectorAll('.save-reflection').forEach(btn => {
     btn.addEventListener('click', () => {
         const moduleId = btn.closest('.module').id;
@@ -120,18 +121,17 @@ document.querySelectorAll('.save-reflection').forEach(btn => {
                 currentModule++;
                 updateProgress();
             }
+            // Update streak for Modules 1 and 2 (no timers)
+            if (moduleId === 'module-1' || moduleId === 'module-2') {
+                const today = new Date().toDateString();
+                if (localStorage.getItem('lastMeditation') !== today) {
+                    streak++;
+                    localStorage.setItem('meditationStreak', streak);
+                    localStorage.setItem('lastMeditation', today);
+                    streakCounter.textContent = `Meditation Streak: ${streak} days`;
+                }
+            }
         }
-    });
-});
-
-// Mood Tracker
-document.querySelectorAll('.moods button').forEach(btn => {
-    btn.addEventListener('click', () => {
-        const mood = btn.dataset.mood;
-        const value = parseInt(btn.dataset.value);
-        const date = new Date().toDateString();
-        moods.push({ date, mood, value });
-        localStorage.setItem('moods', JSON.stringify(moods));
     });
 });
 
@@ -154,7 +154,7 @@ document.querySelectorAll('.restart-module').forEach(btn => {
         const moduleId = btn.closest('.module').id;
         delete moduleData[moduleId];
         localStorage.setItem('moduleData', JSON.stringify(moduleData));
-        btn.closest('.module').querySelectorAll('textarea, select').forEach(input => input.value = '');
+        btn.closest('.module').querySelectorAll('textarea, select, input[type="range"]').forEach(input => input.value = '');
         alert('Module reset.');
     });
 });
