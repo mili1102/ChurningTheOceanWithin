@@ -142,23 +142,6 @@ document.querySelectorAll('.complete-breathing').forEach(btn => {
     });
 });
 
-// Pause and Restart
-document.querySelectorAll('.pause-module').forEach(btn => {
-    btn.addEventListener('click', () => {
-        alert('Progress saved. Return to this module anytime.');
-    });
-});
-
-document.querySelectorAll('.restart-module').forEach(btn => {
-    btn.addEventListener('click', () => {
-        const moduleId = btn.closest('.module').id;
-        delete moduleData[moduleId];
-        localStorage.setItem('moduleData', JSON.stringify(moduleData));
-        btn.closest('.module').querySelectorAll('textarea, select, input[type="range"]').forEach(input => input.value = '');
-        alert('Module reset.');
-    });
-});
-
 // Sharing
 document.querySelectorAll('.share-x, .share-facebook, .share-linkedin').forEach(btn => {
     btn.addEventListener('click', () => {
